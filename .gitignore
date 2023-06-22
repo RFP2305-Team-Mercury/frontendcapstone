@@ -1,7 +1,8 @@
 .env
 *.DS_Store
 *.map
-*bundle.js
+*main.js
 config.js
 node_modules/
 dist/
+*.vscode
