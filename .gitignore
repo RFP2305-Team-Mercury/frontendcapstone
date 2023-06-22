@@ -1,0 +1,7 @@
+.env
+*.DS_Store
+*.map
+*bundle.js
+config.js
+node_modules/
+dist/
