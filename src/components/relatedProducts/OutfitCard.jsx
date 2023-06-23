@@ -1,13 +1,13 @@
 import React from 'react';
 
-const OutfitsListItem = ()=>{
+const OutfitCard = ()=>{
 
 
   return (
   <>
-    <h1>
+    <h4>
       This is an item card
-    </h1>
+    </h4>
   </>)
 }
-export default OutfitsListItem
+export default OutfitCard
