@@ -1,16 +1,7 @@
 //Actions are functions that return an object with a 'type/name' property
-const question = () => {
+const getRelatedProducts = (id) => {
   return {
-    type: 'ADD QUESTION'
-  }
-}
-const answer = () => {
-  return {
-    type: 'ADD ANSWER'
-  }
-}
-const report = () => {
-  return {
-    type: 'REPORT'
+    type: 'GET RELATED PRODUCTS',
+    payload: id
   }
 }
