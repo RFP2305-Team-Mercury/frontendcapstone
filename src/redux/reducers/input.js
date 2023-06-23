@@ -1,4 +1,4 @@
-//Initial State will be a "input form" where user has to input specific action ie: question, answer, or report
+//Initial State will be an "input form" where user has to input specific action ie: question, answer, or report
 
 const inputReducer = (state = {}, action) => {
   //switch case of actions types where global state will be pulled from redux and change.
