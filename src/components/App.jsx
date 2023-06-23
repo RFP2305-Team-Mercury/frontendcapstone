@@ -1,5 +1,6 @@
 import React from 'react';
 import RPandOL from './relatedProducts/RPandOL.jsx';
+import RatingsAndReviews from './ratingsAndReviews/RatingsAndReviews.jsx';
 import { createStore, combineReducers } from 'redux';
 import rootReducers from '../redux/reducers';
 import { Provider, useSelector } from 'react-redux';
@@ -17,7 +18,6 @@ return (
     <Details />
     <Gallery />
     <RPandOL />
-
       </div>
     </Provider>
   )
