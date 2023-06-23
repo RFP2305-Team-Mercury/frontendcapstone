@@ -1,5 +1,6 @@
 import React from 'react';
 import OutfitsList from './relatedProducts/OutfitsList.jsx'
+import RatingsAndReviews from './ratingsAndReviews/RatingsAndReviews.jsx';
 import { createStore, combineReducers } from 'redux';
 import rootReducers from '../redux/reducers';
 import { Provider } from 'react-redux'
@@ -14,6 +15,7 @@ return (
     <h1>Hello World</h1>
 
     <OutfitsList />
+    <RatingsAndReviews />
   </div>
   </Provider>
 )
