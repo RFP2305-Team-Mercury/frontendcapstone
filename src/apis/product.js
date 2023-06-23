@@ -1,29 +1,39 @@
 import axios from 'axios';
 import config from './apiConfig.js'
 
-const productAPI = {
+  //need to figure out params
+  export const getAll = async (page,count) => {
+    try{
+      const response = await axios.get('/products', config);
+      return response.data;
+    } catch (err){
+      console.error('getCart: ' err)
+    }
+  };
 
-  getAll: function(page, count) {
-    axios.get('/prducts', config)
-    .then((data) => response.data)
-    .catch((err) => console.error('getAll Error: ', err))
-  },
+  export const getOne = async (product_id) => {
+    try{
+      const response = axios.get('/products/:id', config);
+      return response.data;
+    } catch (err){
+      console.error('getCart: ' err)
+    }
+  }
 
-  getOne: function(product_id) {
-    axios.get('/prducts/:id', config)
-    .then((data) => response.data)
-    .catch((err) => console.error('getAll Error: ', err))
-  },
+  export const getStyles = async (product_id) => {
+    try{
+      const response = axios.get('/products/:id/styles', config)
+      return response.data;
+    } catch (err){
+      console.error('getCart: ' err)
+    }
+  }
 
-  getStyles: function(product_id) {
-    axios.get('/prducts/:id/styles', config)
-    .then((data) => response.data)
-    .catch((err) => console.error('getAll Error: ', err))
-  },
+  export const getRelated = async (product_id) => {
+    try{
 
-  getRelated: function(product_id) {
-      //Ahu to completed for related items
-  },
+    } catch (){
 
+    }
+  }
 
-};
