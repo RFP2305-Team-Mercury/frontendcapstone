@@ -1,9 +1,10 @@
 import React from 'react';
-import RPandOL from './relatedProducts/RPandOL.jsx'
+import RPandOL from './relatedProducts/RPandOL.jsx';
 import { createStore, combineReducers } from 'redux';
 import rootReducers from '../redux/reducers';
-import { Provider } from 'react-redux'import Details from './overview/Details.jsx'
-import Gallery from './overview/Gallery.jsx'
+import { Provider, useSelector } from 'react-redux';
+import Details from './overview/Details.jsx';
+import Gallery from './overview/Gallery.jsx';
 
 export default function App() {
 

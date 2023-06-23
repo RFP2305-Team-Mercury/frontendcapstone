@@ -1,10 +1,12 @@
 import inputReducer from './input'
-import getRelatedProducts from './getRelatedProducts'
+import RPandOLReducer from './RPandOLReducer'
+import productIdReducer from './productIdReducer'
 import {combineReducers} from 'redux'
 
 const rootReducers = combineReducers({
   inputReducer: inputReducer,
-  getRelatedProducts: getRelatedProducts
+  RPandOLReducer: RPandOLReducer,
+  productId: productIdReducer
 })
 
 export default rootReducers;
