@@ -1,11 +1,8 @@
-import React from 'react'
-import {useState, useEffect} from 'react'
-
-const Questions = () => {
+const SearchQuestions = () => {
   const [input,setInput] = useState('')
   const [message, setMessage] = useState(input)
 
-  const search = (e) => {
+  const Search = (e) => {
     setInput(e.target.value)
     console.log(input)
   }
@@ -25,5 +22,4 @@ return(
  </label>
 )
 }
-
-export default Questions;
+export default Search
