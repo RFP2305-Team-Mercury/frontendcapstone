@@ -22,6 +22,7 @@ export default function Details() {
       <div className="bottom-container">
         <h2>Product Slogan</h2>
         <p>text description</p>
+        <p> share on social </p>
       </div>
     </>
   );
