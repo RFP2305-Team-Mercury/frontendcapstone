@@ -1,11 +1,8 @@
 import React from 'react';
-import RPandOL from './relatedProducts/RPandOL.jsx';
-import RatingsAndReviews from './ratingsAndReviews/RatingsAndReviews.jsx';
-import { createStore, combineReducers } from 'redux';
-import rootReducers from '../redux/reducers';
-import { Provider, useSelector } from 'react-redux';
-import Details from './overview/Details.jsx';
-import Gallery from './overview/Gallery.jsx';
+import { createStore } from 'redux'
+import rootReducers from '../redux/reducers'
+import Questions from './QuestionsAndAnswers/QuestionsAndAnswers.jsx'
+
 
 export default function App() {
 
@@ -17,8 +14,10 @@ return (
     <h1>The Mercury Store</h1>
     <Details />
     <Gallery />
-    <RPandOL />
-      </div>
-    </Provider>
-  )
+    <OutfitsList />
+    <QuestionsAndAnswers/>
+    <RatingsAndReviews />
+  </div>
+  </Provider>
+)
 };
