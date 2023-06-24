@@ -6,6 +6,7 @@ import rootReducers from '../redux/reducers';
 import { Provider, useSelector } from 'react-redux';
 import Details from './overview/Details.jsx';
 import Gallery from './overview/Gallery.jsx';
+import QuestionsAndAnswers from './QuestionsAnswers/QuestionsAnswers.jsx'
 
 
 export default function App() {
@@ -18,6 +19,7 @@ return (
     <h1>The Mercury Store</h1>
     <Details />
     <Gallery />
+    <QuestionsAndAnswers/>
     <RPandOL />
       </div>
     </Provider>
