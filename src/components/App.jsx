@@ -14,10 +14,11 @@ export default function App() {
 return (
   <Provider store={store}>
   <div>
-    <h1>The Mercury Store</h1>
+    <h1 className="text-3xl font-bold">The Mercury Store</h1>
     <Details />
     <Gallery />
     <RPandOL />
+    <RatingsAndReviews />
       </div>
     </Provider>
   )
