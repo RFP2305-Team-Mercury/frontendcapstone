@@ -1,9 +1,9 @@
-require("dotenv").config();
+import { BASE_URL, API_KEY} from '../../config.js'
 
 export const config = {
-  baseURL: `${process.env.BASE_URL}`;
+  baseURL: BASE_URL,
   headers: {
     'Content-Type' : 'application/json',
-    'Authorization' : `${process.env.API_KEY}`
+    'Authorization' : API_KEY
   }
 }
