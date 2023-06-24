@@ -3,7 +3,10 @@ import RPandOL from './relatedProducts/RPandOL.jsx';
 import RatingsAndReviews from './ratingsAndReviews/RatingsAndReviews.jsx';
 import { createStore, combineReducers } from 'redux';
 import rootReducers from '../redux/reducers';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
+import Details from './overview/Details.jsx';
+import Gallery from './overview/Gallery.jsx';
+import QuestionsAndAnswers from './QuestionsAnswers/QuestionsAnswers.jsx'
 import Overview from './overview/Overview.jsx';
 
 export default function App() {
@@ -16,9 +19,16 @@ return (
     <h1 className="text-3xl font-bold">The Mercury Store</h1>
     <Details />
     <Gallery />
+    <h1>The Mercury Store</h1>
+    <Overview />
+    <Details />
+    <Gallery />
+    <QuestionsAndAnswers/>
+    <Overview />
     <RPandOL />
     <RatingsAndReviews />
       </div>
+     </div>
   </Provider>
 )
 };
