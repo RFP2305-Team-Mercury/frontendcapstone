@@ -29,7 +29,10 @@ const ReviewList = ({reviews}) => {
       {renderedReviews.map((review) => {
         return <ReviewTile review={review} key={review.review_id} />
       })}
-      {renderedReviews < reviews ? <button onClick={() => { setCount(count + 2); }}>More Reviews</button> : ''}
+      {renderedReviews < reviews ? <button
+        onClick={() => { setCount(count + 2); }}
+        type='button'
+      >More Reviews</button> : ''}
     </div>
   );
 };
