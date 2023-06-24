@@ -1,13 +1,13 @@
-import setId from '../actions/productId.js'
+import {SET_STYLES} from '../actions/productId.js'
 
-const productIdReducer = (state = 40347, action) => {
+const stylesReducer = (state = [], action) => {
   //switch case of actions types where global state will be pulled from redux and change.
   switch(action.type){
-    case 'SET_ID':
+    case 'SET_STYLES':
       return action.payload;
     default:
       return state
   }
 }
 
-export default productIdReducer;
+export default stylesReducer;
