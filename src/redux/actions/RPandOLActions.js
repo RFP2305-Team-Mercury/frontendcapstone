@@ -1,6 +1,13 @@
-//Actions are functions that return an object with a 'type/name' property
-// export default RPandOLActions = () => {
-//   return {
-//     type: 'GET_RELATED_PRODUCTS'
-//   }
-// }
+const addItem = (prodID) => {
+  return {
+    type: 'ADD_PRODUCT',
+    payload: prodID
+  }
+}
+const removeItem = (prodID) => {
+  return {
+    type: 'REMOVE_PRODUCT',
+    payload: prodID
+  }
+}
+export default { addItem, removeItem }
