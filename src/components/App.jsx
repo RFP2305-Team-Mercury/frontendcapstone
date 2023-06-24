@@ -3,9 +3,8 @@ import RPandOL from './relatedProducts/RPandOL.jsx';
 import RatingsAndReviews from './ratingsAndReviews/RatingsAndReviews.jsx';
 import { createStore, combineReducers } from 'redux';
 import rootReducers from '../redux/reducers';
-import { Provider, useSelector } from 'react-redux';
-import Details from './overview/Details.jsx';
-import Gallery from './overview/Gallery.jsx';
+import { Provider } from 'react-redux';
+import Overview from './overview/Overview.jsx';
 
 export default function App() {
 
@@ -20,6 +19,6 @@ return (
     <RPandOL />
     <RatingsAndReviews />
       </div>
-    </Provider>
-  )
+  </Provider>
+)
 };

@@ -6,3 +6,4 @@ config.js
 node_modules/
 dist/
 *.vscode
+src/apis/apiConfig.js
