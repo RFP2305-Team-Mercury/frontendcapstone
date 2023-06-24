@@ -16,6 +16,9 @@ export default function App() {
 return (
   <Provider store={store}>
   <div>
+    <h1 className="text-3xl font-bold">The Mercury Store</h1>
+    <Details />
+    <Gallery />
     <h1>The Mercury Store</h1>
     <Overview />
     <Details />
@@ -23,6 +26,8 @@ return (
     <QuestionsAndAnswers/>
     <Overview />
     <RPandOL />
+    <RatingsAndReviews />
+      </div>
      </div>
   </Provider>
 )

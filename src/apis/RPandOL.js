@@ -1,11 +1,16 @@
 import axios from 'axios';
 import config from './config.js'
 
-export const getAll = async (page,count) => {
+export const getCardInfo = async (id) => {
   try{
-    const response = await axios.get('/products', config);
-    return response.data;
+    const productInfoPromise =  axios.get(`/products/:${id}`, config);
+    const prodThumbnailPromise = axios.get(`/products/:${id}/styles`, config);
+
+    let productInfo = await productInfoPromise.data;
+    let prodThumbnail = await prodThumbnailPromise.data;
+
+    return ;
   } catch (err){
-    console.error('getCart: ' err)
+    console.error(err)
   }
 };
