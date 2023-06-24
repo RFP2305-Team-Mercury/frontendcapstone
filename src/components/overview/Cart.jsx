@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { getStyles } from '../../apis/product.js';
 
 export default function Cart() {
+  const productId = useSelector((state) => state.productId);
+  const styles = useSelector((state) => state.styles);
+  const dispatch = useDispatch();
+  const [style, setStyle] = useState('');
 
 const handleSelect = () => {
   //update state for select_quantiy or select_size
@@ -22,14 +28,15 @@ const handleOutfit = () => {
   //console.log("selected: " e.target.value);
 }
 
+
 return (
   <div>
+    <h1>{style.name}</h1>
     <select name="size"onSelect={handleSelect}>
       <option value="" >--Select Size--</option>
-      {/* find skus and return options for size
-          if quantity === 0 for all skus, return "out of stock"
-          when collapsed show selected size
-      */}
+      {/* {style.skus.map((sku) => {
+        return (<option value={sku.sku_id}></option>)
+      })} */}
     </select>
     <select name="quantity"onSelect={handleSelect} >
       <option value="">-</option>
