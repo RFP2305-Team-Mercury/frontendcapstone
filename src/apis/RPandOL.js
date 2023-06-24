@@ -1,5 +1,5 @@
 import axios from 'axios';
-import config from './apiConfig.js'
+import config from './config.js'
 
 export const getAll = async (page,count) => {
   try{

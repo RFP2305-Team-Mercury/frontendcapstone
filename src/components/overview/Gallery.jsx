@@ -6,7 +6,6 @@ export default function Gallery() {
 return (
   <div className="gallery">
     <p> gallery placeholder </p>
-    <img src=''/>
     {/*
     default true = big image
     photos array -> loop through and display each thumbnail

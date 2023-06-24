@@ -1,5 +1,5 @@
 import axios from 'axios';
-import config from './apiConfig.js';
+import config from './config.js';
 
 export const getAll = async (page, count) => {
   try {
@@ -22,7 +22,6 @@ export const getOne = async (product_id) => {
 export const getStyles = async (product_id) => {
   try {
     const response = await axios.get(`/products/${product_id}/styles`, config);
-    console.log(response.data.results);
     return response.data.results;
   } catch (err) {
     console.error('getStyles:', err);
