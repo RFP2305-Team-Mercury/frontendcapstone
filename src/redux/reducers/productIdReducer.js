@@ -8,6 +8,5 @@ const productIdReducer = (state = 40347, action) => {
     default:
       return state
   }
-}
 
 export default productIdReducer;
