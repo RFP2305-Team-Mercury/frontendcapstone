@@ -14,7 +14,7 @@ const RatingSummary = ({metaData}) => {
       count += Number(newCount);
       total += (Number(newCount) * i);
     }
-    let average = total / count;
+    let average = (total / count).toPrecision(2);
     let result = {count, average};
     return result;
   };
