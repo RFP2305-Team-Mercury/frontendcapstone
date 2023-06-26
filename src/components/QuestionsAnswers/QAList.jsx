@@ -1,58 +1,119 @@
 import React from 'react';
 import {useState, useEffect} from 'react'
+import axios from 'axios'
+import sample from './sampleQA.js'
+import getQA from '../../apis/QA.js'
 
-const QAList = () => {
+const QAList = ({input}) => {
 
-  const [questions,setQuestions] = useState('Who what which where why whether how?')
-  const [answers,setAnswers] = useState('Blah blah blah blah blah')
-  const [QCount, setQCount] = useState(0)
-  const [ACount, setACount] = useState(0)
-  const [photo, setPhoto] = useState('')
+  const [data, setData] = useState()
+  const [ACount, setACount] = useState(2)
+  const [increment, setIncrement] = useState(1)
+  const [photo,setPhoto] = useState('')
 
 
-  return(
-    <>
-    <div className ='QA'>
+ const formatDate = (date) => {
 
-    <h3 className = 'UserQuestions'>Q: {questions}</h3>
+  const months = [ "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December" ];
 
-    <label className ='helpful'>
-        Helpful?<button>Yes ({QCount})</button>
-      </label>
+  let year = date.getFullYear()
+  let month = date.getMonth()
+  let day = date.getDate()
+  return `${months[month]} ${day}, ${year}`
 
-    <label className ='Add Answer'>
-        <button>Add Answer</button>
-      </label>
+ }
 
-    <h3>A:</h3>
-    <p className = 'UserAnswers'>{answers}</p>
-    <p className = 'Photos'>{photo}</p>
-    <aside>User1337, January 1, 2019</aside>
+ const handleClick = () => {
 
+ }
+
+ useEffect(() => {
+   const fetch = async () => {
+    const questions = await getQA()
+    setData(questions)
+    return questions
+   }
+
+   fetch()
+   .catch((err) => {
+    console.log('Error', err)
+   })
+ },[ACount])
+
+console.log(data)
+  const mapQA = sample.results.map((el) => {
+
+  let key = Object.keys(el.answers)
+
+  const userAnswers = key.map((a,index) => {
+
+  let date = new Date(el.answers[key[index]].date)
+
+   date = formatDate(date)
+
+    while(index < ACount){
+      return(
+        <>
+      <h3>A:</h3>
+      <p className = 'UserAnswers'>{el.answers[a].body}</p>
+      <p className = 'Photos'>{photo}</p>
+      <aside>by {el.answers[a].answerer_name},  {date}</aside>
       <label className ='helpful'>
-        Helpful?<button>Yes ({ACount})</button>
+        Helpful?<button>Yes ({el.answers[a].helpfulness})</button>
       </label>
       <label className ='report'>
-        <button>Report</button>
+      <button>Report</button>
       </label>
-    </div>
+        </>
+      )
+    }
 
-    <br></br>
+  })
 
-    <div className = 'More'>
+    return(
+      <>
+      <div key = {el} className ='QA' >
+      <h3 key = {el.question_id} >Q: {el.question_body}</h3>
+      <label className ='helpful'>
+        Helpful? <button key = {el.question_id} onClick = {handleClick}> Yes ({el.question_helpfulness})</button>
+      </label>
+      <label className ='Add Answer'>
+      <button>Add Answer</button>
+      </label>
+      {userAnswers}
+      </div>
+
+      <div className = 'More'>
       <label>
         <button className = 'MoreAnswers'>LOAD MORE ANSWERS</button>
       </label>
-      <br></br>
       <label>
         <button className = 'MoreQuestions'>MORE ANSWERED QUESTIONS</button>
       </label>
       <label>
         <button className = 'AddQuestion'>ADD A QUESTION + </button>
       </label>
-    </div>
+     </div>
+      </>
+    )
+
+  })
+if(data){
+  console.log('hello')
+  return(
+    <>
+    {mapQA}
     </>
   )
+}
+  // return(
+  //   <>
+  //   {mapQA}
+  //   </>
+  // )
+
+
 }
 
 

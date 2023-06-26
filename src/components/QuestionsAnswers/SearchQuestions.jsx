@@ -5,7 +5,6 @@ import {useSelector} from 'react-redux'
 
 const SearchQuestions = () => {
 
-  let productId = useSelector(state => state.productId)
   const [input,setInput] = useState('')
   const [message, setMessage] = useState(input)
 
@@ -16,20 +15,35 @@ const SearchQuestions = () => {
   const handleEvent = (e) => {
     e.preventDefault()
     setMessage(input)
-    console.log('successfuly clicked',input)
+    console.log('successfuly clicked and submitted',input)
   }
 
+if(message === ''){
 
-return(
-  <>
- <label>
- <h1>Product#:{productId}</h1>
-  HAVE A QUESTION? SEARCH FOR ANSWERS...
-  <input type ='text' onChange = {search}></input>
-  <button onClick = {handleEvent}>Search Icon</button>
- </label>
-<QAList/>
- </>
-)
+  return(
+    <>
+   <label>
+    HAVE A QUESTION? SEARCH FOR ANSWERS...
+    <input type ='text' onChange = {search}></input>
+    <button onClick = {handleEvent}>Search Icon</button>
+   </label>
+  <QAList/>
+   </>
+  )
+
+} else {
+
+  return(
+    <>
+   <label>
+    HAVE A QUESTION? SEARCH FOR ANSWERS...
+    <input type ='text' onChange = {search}></input>
+    <button onClick = {handleEvent}>Search Icon</button>
+   </label>
+  <QAList input = {input}/>
+   </>
+  )
+}
+
 }
 export default SearchQuestions
