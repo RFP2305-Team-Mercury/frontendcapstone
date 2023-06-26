@@ -6,10 +6,14 @@ import getQA from '../../apis/QA.js'
 
 const QAList = ({input}) => {
 
-  const [data, setData] = useState()
+  const [data, setData] = useState([])
+  const [search,setSearch] = useState(input)
   const [ACount, setACount] = useState(2)
-  const [increment, setIncrement] = useState(1)
+  const [QCount, setQCount] = useState(4)
+  const [Qhelpfulness, setQHelpfulness] = useState(1)
+  const [Ahelpfulness, setAHelpfulness] = useState(1)
   const [photo,setPhoto] = useState('')
+
 
 
  const formatDate = (date) => {
@@ -24,27 +28,31 @@ const QAList = ({input}) => {
 
  }
 
- const handleClick = () => {
-
- }
-
  useEffect(() => {
    const fetch = async () => {
     const questions = await getQA()
     setData(questions)
-    return questions
    }
 
    fetch()
    .catch((err) => {
     console.log('Error', err)
    })
- },[ACount])
+ },[ACount,search])
 
-console.log(data)
-  const mapQA = sample.results.map((el) => {
+  const mapQA = data.map((el,index) => {
 
   let key = Object.keys(el.answers)
+
+  const helpfulQClick = () => {
+    if(!el.helpClick || el.helpClick === 0){
+    el.helpClick = 1
+    setQHelpfulness(el.question_helpfulness += 1);
+    } else {
+    setQHelpfulness(el.question_helpfulness -= el.helpClick);
+    el.helpClick = 0
+   }
+  }
 
   const userAnswers = key.map((a,index) => {
 
@@ -52,31 +60,60 @@ console.log(data)
 
    date = formatDate(date)
 
+   const helpfulAClick = () => {
+    if(!el.answers[a].click || el.answers[a].click === 0){
+    el.answers[a].click = 1
+    setAHelpfulness(el.answers[a].helpfulness += 1);
+    } else {
+    setAHelpfulness(el.answers[a].helpfulness -= el.answers[a].click);
+    el.answers[a].click = 0
+    }
+   }
+
     while(index < ACount){
-      return(
+      console.log(input,el.answers[a].body.includes(input))
+      if(el.answers[a].body.includes(input)){
+       return(
         <>
-      <h3>A:</h3>
-      <p className = 'UserAnswers'>{el.answers[a].body}</p>
-      <p className = 'Photos'>{photo}</p>
-      <aside>by {el.answers[a].answerer_name},  {date}</aside>
-      <label className ='helpful'>
-        Helpful?<button>Yes ({el.answers[a].helpfulness})</button>
-      </label>
-      <label className ='report'>
-      <button>Report</button>
-      </label>
+        <h3>A:</h3>
+        <p className = 'UserAnswers'>{el.answers[a].body}</p>
+        <p className = 'Photos'>{photo}</p>
+        <aside>by {el.answers[a].answerer_name},  {date}</aside>
+        <label className ='helpful'>
+          Helpful?<button onClick = {helpfulAClick}>Yes ({el.answers[a].helpfulness})</button>
+        </label>
+        <label className ='report'>
+        <button>Report</button>
+        </label>
         </>
-      )
+       )
+      } else {
+       return(
+        <>
+        <h3>A:</h3>
+        <p className = 'UserAnswers'>{el.answers[a].body}</p>
+        <p className = 'Photos'>{photo}</p>
+        <aside>by {el.answers[a].answerer_name},  {date}</aside>
+        <label className ='helpful'>
+          Helpful?<button onClick = {helpfulAClick}>Yes ({el.answers[a].helpfulness})</button>
+        </label>
+        <label className ='report'>
+        <button>Report</button>
+        </label>
+        </>
+        )
+      }
     }
 
   })
 
+  while(index < QCount){
     return(
       <>
       <div key = {el} className ='QA' >
       <h3 key = {el.question_id} >Q: {el.question_body}</h3>
       <label className ='helpful'>
-        Helpful? <button key = {el.question_id} onClick = {handleClick}> Yes ({el.question_helpfulness})</button>
+        Helpful? <button key = {el.question_id} onClick = {helpfulQClick}> Yes ({el.question_helpfulness})</button>
       </label>
       <label className ='Add Answer'>
       <button>Add Answer</button>
@@ -86,10 +123,10 @@ console.log(data)
 
       <div className = 'More'>
       <label>
-        <button className = 'MoreAnswers'>LOAD MORE ANSWERS</button>
+        <button className = 'MoreAnswers' onClick = {function(){setACount(key.length)}}>LOAD MORE ANSWERS</button>
       </label>
       <label>
-        <button className = 'MoreQuestions'>MORE ANSWERED QUESTIONS</button>
+        <button className = 'MoreQuestions' onClick = {function(){setQCount(data.length)}}>MORE ANSWERED QUESTIONS</button>
       </label>
       <label>
         <button className = 'AddQuestion'>ADD A QUESTION + </button>
@@ -97,21 +134,22 @@ console.log(data)
      </div>
       </>
     )
+  }
 
   })
-if(data){
-  console.log('hello')
+
+
+if(data.length === 0){
   return(
-    <>
-    {mapQA}
-    </>
+    <div>Loading...</div>
   )
 }
-  // return(
-  //   <>
-  //   {mapQA}
-  //   </>
-  // )
+
+return(
+  <>
+  {mapQA}
+  </>
+)
 
 
 }
