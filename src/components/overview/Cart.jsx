@@ -2,17 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getStyles } from "../../apis/product.js";
 
-export default function Cart() {
+export default function Cart({selected}) {
   const productId = useSelector((state) => state.productId);
   const styles = useSelector((state) => state.styles);
   const dispatch = useDispatch();
-  const [style, setStyle] = useState("");
   const [quantity, setQuantity] = useState([]);
 
   const handleSize = (e) => {
     setQuantity([]);
     let value = e.target.value;
-    let skus = Object.values(styles[0].skus);
+    let skus = Object.values(selected.skus);
     for(var i=0; i < skus.length; i++){
       if(skus[i]['size'] === value){
         let max = skus[i]['quantity']
@@ -43,12 +42,6 @@ export default function Cart() {
   const handleOutfit = () => {
     //console.log("selected: " e.target.value);
   };
-  useEffect(() => {
-    // This callback will be triggered whenever the `styles` state changes
-    if (styles.length > 0) {
-      console.log("Style SKUs:", styles[0]["skus"]);
-    }
-  }, [styles]);
 
   function generateQuantity(max) {
     const result = [];
@@ -60,24 +53,24 @@ export default function Cart() {
 
   return (
     <div>
-      <h1>{style.name}</h1>
-      <select name="size" onChange={handleSize}>
+      <h1>{selected.name}</h1>
+      <select name="size" onChange={handleSize} className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow">
         <option value="">--Select Size--</option>
-        {styles.length > 0 &&
-          Object.values(styles[0].skus).map((sku) => (
+        {selected &&
+          Object.values(selected.skus).map((sku) => (
             <option key={sku.sku_id}>
               {sku.size}
             </option>
           ))}
       </select>
-      <select name="quantity" onChange={handleQuantity}>
+      <select name="quantity" onChange={handleQuantity} className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow">
         <option value="">-</option>
         {quantity.map((num) => (
-          <option value={num}>{num}</option>
+          <option value={num} key={num}>{num}</option>
         ))}
       </select>
-      <button onClick={handleCart}>Add to Cart</button>
-      <button onClick={handleOutfit}>Outfit Check</button>
+      <button onClick={handleCart} className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex">Add to Cart</button>
+      <button onClick={handleOutfit}className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex">Outfit Check</button>
     </div>
   );
 }

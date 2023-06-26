@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from "react";
 import Styles from "./Styles.jsx";
-import Cart from "./Cart.jsx";
+
 import { useSelector, useDispatch } from 'react-redux';
 import { getOne } from '../../apis/product.js';
 
@@ -11,15 +11,12 @@ export default function Details() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // get the data from the API
-        const data = await getOne(productId); // Use productId instead of product
-        // convert the data to JSON
+        const data = await getOne(productId);
         setDetails(data);
       } catch (error) {
         console.error(error);
       }
     };
-    // call the function
     fetchData();
   }, []);
 
@@ -27,11 +24,10 @@ export default function Details() {
     <>
       <div className="right-container">
         <h3>Read all reviews</h3>
-        <h2>{details.category}</h2>
-        <h1>{details.name}</h1>
-        <h2>{details.default_price}</h2>
+        <h2 className="text-lg text-gray-800">{details.category}</h2>
+        <h1 className="text-2xl text-gray-800 font-bold">{details.name}</h1>
+        <h2 className="text-lg text-gray-800">{details.default_price}</h2>
         <Styles />
-        <Cart />
         <ul>
           <li>test</li>
           <li>test</li>
