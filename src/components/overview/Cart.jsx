@@ -4,7 +4,7 @@ import { addCart, getCart } from "../../apis/cart.js";
 
 export default function Cart({selected}) {
   const [quantityChoice, setQuantityChoice] = useState([]);
-  const [sku, setSku] = useState('');
+  const [sku, setSku] = useState(null);
   const [quantity, setQuantity] = useState(0);
 
   const handleSize = (e) => {
@@ -14,14 +14,13 @@ export default function Cart({selected}) {
     for(var i=0; i < skus.length; i++){
       if(skus[i]['size'] === value){
         setSku([i]);
-        skus[i]['quantity'] > 15 ? generateQuantity(15) : generateQuantity(max); //if more than 15, max quantity is 15
+        skus[i]['quantity'] > 15 ? generateQuantity(15) : generateQuantity(skus[i]['quantity']); 
       }
     }
   };
 
   const handleCart = () => {
     let sku_id = Object.keys(selected['skus'])[sku];
-
     const postData = async () => {
       try {
         console.log('post attempt')
@@ -53,6 +52,7 @@ export default function Cart({selected}) {
     for (let i = 1; i <= max; i++) {
       result.push(i);
     }
+    result.shift();
     setQuantityChoice(result);
   }
 
@@ -69,12 +69,14 @@ export default function Cart({selected}) {
           ))}
       </select>
       <select name="quantity" onChange={(e) => setQuantity(e.target.value)} className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow m-4 p-4">
-        <option key='0'>-</option>
+        {!sku ? <option key='default'>-</option> : <option key="defaultsize">1</option>}
         {quantityChoice.map((num) => (
           <option value={num} key={num}>{num}</option>
         ))}
       </select>
-      <button onClick={handleCart} className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4">Add to Cart</button>
+      {!sku && <button className="bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4">Please Select a Size</button>}
+      {sku && <button onClick={handleCart} className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4">Add to Cart</button>}
+
       <button onClick={handleOutfit}className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4">Outfit Check</button>
     </div>
   );
