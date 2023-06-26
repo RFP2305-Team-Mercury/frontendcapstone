@@ -7,18 +7,15 @@ export default function Cart() {
   const styles = useSelector((state) => state.styles);
   const dispatch = useDispatch();
   const [style, setStyle] = useState("");
-  const [quantity, setQuantity] = useState([
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
-  ]);
+  const [quantity, setQuantity] = useState([]);
 
   const handleSize = (e) => {
     setQuantity([]);
     let value = e.target.value;
     let skus = Object.values(styles[0].skus);
-    for(var i=0; i<skus.length; i++){
+    for(var i=0; i < skus.length; i++){
       if(skus[i]['size'] === value){
         let max = skus[i]['quantity']
-        console.log(max);
         if(max > 15){
           generateQuantity(15);
         } else {

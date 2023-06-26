@@ -18,14 +18,12 @@ export default function Styles() {
         console.error(error);
       }
     };
-    // call the function
     fetchData();
   }, []);
 
   useEffect(() => {
-    // This callback will be triggered whenever the `styles` state changes
-    console.log('Styles updated:', styles);
-  }, [styles]); // Add `styles` as a dependency to monitor its changes
+    console.log('Styles updated:', styles); //why is this getting rendered 4 times?
+  }, [styles]);
 
   const imageStyle = {
     width: "50px",
@@ -38,6 +36,10 @@ export default function Styles() {
     display: "flex",
     flexWrap: "wrap",
     alignItems: "stretch"
+  };
+
+  const selectedStyle = {
+    border: "2px solid black"
   };
 
   return (
