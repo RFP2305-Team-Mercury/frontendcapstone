@@ -22,6 +22,11 @@ export default function Styles() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    // This callback will be triggered whenever the `styles` state changes
+    console.log('Styles updated:', styles);
+  }, [styles]); // Add `styles` as a dependency to monitor its changes
+
   const imageStyle = {
     width: "50px",
     height: "50px",
