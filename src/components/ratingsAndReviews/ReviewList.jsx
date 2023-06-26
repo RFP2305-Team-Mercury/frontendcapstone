@@ -24,7 +24,7 @@ const ReviewList = ({reviews}) => {
   }, [count]);
 
   return (
-    <div className="w-8/12">
+    <div className="w-8/12 pl-8">
       {renderedReviews.map((review) => {
         return <ReviewTile review={review} key={review.review_id} />
       })}
