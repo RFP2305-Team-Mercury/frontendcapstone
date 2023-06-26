@@ -24,10 +24,12 @@ const ReviewList = ({reviews}) => {
   }, [count]);
 
   return (
-    <div className="w-8/12">
-      {renderedReviews.map((review) => {
-        return <ReviewTile review={review} key={review.review_id} />
-      })}
+    <div className="w-8/12 px-4">
+      <div className="overflow-auto px-4 max-h-192">
+        {renderedReviews.map((review) => {
+          return <ReviewTile review={review} key={review.review_id} />
+        })}
+      </div>
       {renderedReviews < reviews ? <button
         onClick={() => { setCount(count + 2); }}
         className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow mr-4"
