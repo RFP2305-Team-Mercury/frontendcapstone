@@ -27,9 +27,9 @@ export default function Details() {
     <>
       <div className="right-container">
         <h3>Read all reviews</h3>
-        <h2>{details.category}</h2>
+        {/* <h2>{details.category}</h2>
         <h1>{details.name}</h1>
-        <h2>{details.default_price}</h2>
+        <h2>{details.default_price}</h2> */}
         <Styles />
         <Cart />
         <ul>

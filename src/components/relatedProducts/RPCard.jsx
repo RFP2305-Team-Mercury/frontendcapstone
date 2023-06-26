@@ -1,12 +1,12 @@
 import React from 'react';
 
-const RPCard = ()=>{
+const RPCard = ({id})=>{
 
 
   return (
   <>
     <h4>
-      This is an item card
+      This is an item card for id: {id}
     </h4>
   </>)
 }
