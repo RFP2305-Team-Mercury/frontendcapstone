@@ -34,7 +34,7 @@ export default function Styles() {
     width: "50px",
     height: "50px",
     borderRadius: "50%",
-    margin: "5px"
+    margin: '2px'
   };
 
   const containerStyle = { // max 4 per row
@@ -44,24 +44,25 @@ export default function Styles() {
   };
 
   const selectedStyle = {
-    border: "5px solid black",
+    border: "2px solid black",
     width: "50px",
     height: "50px",
     borderRadius: "50%",
-    margin: "5px"
+    margin: '2px'
   };
 
   return (
   <>
-    <h2 className="text-lg text-gray-800">Style - {selected.name}</h2>
-    <div style={containerStyle}>
+    <h2 className="text-lg text-gray-800 mx-2">Style - {selected.name}</h2>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
       {styles.map((style) => {
         if(style === selected){ // add conditional rendering to overlay with checkmark & title above thumbnails
           return(<img src={style.photos[0].thumbnail_url}
             alt={style.name}
             style={selectedStyle}
             key={style.style_id}
-            onClick={() => handleSelect(style.style_id)}/>)
+            onClick={() => handleSelect(style.style_id)}
+            className='mx-2'/>)
         } else {
           return (<img src={style.photos[0].thumbnail_url}
             alt={style.name}

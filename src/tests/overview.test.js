@@ -1,34 +1,61 @@
+import React from 'react'
+import {render, screen, waitFor} from '@testing-library/react'
+import Cart from '../components/overview/Cart.jsx';
+import {getAll} from '../apis/product.js';
 
-//DETAILS
-// Star rating is adjusted based on average score
-// Link for Read all reviews should lead to Ratings & Reviews module
-// should show the price
-// if price is discounted, should show discounted style
-// should be shareable on social media
+beforeAll(() => {
+  getAll();
+});
 
-//STYLES
-// only select one style at a time
-// style should update with a checkmark
-// thumbnails should be max 4 in a row
-// default style should be first in list
 
-//ADD TO CART
+describe("cart component", () => {
+  test("loads and displays select options", async () => {
+    render(<Cart />);
+    await waitFor(() => {
+      expect(screen.getByRole("select", { name: "size" })).toBeInTheDocument();
+    });
+  });
+})
 
-//SIZE
-//size selector should show all available sizes for current style
-//if size has 0 quantity, should not display
-// if no stock is available, should display OUT OF STOCK
-// when collapsed, should show selected size
-//default = "select size"
+// describe("tests cart component functionality", () => {
+//   test("does not allow adding to cart if size not selected", () => {
 
-//QUANTITY
-//quantity selector should show sequences from 1-15 or max for that item
-//if a size is not selected, display '-' and disable dropdown
-//if a size is selected, default should show 1
+//   });
 
-//ADD BUTTON
-// add to cart button should add sku to user cart
-// if default ='select size', display "please select size"
-// if no stock, hide button
+//   test("updates to Out of Stock if no quantity", () => {
 
-//IMAGE GALLERY
+//   });
+
+//   test("display maximum quantity of 15", () => {
+
+//   });
+
+//   test("size dropdown displays --Select Size-- by default", () => {
+
+//   });
+//   test("when size dropdown collapsed, displays size", () => {
+
+//   });
+//   test("quantity dropdown displays -- by default", () => {
+
+//   });
+//   test("quantity dropdown updates to 1 once size selected", () => {
+
+//   });
+
+//   test("adds sku and quantity to cart after adding to cart", () => {
+
+//   });
+// });
+
+// describe("styles selection", () => {
+//   test("fetches style skus from API", () => {
+//   });
+//   test("displays maximum of 4 thumnails in a row", () => {
+//   });
+//   test("only one style can be selected at a time", () => {
+//   });
+//   test("default style should be first in style list", () => {
+//   });
+// });
+
