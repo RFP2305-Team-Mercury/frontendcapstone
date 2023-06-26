@@ -14,7 +14,7 @@ export default function Styles() {
       try {
         const data = await getStyles(productId);
         dispatch({ type: 'SET_STYLES', payload: data });
-        setSelect(data[0]);
+        setSelect(data[0]); // default to first style in the list
       } catch (error) {
         console.error(error);
       }
@@ -37,7 +37,7 @@ export default function Styles() {
     margin: "5px"
   };
 
-  const containerStyle = {
+  const containerStyle = { // max 4 per row
     display: "flex",
     flexWrap: "wrap",
     alignItems: "stretch"
@@ -56,7 +56,7 @@ export default function Styles() {
     <h2 className="text-lg text-gray-800">Style - {selected.name}</h2>
     <div style={containerStyle}>
       {styles.map((style) => {
-        if(style === selected){
+        if(style === selected){ // add conditional rendering to overlay with checkmark & title above thumbnails
           return(<img src={style.photos[0].thumbnail_url}
             alt={style.name}
             style={selectedStyle}
@@ -69,10 +69,6 @@ export default function Styles() {
             key={style.style_id}
             onClick={() => handleSelect(style.style_id)}/>)
         }
-        // add conditional rendering to overlay with checkmark & title above thumbnails
-        // default to first style in the list
-        // max 4 per row
-        // no limit to the number of styles, only 1 style selected at a time
       })}
     </div>
     <Cart selected={selected}/>
