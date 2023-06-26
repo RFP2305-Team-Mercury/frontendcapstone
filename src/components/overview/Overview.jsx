@@ -5,9 +5,9 @@ import Gallery from './Gallery.jsx';
 
 export default function Overview() {
   return (
-    <>
-    <Details />
+    <div className='grid grid-cols-3 gap-4'>
     <Gallery />
-    </>
+    <Details />
+    </div>
   )
 }
