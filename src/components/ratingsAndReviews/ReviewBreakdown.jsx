@@ -12,7 +12,7 @@ const ReviewBreakdown = ({ratings, count}) => {
   };
 
   return (
-    <table className="table-auto">
+    <table className="table-auto mt-2 mb-4">
       <tbody>
         <tr>
           <td className="underline w-3/12">5 Stars</td>

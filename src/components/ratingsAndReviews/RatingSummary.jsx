@@ -1,6 +1,7 @@
 import React from 'react';
 import StarRatings from 'react-star-ratings';
 import ReviewBreakdown from './ReviewBreakdown.jsx';
+import ProductBreakdown from './ProductBreakdown.jsx';
 
 const { useState, useEffect } = React;
 
@@ -49,6 +50,7 @@ const RatingSummary = ({metaData}) => {
         {recPct * 100}% of reviews recommend this product
       </div>
       <ReviewBreakdown ratings={metaData.ratings} count={count} />
+      <ProductBreakdown characteristics={metaData.characteristics} />
     </div>
   );
 };
