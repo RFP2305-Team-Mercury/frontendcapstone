@@ -19,8 +19,8 @@ return (
     <h1 className="text-3xl font-bold">The Mercury Store</h1>
     {/* <Overview /> */}
     <RPandOL />
-    <QuestionsAndAnswers/>
-    <RatingsAndReviews />
+    {/* <QuestionsAndAnswers/> */}
+    {/* <RatingsAndReviews /> */}
   </div>
   </Provider>
 )

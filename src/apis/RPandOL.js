@@ -4,14 +4,18 @@ import config from './apiConfig.js';
 
 const getCardInfo = async (id) => {
   try {
-    const productInfoPromise = axios.get(`/products/:${id}`, config);
-    const prodThumbnailPromise = axios.get(`/products/:${id}/styles`, config);
+    const productInfoPromise = axios.get(`/products/${id}`, config);
+    const prodThumbnailPromise = axios.get(`/products/${id}/styles`, config);
 
-    let productInfo = await productInfoPromise.data;
-    let prodThumbnail = await prodThumbnailPromise.data;
+    let productInfo = await productInfoPromise;
+    let prodThumbnail = await prodThumbnailPromise;
 
-    console.log(productInfo, prodThumbnail)
-    return { productInfo, prodThumbnail };
+    return {thumbnail: prodThumbnail.data.results[0].photos[0].thumbnail_url,
+            name: productInfo.data.name + '-' + productInfo.data.slogan,
+            category: productInfo.data.category,
+            price: productInfo.data.default_price,
+            stars: 0//TODO UPDATE THIS
+          };
 
   } catch (err) {
     console.error(err)
