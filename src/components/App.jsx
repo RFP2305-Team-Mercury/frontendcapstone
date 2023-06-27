@@ -11,14 +11,14 @@ import RatingsAndReviews from './ratingsAndReviews/RatingsAndReviews.jsx';
 
 export default function App() {
 
-  const store = createStore(rootReducers);
+  const store = createStore(rootReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 return (
   <Provider store={store}>
   <div>
-    <Overview />
+    {/* <Overview /> */}
     <RPandOL />
-    <QuestionsAndAnswers/>
+    {/* <QuestionsAndAnswers/> */}
     <RatingsAndReviews />
   </div>
   </Provider>
