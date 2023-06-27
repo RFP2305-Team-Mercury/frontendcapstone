@@ -21,8 +21,8 @@ export const setList = (array) => {
 //cartAction.js
 export const addToCart = (sku_id) => {
   return {
-    type: 'ADD_ITEM'
-    payload: sku_id;
+    type: 'ADD_ITEM',
+    payload: sku_id
   };
 };
 

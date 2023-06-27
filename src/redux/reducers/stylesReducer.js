@@ -1,4 +1,4 @@
-import {SET_STYLES} from '../actions/productId.js'
+import {SET_STYLES} from '../actions/index.js'
 
 const stylesReducer = (state = [], action) => {
   switch(action.type){
