@@ -66,7 +66,6 @@ export default function Cart({ selected }) {
 
   return (
     <div>
-      {selected && <h1>{selected.name}</h1>}
       <div className="flex">
         <select
           name="size"

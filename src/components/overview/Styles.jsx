@@ -30,31 +30,9 @@ export default function Styles() {
     }
   };
 
-  const imageStyle = {
-    width: "50px",
-    height: "50px",
-    borderRadius: "50%",
-    margin: "2px",
-  };
-
-  const containerStyle = {
-    // max 4 per row
-    display: "flex",
-    flexWrap: "wrap",
-    alignItems: "stretch",
-  };
-
-  const selectedStyle = {
-    border: "2px solid black",
-    width: "50px",
-    height: "50px",
-    borderRadius: "50%",
-    margin: "2px",
-  };
-
   return (
     <>
-      <h2 className="text-lg text-gray-800 mx-2">Style - {selected.name}</h2>
+      <h2 className="text-lg text-gray-800 mx-4">Style - {selected.name}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {styles.map((style) => {
           if (style === selected) {
@@ -63,10 +41,9 @@ export default function Styles() {
               <img
                 src={style.photos[0].thumbnail_url}
                 alt={style.name}
-                style={selectedStyle}
                 key={style.style_id}
                 onClick={() => handleSelect(style.style_id)}
-                className="mx-2"
+                className="w-16 h-16 rounded-full border-4 border-black mx-4 mt-2"
               />
             );
           } else {
@@ -74,9 +51,9 @@ export default function Styles() {
               <img
                 src={style.photos[0].thumbnail_url}
                 alt={style.name}
-                style={imageStyle}
                 key={style.style_id}
                 onClick={() => handleSelect(style.style_id)}
+                className="w-16 h-16 rounded-full mt-2 mx-4"
               />
             );
           }

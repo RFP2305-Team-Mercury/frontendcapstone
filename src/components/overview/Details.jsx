@@ -26,10 +26,10 @@ export default function Details() {
   return (
     <div>
       <div className='col-span-1 row-span-1'>
-        <h3 className='font-light text-gray-600 py-2 underline mx-2'>Read all reviews</h3>
-        <h2 className="text-lg text-gray-800 mx-2">{details.category}</h2>
-        <h1 className="text-3xl text-gray-800 font-bold my-4 mx-2">{details.name}</h1>
-        <h2 className="text-lg text-gray-800 mx-2">{details.default_price}</h2>
+        <h3 className='font-light text-gray-600 py-2 underline mx-4'>Read all reviews</h3>
+        <h2 className="text-lg text-gray-800 mx-4">{details.category}</h2>
+        <h1 className="text-3xl text-gray-800 font-bold my-4 mx-4">{details.name}</h1>
+        <h2 className="text-lg text-gray-800 mx-4">{details.default_price}</h2>
         <Styles />
         </div>
       <div className='col-span-2 row-span-1'>
