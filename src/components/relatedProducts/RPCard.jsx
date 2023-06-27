@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addItem, removeItem, setId } from '../../redux/actions/RPandOLActions'
+import { addItem, removeItem, setId } from '../../redux/actions'
 import api from '../../apis/RPandOL.js'
 
 const RPCard = ({ id }) => {
