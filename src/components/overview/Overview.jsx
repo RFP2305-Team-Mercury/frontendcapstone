@@ -5,9 +5,12 @@ import Header from './Header.jsx';
 
 export default function Overview() {
   return (
-    <div className='w-10/12 flex m-auto'>
+    <>
+    <Header />
+    <div className='w-10/12 flex flex-wrap m-auto'>
     <Gallery />
     <Details />
     </div>
+    </>
   )
 }
