@@ -1,5 +1,5 @@
 import React from 'react';
-import getCardInfo from '../../apis/RPandOL';
+import api from '../../apis/RPandOL';
 
 const OutfitCard = ({ id })=>{
 
