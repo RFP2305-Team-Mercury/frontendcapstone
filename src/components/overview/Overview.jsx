@@ -5,7 +5,7 @@ import Gallery from './Gallery.jsx';
 
 export default function Overview() {
   return (
-    <div className='grid grid-cols-3 gap-4'>
+    <div className='w-10/12 flex justify-between m-auto'>
     <Gallery />
     <Details />
     </div>

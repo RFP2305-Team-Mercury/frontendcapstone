@@ -22,9 +22,6 @@ export default store;
 
     // questions / answers
 
-
-
-
 //action
 //a function that returns an object.  This object will have properties type, payload.
 //Type describes what the action will do, payload by how much (or some parameters that will be needed)
