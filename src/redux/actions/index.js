@@ -3,20 +3,20 @@ export const addItem = (prodID) => {
   return {
     type: 'ADD_PRODUCT',
     payload: prodID
-  }
-}
+  };
+};
 export const removeItem = (prodID) => {
   return {
     type: 'REMOVE_PRODUCT',
     payload: prodID
-  }
-}
+  };
+};
 export const setList = (array) => {
   return {
     type: 'SET_LIST',
     payload: array
-  }
-}
+  };
+};
 
 //cartAction.js
 export const addToCart = (sku_id) => {
@@ -48,35 +48,35 @@ export const selectStyle = () => {
 export const setId = (id) => {
   return {
     type: 'SET_ID',
-    payload: id,
+    payload: id
   };
 };
 export const SET_STYLES = (data) => {
   return {
     type: 'SET_STYLES',
-    payload: data,
+    payload: data
   };
 };
 
 export const SET_SELECTED = (data) => {
   return {
     type: 'SET_SELECTED',
-    payload: data,
+    payload: data
   };
 };
 
 //input.js
-const question = () => {
+export const question = () => {
   return {
     type: 'ADD QUESTION'
   }
-}
-const answer = () => {
+};
+export const answer = () => {
   return {
     type: 'ADD ANSWER'
   }
-}
-const report = () => {
+};
+export const report = () => {
   return {
     type: 'REPORT'
   }

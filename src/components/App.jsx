@@ -16,7 +16,6 @@ export default function App() {
 return (
   <Provider store={store}>
   <div>
-    <h1 className="text-3xl font-bold">The Mercury Store</h1>
     <Overview />
     <RPandOL />
     <QuestionsAndAnswers/>
