@@ -64,7 +64,7 @@ export default function Cart({ selected }) {
       <select
         name="size"
         onChange={handleSize}
-        className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow m-4 p-4"
+        className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow m-4 p-4 w-64"
       >
         <option key="0">--Select Size--</option>
         {selected &&
@@ -75,7 +75,7 @@ export default function Cart({ selected }) {
       <select
         name="quantity"
         onChange={(e) => setQuantity(e.target.value)}
-        className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow m-4 p-4"
+        className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow m-4 p-4 w-64"
       >
         {!sku ? (
           <option key="default">-</option>
@@ -89,16 +89,15 @@ export default function Cart({ selected }) {
         ))}
       </select>
       {!sku && (
-        <button className="bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4">
+        <button className="bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-64">
           Please Select a Size
         </button>
       )}
       {sku && (
         <button
           onClick={handleCart}
-          className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4"
-        >
-          Add to Cart      {" "}
+          className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-64"
+        > Add to Cart      {" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
