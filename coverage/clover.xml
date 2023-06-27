@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687881764292" clover="3.2.0">
-  <project timestamp="1687881764292" name="All files">
-    <metrics statements="48" coveredstatements="12" conditionals="14" coveredconditionals="6" methods="12" coveredmethods="1" elements="74" coveredelements="19" complexity="0" loc="48" ncloc="48" packages="3" files="4" classes="4"/>
+<coverage generated="1687905726252" clover="3.2.0">
+  <project timestamp="1687905726252" name="All files">
+    <metrics statements="52" coveredstatements="6" conditionals="14" coveredconditionals="0" methods="14" coveredmethods="1" elements="80" coveredelements="7" complexity="0" loc="52" ncloc="52" packages="3" files="4" classes="4"/>
     <package name="frontendcapstone">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="config.js" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/config.js">
+      <file name="config.js" path="/Users/andymoc/HR/mercury/frontendcapstone/config.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
+        <line num="1" count="1" type="stmt"/>
       </file>
     </package>
     <package name="frontendcapstone.src.apis">
       <metrics statements="12" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="apiConfig.js" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/src/apis/apiConfig.js">
+      <file name="apiConfig.js" path="/Users/andymoc/HR/mercury/frontendcapstone/src/apis/apiConfig.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
       </file>
-      <file name="cart.js" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/src/apis/cart.js">
+      <file name="cart.js" path="/Users/andymoc/HR/mercury/frontendcapstone/src/apis/cart.js">
         <metrics statements="10" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
@@ -31,44 +31,48 @@
       </file>
     </package>
     <package name="frontendcapstone.src.components.overview">
-      <metrics statements="35" coveredstatements="7" conditionals="14" coveredconditionals="6" methods="10" coveredmethods="1"/>
-      <file name="Cart.jsx" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/src/components/overview/Cart.jsx">
-        <metrics statements="35" coveredstatements="7" conditionals="14" coveredconditionals="6" methods="10" coveredmethods="1"/>
-        <line num="6" count="3" type="stmt"/>
-        <line num="7" count="3" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="10" count="3" type="stmt"/>
+      <metrics statements="39" coveredstatements="1" conditionals="14" coveredconditionals="0" methods="12" coveredmethods="1"/>
+      <file name="Cart.jsx" path="/Users/andymoc/HR/mercury/frontendcapstone/src/components/overview/Cart.jsx">
+        <metrics statements="39" coveredstatements="1" conditionals="14" coveredconditionals="0" methods="12" coveredmethods="1"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="15" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="24" count="3" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
-        <line num="48" count="3" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="61" count="3" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
         <line num="79" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
       </file>
     </package>
   </project>
