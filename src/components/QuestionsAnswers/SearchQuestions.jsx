@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react'
 import QAList from './QAList.jsx'
+import QASearchList from './QASearchList.jsx'
 import {useSelector} from 'react-redux'
 
 const SearchQuestions = () => {
@@ -18,8 +19,6 @@ const SearchQuestions = () => {
     console.log('successfuly clicked and submitted',input)
   }
 
-if(message === ''){
-
   return(
     <>
    <label>
@@ -31,19 +30,6 @@ if(message === ''){
    </>
   )
 
-} else {
-
-  return(
-    <>
-   <label>
-    HAVE A QUESTION? SEARCH FOR ANSWERS...
-    <input type ='text' onChange = {search}></input>
-    <button onClick = {handleEvent}>Search Icon</button>
-   </label>
-  <QAList input = {input}/>
-   </>
-  )
-}
 
 }
 export default SearchQuestions

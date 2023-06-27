@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react'
 import axios from 'axios'
-import sample from './sampleQA.js'
+import { format, parseISO } from 'date-fns';
 import getQA from '../../apis/QA.js'
 
 const QAList = ({input}) => {
@@ -14,19 +14,6 @@ const QAList = ({input}) => {
   const [Ahelpfulness, setAHelpfulness] = useState(1)
   const [photo,setPhoto] = useState('')
 
-
-
- const formatDate = (date) => {
-
-  const months = [ "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December" ];
-
-  let year = date.getFullYear()
-  let month = date.getMonth()
-  let day = date.getDate()
-  return `${months[month]} ${day}, ${year}`
-
- }
 
  useEffect(() => {
    const fetch = async () => {
@@ -56,9 +43,7 @@ const QAList = ({input}) => {
 
   const userAnswers = key.map((a,index) => {
 
-  let date = new Date(el.answers[key[index]].date)
-
-   date = formatDate(date)
+  let date = format(parseISO(el.answers[key[index]].date),'MMMM dd, yyyy')
 
    const helpfulAClick = () => {
     if(!el.answers[a].click || el.answers[a].click === 0){
@@ -71,38 +56,20 @@ const QAList = ({input}) => {
    }
 
     while(index < ACount){
-      console.log(input,el.answers[a].body.includes(input))
-      if(el.answers[a].body.includes(input)){
-       return(
-        <>
-        <h3>A:</h3>
-        <p className = 'UserAnswers'>{el.answers[a].body}</p>
-        <p className = 'Photos'>{photo}</p>
-        <aside>by {el.answers[a].answerer_name},  {date}</aside>
-        <label className ='helpful'>
-          Helpful?<button onClick = {helpfulAClick}>Yes ({el.answers[a].helpfulness})</button>
-        </label>
-        <label className ='report'>
-        <button>Report</button>
-        </label>
-        </>
-       )
-      } else {
-       return(
-        <>
-        <h3>A:</h3>
-        <p className = 'UserAnswers'>{el.answers[a].body}</p>
-        <p className = 'Photos'>{photo}</p>
-        <aside>by {el.answers[a].answerer_name},  {date}</aside>
-        <label className ='helpful'>
-          Helpful?<button onClick = {helpfulAClick}>Yes ({el.answers[a].helpfulness})</button>
-        </label>
-        <label className ='report'>
-        <button>Report</button>
-        </label>
-        </>
-        )
-      }
+          return(
+           <>
+           <h3>A:</h3>
+           <p className = 'UserAnswers'>{el.answers[a].body}</p>
+           <p className = 'Photos'>{photo}</p>
+           <aside>by {el.answers[a].answerer_name},  {date}</aside>
+           <label className ='helpful'>
+             Helpful?<button onClick = {helpfulAClick}>Yes ({el.answers[a].helpfulness})</button>
+           </label>
+           <label className ='report'>
+           <button>Report</button>
+           </label>
+           </>
+          )
     }
 
   })
@@ -113,7 +80,7 @@ const QAList = ({input}) => {
       <div key = {el} className ='QA' >
       <h3 key = {el.question_id} >Q: {el.question_body}</h3>
       <label className ='helpful'>
-        Helpful? <button key = {el.question_id} onClick = {helpfulQClick}> Yes ({el.question_helpfulness})</button>
+        Helpful? <button key = {index} onClick = {helpfulQClick}> Yes ({el.question_helpfulness})</button>
       </label>
       <label className ='Add Answer'>
       <button>Add Answer</button>
