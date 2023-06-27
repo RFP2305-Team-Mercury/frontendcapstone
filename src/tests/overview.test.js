@@ -1,21 +1,36 @@
-import React from 'react'
-import {render, screen, waitFor} from '@testing-library/react'
-import Cart from '../components/overview/Cart.jsx';
-import {getAll} from '../apis/product.js';
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import Cart from "../components/overview/Cart.jsx";
+import "@testing-library/jest-dom";
 
-beforeAll(() => {
-  getAll();
+describe("Cart components meets business requirements", () => {
+  test("loads size select and displays default", () => {
+    render(<Cart />);
+    const sizeSelect = screen.getByTestId("size-test");
+    expect(sizeSelect).toBeInTheDocument();
+    expect(sizeSelect).toContainElement(screen.getByText("--Select Size--"));
+  });
+  test("loads quantity select and displays default", () => {
+    render(<Cart />);
+    const quantitySelect = screen.getByTestId("quantity-test");
+    expect(quantitySelect).toBeInTheDocument();
+    expect(quantitySelect).toContainElement(screen.getByText("-"));
+  });
+  test("Button displays Select Size if no size selected", async () => {
+    render(<Cart />);
+    const selectSizeButton = screen.getByTestId("select-size");
+    expect(selectSizeButton).toBeInTheDocument();
+  });
 });
 
 
-describe("cart component", () => {
-  test("loads and displays select options", async () => {
-    render(<Cart />);
-    await waitFor(() => {
-      expect(screen.getByRole("select", { name: "size" })).toBeInTheDocument();
-    });
-  });
-})
+
+    // const sizeSelect = screen.getByTestId("size-test");
+    // fireEvent.change(sizeSelect, { target: { value: 'M' } });
+
+    // const cartButton = await screen.getByTestId("add-cart");
+    // expect(cartButton).toBeInTheDocument();
+
 
 // describe("tests cart component functionality", () => {
 //   test("does not allow adding to cart if size not selected", () => {
@@ -58,4 +73,3 @@ describe("cart component", () => {
 //   test("default style should be first in style list", () => {
 //   });
 // });
-

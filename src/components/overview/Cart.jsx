@@ -63,6 +63,7 @@ export default function Cart({ selected }) {
       {selected && <h1>{selected.name}</h1>}
       <select
         name="size"
+        data-testid="size-test"
         onChange={handleSize}
         className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow m-4 p-4 w-64"
       >
@@ -74,6 +75,7 @@ export default function Cart({ selected }) {
       </select>
       <select
         name="quantity"
+        data-testid="quantity-test"
         onChange={(e) => setQuantity(e.target.value)}
         className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow m-4 p-4 w-64"
       >
@@ -89,13 +91,14 @@ export default function Cart({ selected }) {
         ))}
       </select>
       {!sku && (
-        <button className="bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-64">
+        <button className="bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-64" data-testid="select-size">
           Please Select a Size
         </button>
       )}
       {sku && (
         <button
           onClick={handleCart}
+          data-testid="add-cart"
           className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-64"
         > Add to Cart      {" "}
           <svg
