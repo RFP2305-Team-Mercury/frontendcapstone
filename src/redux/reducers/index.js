@@ -1,14 +1,16 @@
 import inputReducer from './input'
-import outfitReducer from './outfitReducer'
+import outfitsReducer from './outfitsReducer'
+import relatedReducer from './relatedReducer'
 import productIdReducer from './productIdReducer'
 import stylesReducer from './stylesReducer'
 import {combineReducers} from 'redux'
 
 const rootReducers = combineReducers({
   inputReducer: inputReducer,
-  outfit: outfitReducer,
+  outfits: outfitsReducer,
   productId: productIdReducer,
-  styles: stylesReducer
+  styles: stylesReducer,
+  relatedList: relatedReducer
 })
 
 export default rootReducers;

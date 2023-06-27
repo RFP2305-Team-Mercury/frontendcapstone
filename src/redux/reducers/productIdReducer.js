@@ -9,5 +9,4 @@ const productIdReducer = (state = 40347, action) => {
       return state
   }
 }
-
 export default productIdReducer;
