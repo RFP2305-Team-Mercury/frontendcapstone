@@ -1,23 +1,34 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Cart from "../components/overview/Cart.jsx";
+import store from '../redux/store.js'
+import {Provider} from 'react-redux'
 import "@testing-library/jest-dom";
 
 describe("Cart component meets business requirements", () => {
   test("loads size select and displays default", () => {
-    render(<Cart />);
+    render(
+    <Provider store={store}>
+      <Cart />
+    </Provider>);
     const sizeSelect = screen.getByTestId("size-test");
     expect(sizeSelect).toBeInTheDocument();
     expect(sizeSelect).toContainElement(screen.getByText("--Select Size--"));
   });
   test("loads quantity select and displays default", () => {
-    render(<Cart />);
+    render(
+      <Provider store={store}>
+        <Cart />
+      </Provider>);
     const quantitySelect = screen.getByTestId("quantity-test");
     expect(quantitySelect).toBeInTheDocument();
     expect(quantitySelect).toContainElement(screen.getByText("-"));
   });
   test("Button displays Select Size if no size selected", async () => {
-    render(<Cart />);
+    render(
+      <Provider store={store}>
+        <Cart />
+      </Provider>);
     const selectSizeButton = screen.getByTestId("select-size");
     expect(selectSizeButton).toBeInTheDocument();
   });
