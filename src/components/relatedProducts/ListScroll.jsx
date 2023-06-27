@@ -18,10 +18,10 @@ const ListScroll = ({ type }) => {
   }, [])
   switch (type) {
     case 'outfit':
-      listScroll = (<><div className="overflow-x-scroll">Related Products<div className='w-8/12 px-4'>{list.map((itemId) => (<OutfitCard id={itemId} />) )}</div></div></>)
+      listScroll = (<><div className="flex justify-between overflow-x-scroll"><div className='w-8/12 px-4'>{list.map((itemId) => (<OutfitCard id={itemId} />) )}</div></div></>)
       break;
     case 'related':
-      listScroll = (<div className="overflow-x-scroll">{list.map((itemId) => (<RPCard key={itemId} id={itemId} />) )}</div>)
+      listScroll = (<div><div className="flex justify-between overflow-x-scroll">{list.map((itemId) => (<RPCard key={itemId} id={itemId} />) )}</div></div>)
       break;
   }
   return listScroll;
