@@ -1,12 +1,11 @@
-import Carousel from './Carousel.jsx'
-import {useSelector} from 'react-redux'
+import React from 'react'
+import ListScroll from './ListScroll.jsx'
+
 const RPandOL = () => {
-  let product = useSelector(state=>state.productId)
-  return
-  (<>
-    <h1>Product#:{product}</h1>
-    <Carousel type="outfit" />
-    <Carousel type="related" />
+  return (
+  <>
+    {/* {<ListScroll type="outfit" />} */}
+    {<ListScroll type="related" />}
   </>
   )
 }
