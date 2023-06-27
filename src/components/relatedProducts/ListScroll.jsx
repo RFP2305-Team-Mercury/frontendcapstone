@@ -16,7 +16,6 @@ const ListScroll = ({ type }) => {
     api.getList(id)
        .then((newList) => { dispatch(setList(newList)) })
   }, [])
-{type:'SET_LIST'}
   switch (type) {
     case 'outfit':
       listScroll = (<><div className="overflow-x-scroll">Related Products<div className='w-8/12 px-4'>{list.map((itemId) => (<OutfitCard id={itemId} />) )}</div></div></>)
