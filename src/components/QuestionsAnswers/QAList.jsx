@@ -1,58 +1,124 @@
 import React from 'react';
 import {useState, useEffect} from 'react'
+import axios from 'axios'
+import { format, parseISO } from 'date-fns';
+import getQA from '../../apis/QA.js'
 
-const QAList = () => {
+const QAList = ({input}) => {
 
-  const [questions,setQuestions] = useState('Who what which where why whether how?')
-  const [answers,setAnswers] = useState('Blah blah blah blah blah')
-  const [QCount, setQCount] = useState(0)
-  const [ACount, setACount] = useState(0)
-  const [photo, setPhoto] = useState('')
+  const [data, setData] = useState([])
+  const [search,setSearch] = useState(input)
+  const [ACount, setACount] = useState(2)
+  const [QCount, setQCount] = useState(4)
+  const [Qhelpfulness, setQHelpfulness] = useState(1)
+  const [Ahelpfulness, setAHelpfulness] = useState(1)
+  const [photo,setPhoto] = useState('')
 
 
-  return(
-    <>
-    <div className ='QA'>
+ useEffect(() => {
+   const fetch = async () => {
+    const questions = await getQA()
+    setData(questions)
+   }
 
-    <h3 className = 'UserQuestions'>Q: {questions}</h3>
+   fetch()
+   .catch((err) => {
+    console.log('Error', err)
+   })
+ },[ACount,search])
 
-    <label className ='helpful'>
-        Helpful?<button>Yes ({QCount})</button>
-      </label>
+  const mapQA = data.map((el,index) => {
 
-    <label className ='Add Answer'>
-        <button>Add Answer</button>
-      </label>
+  let key = Object.keys(el.answers)
 
-    <h3>A:</h3>
-    <p className = 'UserAnswers'>{answers}</p>
-    <p className = 'Photos'>{photo}</p>
-    <aside>User1337, January 1, 2019</aside>
+  const helpfulQClick = () => {
+    if(!el.helpClick || el.helpClick === 0){
+    el.helpClick = 1
+    setQHelpfulness(el.question_helpfulness += 1);
+    } else {
+    setQHelpfulness(el.question_helpfulness -= el.helpClick);
+    el.helpClick = 0
+   }
+  }
 
+  const userAnswers = key.map((a,index) => {
+
+  let date = format(parseISO(el.answers[key[index]].date),'MMMM dd, yyyy')
+
+   const helpfulAClick = () => {
+    if(!el.answers[a].click || el.answers[a].click === 0){
+    el.answers[a].click = 1
+    setAHelpfulness(el.answers[a].helpfulness += 1);
+    } else {
+    setAHelpfulness(el.answers[a].helpfulness -= el.answers[a].click);
+    el.answers[a].click = 0
+    }
+   }
+
+    while(index < ACount){
+          return(
+           <>
+           <h3>A:</h3>
+           <p className = 'UserAnswers'>{el.answers[a].body}</p>
+           <p className = 'Photos'>{photo}</p>
+           <aside>by {el.answers[a].answerer_name},  {date}</aside>
+           <label className ='helpful'>
+             Helpful?<button onClick = {helpfulAClick}>Yes ({el.answers[a].helpfulness})</button>
+           </label>
+           <label className ='report'>
+           <button>Report</button>
+           </label>
+           </>
+          )
+    }
+
+  })
+
+  while(index < QCount){
+    return(
+      <>
+      <div key = {el} className ='QA' >
+      <h3 key = {el.question_id} >Q: {el.question_body}</h3>
       <label className ='helpful'>
-        Helpful?<button>Yes ({ACount})</button>
+        Helpful? <button key = {index} onClick = {helpfulQClick}> Yes ({el.question_helpfulness})</button>
       </label>
-      <label className ='report'>
-        <button>Report</button>
+      <label className ='Add Answer'>
+      <button>Add Answer</button>
       </label>
-    </div>
+      {userAnswers}
+      </div>
 
-    <br></br>
-
-    <div className = 'More'>
+      <div className = 'More'>
       <label>
-        <button className = 'MoreAnswers'>LOAD MORE ANSWERS</button>
+        <button className = 'MoreAnswers' onClick = {function(){setACount(key.length)}}>LOAD MORE ANSWERS</button>
       </label>
-      <br></br>
       <label>
-        <button className = 'MoreQuestions'>MORE ANSWERED QUESTIONS</button>
+        <button className = 'MoreQuestions' onClick = {function(){setQCount(data.length)}}>MORE ANSWERED QUESTIONS</button>
       </label>
       <label>
         <button className = 'AddQuestion'>ADD A QUESTION + </button>
       </label>
-    </div>
-    </>
+     </div>
+      </>
+    )
+  }
+
+  })
+
+
+if(data.length === 0){
+  return(
+    <div>Loading...</div>
   )
+}
+
+return(
+  <>
+  {mapQA}
+  </>
+)
+
+
 }
 
 
