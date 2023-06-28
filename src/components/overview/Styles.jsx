@@ -6,15 +6,15 @@ import Cart from "./Cart.jsx";
 export default function Styles() {
   const productId = useSelector((state) => state.productId);
   const styles = useSelector((state) => state.styles);
+  const selected = useSelector((state) => state.selected);
   const dispatch = useDispatch();
-  const [selected, setSelect] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await getStyles(productId);
         dispatch({ type: "SET_STYLES", payload: data });
-        setSelect(data[0]); // default to first style in the list
+        dispatch({ type: "SET_SELECTED", payload: data[0] }); // default to first style in the list
       } catch (error) {
         console.error(error);
       }
@@ -25,9 +25,10 @@ export default function Styles() {
   const handleSelect = (id) => {
     for (var i = 0; i < styles.length; i++) {
       if (styles[i]["style_id"] === id) {
-        setSelect(styles[i]);
+        dispatch({ type: "SET_SELECTED", payload: styles[i] });
       }
     }
+    console.log(selected['skus']);
   };
 
   return (
@@ -59,7 +60,7 @@ export default function Styles() {
           }
         })}
       </div>
-      <Cart selected={selected} />
+      <Cart  />
     </>
   );
 }

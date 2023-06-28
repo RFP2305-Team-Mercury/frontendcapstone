@@ -4,6 +4,7 @@ import productIdReducer from './productIdReducer'
 import stylesReducer from './stylesReducer'
 import modalOpenReducer from './modalOpenReducer'
 import modalTypeReducer from './modalTypeReducer'
+import selectReducer from './selectReducer'
 import {combineReducers} from 'redux'
 
 const rootReducers = combineReducers({
@@ -12,7 +13,8 @@ const rootReducers = combineReducers({
   styles: stylesReducer,
   relatedList: relatedReducer,
   open: modalOpenReducer,
-  modalType: modalTypeReducer
+  modalType: modalTypeReducer,
+  selected: selectReducer
 })
 
 export default rootReducers;

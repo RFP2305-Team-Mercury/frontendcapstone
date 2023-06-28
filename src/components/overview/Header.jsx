@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Header() {
   return (
-    <div className='flex bg-gray-300'>
+    <div className='flex bg-gray-300 w-10/12 m-auto justify-center items-center border-2'>
     <h1 className="text-3xl font-bold ml-28 my-3">The Mercury Store</h1>
     </div>
       )
