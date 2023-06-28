@@ -34,14 +34,27 @@ export default function Gallery() {
     },
   ];
   const [current, setCurrent] = useState(photoArray[0]["url"]);
+  const [index, setIndex] = useState(0);
 
   const handleThumbnail = (index, url) => {
     setCurrent(url);
+    setIndex(index);
   };
 
-  const handleLeft = () => {};
+  const handleLeft = (
+  ) => {
+    setCurrent(photoArray[index-1]["url"])
+    if(index !== 0){
+      setIndex(index-1);
+    }
+  };
 
-  const handleRight = () => {};
+  const handleRight = () => {
+    setCurrent(photoArray[index+1]["url"])
+    if(index !== photoArray.length-1){
+      setIndex(index+1);
+    }
+  };
 
   const handleExpand = () => {};
 
@@ -62,7 +75,7 @@ export default function Gallery() {
           />
         </svg>
       </button>
-      <div className="absolute top-[45%] left-40 transform -translate-y-1/2">
+      <div className="absolute top-[40vh] left-[10vw] transform -translate-y-1/2">
         {photoArray.map((photo, index) => {
           return (
             <img
@@ -76,7 +89,7 @@ export default function Gallery() {
       </div>
       <button
         onClick={() => {
-          handleLeft;
+          handleLeft();
         }}
       >
         <svg
@@ -85,7 +98,7 @@ export default function Gallery() {
           viewBox="0 0 24 24"
           strokeWidth={3}
           stroke="currentColor"
-          className="absolute top-[45%] left-60 transform -translate-y-1/2 w-6 h-6 bold"
+          className="absolute top-[40vh] left-[17vw] transform -translate-y-1/2 w-6 h-6 bold"
         >
           <path
             strokeLinecap="round"
@@ -96,7 +109,7 @@ export default function Gallery() {
       </button>
       <button
         onClick={() => {
-          handleRight;
+          handleRight();
         }}
       >
         <svg
@@ -104,8 +117,8 @@ export default function Gallery() {
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth="3"
-          stroke="currentColor"
-          className="absolute top-[45%] right-128 transform -translate-y-1/2 w-6 h-6 bold"
+          stroke="white"
+          className="absolute top-[40vh] right-[38vw] transform -translate-y-1/2 w-6 h-6 bold"
         >
           <path
             strokeLinecap="round"
