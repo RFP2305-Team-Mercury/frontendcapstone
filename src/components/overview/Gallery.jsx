@@ -34,14 +34,14 @@ export default function Gallery() {
   const handleExpand = () => {};
 
   return (
-    <div className="flex-2 w-2/3 justify-center">
-      <img className="w-full h-full m-auto" src={current} />
+    <div className="flex-2 w-2/3 h-[600px] justify-center bg-gray-300 border-black border-2 mt-2">
+      <img className="w-full h-full object-cover m-auto" src={current} />
       <button onClick={() => handleExpand()}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="absolute top-16 right-[37%] w-6 h-6"
+          className="absolute top-[5rem] right-[37%] w-6 h-6"
         >
           <path
             fillRule="evenodd"
@@ -50,19 +50,19 @@ export default function Gallery() {
           />
         </svg>
       </button>
-      <div className="absolute top-[40vh] left-[10vw] transform -translate-y-1/2">
+      <div className="absolute top-[23rem] left-[10vw] transform -translate-y-1/2">
         {photos.map((photo, index) => {
           return (
             <img
               key={photo["thumbnail_url"]}
-              className={`border-2 w-16 h-16 mb-2`}
+              className={`border-2 w-16 h-16 mb-2 object-cover`}
               src={photo["thumbnail_url"]}
               onClick={() => handleThumbnail(index, photo["url"])}
             />
           );
         })}
       </div>
-      <button
+      {index === 0 ? '' : <button
         onClick={() => {
           handleLeft();
         }}
@@ -73,7 +73,7 @@ export default function Gallery() {
           viewBox="0 0 24 24"
           strokeWidth={3}
           stroke="currentColor"
-          className="absolute top-[40vh] left-[17vw] transform -translate-y-1/2 w-6 h-6 bold"
+          className="absolute top-[20rem] left-[17vw] transform -translate-y-1/2 w-6 h-6 bold"
         >
           <path
             strokeLinecap="round"
@@ -81,7 +81,8 @@ export default function Gallery() {
             d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
           />
         </svg>
-      </button>
+      </button>}
+      {index === photos.length-1 ? '' :
       <button
         onClick={() => {
           handleRight();
@@ -92,8 +93,8 @@ export default function Gallery() {
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth="3"
-          stroke="white"
-          className="absolute top-[40vh] right-[38vw] transform -translate-y-1/2 w-6 h-6 bold"
+          stroke="black"
+          className="absolute top-[20rem] right-[38vw] transform -translate-y-1/2 w-6 h-6 bold"
         >
           <path
             strokeLinecap="round"
@@ -101,7 +102,7 @@ export default function Gallery() {
             d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
           />
         </svg>
-      </button>
+      </button>}
     </div>
   );
 }

@@ -33,19 +33,6 @@ export default function Cart() {
         console.error(error);
       }
     };
-    postData();
-    //can probably delete this?
-    const fetchCart = async () => {
-      try {
-        const data = await getCart();
-        console.log(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchCart();
-    // if already in cart, add one
-    // reduce sku quantity by 1
   };
 
   function generateQuantity(max) {
