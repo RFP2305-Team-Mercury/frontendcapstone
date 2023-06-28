@@ -9,10 +9,10 @@ const { useState, useEffect } = React;
 const RatingsAndReviews = () => {
   const [reviews, setReviews] = useState();
   const [metaData, setMetaData] = useState();
-  const [filter, setFilter] = useState('relevant');
+  const [sortOption, setSortOption] = useState('relevant');
   let productId = useSelector(state=>state.productId);
 
-  const handleGetReviews = async () => {
+  const handleGetReviews = async (reviewsSortOption) => {
     try {
       let metaParams = {
         product_id: productId
@@ -25,27 +25,31 @@ const RatingsAndReviews = () => {
       }
       let reviewParams = {
         count: count,
-        sort: filter,
+        sort: reviewsSortOption,
         product_id: productId
       };
       let reviewResult = await api.getReviews(reviewParams);
-      console.log(reviewResult);
       setReviews(reviewResult);
     } catch (err) {
       console.log(err);
     }
   };
 
+  const handleChangeSort = (option) => {
+    setSortOption(option);
+    handleGetReviews(option);
+  };
+
   useEffect(() => {
     handleGetReviews();
-  }, [filter]);
+  }, []);
 
   return (
     <div className="border-solid border-2 w-10/12 m-4 p-4 m-auto">
       <h2 className="text-lg text-gray-800" id='reviews'>Ratings & Reviews</h2>
       <div className="flex justify-between">
         {metaData ? <RatingSummary metaData={metaData} /> : ''}
-        {reviews ? <ReviewList reviews={reviews} /> : ''}
+        {reviews ? <ReviewList reviews={reviews} sortOption={sortOption} handleChangeSort={handleChangeSort} /> : ''}
       </div>
     </div>
   );

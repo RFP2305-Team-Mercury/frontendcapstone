@@ -3,7 +3,7 @@ import ReviewTile from './ReviewTile.jsx';
 
 const { useState, useEffect } = React;
 
-const ReviewList = ({reviews}) => {
+const ReviewList = ({reviews, sortOption, handleChangeSort}) => {
   const [count, setCount] = useState(2);
   const [renderedReviews, setRenderedReviews] = useState([]);
 
@@ -25,7 +25,19 @@ const ReviewList = ({reviews}) => {
 
   return (
     <div className="w-8/12 px-4">
-      <div className="overflow-auto px-4 max-h-[90vh]">
+      <div className="text-lg font-bold">
+        {reviews.length} Reviews, sorted by
+        <select
+          className="underline"
+          defaultValue={sortOption}
+          onChange={async (event) => { handleChangeSort(event.target.value); }}
+        >
+          <option value="relevant">Relevant</option>
+          <option value="newest">Newest</option>
+          <option value="helpful">Helpful</option>
+        </select>
+      </div>
+      <div className="overflow-auto px-4 max-h-[86vh]">
         {renderedReviews.map((review) => {
           return <ReviewTile review={review} key={review.review_id} />
         })}
