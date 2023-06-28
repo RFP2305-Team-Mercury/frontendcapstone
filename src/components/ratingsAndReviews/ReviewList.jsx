@@ -23,6 +23,11 @@ const ReviewList = ({reviews, sortOption, handleChangeSort}) => {
     setReviews();
   }, [count]);
 
+  useEffect(() => {
+    setCount(2);
+    setReviews();
+  }, [reviews]);
+
   return (
     <div className="w-8/12 px-4">
       <div className="text-lg font-bold">
@@ -30,7 +35,9 @@ const ReviewList = ({reviews, sortOption, handleChangeSort}) => {
         <select
           className="underline"
           defaultValue={sortOption}
-          onChange={async (event) => { handleChangeSort(event.target.value); }}
+          onChange={async (event) => {
+            handleChangeSort(event.target.value);
+          }}
         >
           <option value="relevant">Relevant</option>
           <option value="newest">Newest</option>
@@ -42,7 +49,7 @@ const ReviewList = ({reviews, sortOption, handleChangeSort}) => {
           return <ReviewTile review={review} key={review.review_id} />
         })}
       </div>
-      {renderedReviews < reviews ? <button
+      {renderedReviews.length < reviews.length ? <button
         onClick={() => { setCount(count + 2); }}
         className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow mr-4"
       >MORE REVIEWS</button> : ''}
