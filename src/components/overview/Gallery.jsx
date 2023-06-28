@@ -6,6 +6,7 @@ export default function Gallery() {
   const photos = selected['photos'];
   const [current, setCurrent] = useState(selected['photos'][0]['url']);
   const [index, setIndex] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleThumbnail = (index, url) => {
     setCurrent(url);
@@ -31,7 +32,9 @@ export default function Gallery() {
     setCurrent(selected['photos'][0]['url']);
   }, [selected])
 
-  const handleExpand = () => {};
+  const handleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   return (
     <div className="flex-2 w-2/3 h-[600px] justify-center bg-gray-300 border-black border-2 mt-2">
@@ -71,9 +74,9 @@ export default function Gallery() {
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth={3}
-          stroke="currentColor"
-          className="absolute top-[20rem] left-[17vw] transform -translate-y-1/2 w-6 h-6 bold"
+          strokeWidth={2}
+          stroke="black"
+          className="absolute top-[20rem] left-[17vw] transform -translate-y-1/2 w-6 h-6 bold rounded-full bg-gray-300"
         >
           <path
             strokeLinecap="round"
@@ -92,9 +95,9 @@ export default function Gallery() {
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth="3"
+          strokeWidth="2"
           stroke="black"
-          className="absolute top-[20rem] right-[38vw] transform -translate-y-1/2 w-6 h-6 bold"
+          className="absolute top-[20rem] right-[38vw] transform -translate-y-1/2 w-6 h-6 bold rounded-full bg-gray-300"
         >
           <path
             strokeLinecap="round"
