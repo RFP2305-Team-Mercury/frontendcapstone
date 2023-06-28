@@ -9,32 +9,28 @@ const { useState, useEffect } = React;
 const RatingsAndReviews = () => {
   const [reviews, setReviews] = useState();
   const [metaData, setMetaData] = useState();
+  const [filter, setFilter] = useState('relevant');
   let productId = useSelector(state=>state.productId);
 
   const handleGetReviews = async () => {
     try {
-      let params = {
+      let metaParams = {
         product_id: productId
       }
-      let response = await api.getReviews(params);
-      if (reviews) {
-        setReviews(...reviews, ...response);
-        return;
-      } else {
-        setReviews(response);
+      let metaResult = await api.getMetaData(metaParams);
+      setMetaData(metaResult);
+      let count = 0;
+      for (let i = 1; i < 6; i++) {
+        count += Number(metaResult.ratings[i]);
       }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const handleGetMetaData = async () => {
-    try {
-      let params = {
+      let reviewParams = {
+        count: count,
+        sort: filter,
         product_id: productId
-      }
-      let result = await api.getMetaData(params);
-      setMetaData(result);
+      };
+      let reviewResult = await api.getReviews(reviewParams);
+      console.log(reviewResult);
+      setReviews(reviewResult);
     } catch (err) {
       console.log(err);
     }
@@ -42,13 +38,7 @@ const RatingsAndReviews = () => {
 
   useEffect(() => {
     handleGetReviews();
-    handleGetMetaData();
-  }, []);
-
-  useEffect(() => {
-    console.log('RATINGS AND REVIEWS');
-    console.log('reviews:', reviews);
-  }, [reviews])
+  }, [filter]);
 
   return (
     <div className="border-solid border-2 w-10/12 m-4 p-4 m-auto">
