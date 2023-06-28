@@ -1,20 +1,20 @@
-//Initial State will be an "input form" where user has to input specific action ie: question, answer, or report
 
-const inputReducer = (state = {}, action) => {
+const modalTypeReducer = (state = 'InputModal', action) => {
   //switch case of actions types where global state will be pulled from redux and change.
   switch(action.type){
     case 'ADD QUESTION':
       //do something
-      return state;
+      return state = 'InputModal';
     case 'ADD ANSWER':
       //do something
       return state;
     case 'REPORT':
       //do something
       return state;
+    case 'COMPARISON_MODAL':
+      return state = 'ComparisonModal'
     default:
       return state
   }
 }
-
-export default inputReducer
+export default modalTypeReducer;

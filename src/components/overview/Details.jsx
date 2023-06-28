@@ -9,18 +9,18 @@ export default function Details() {
   const productId = useSelector((state) => state.productId);
   const [details, setDetails] = useState({});
   const [features, setFeatures] = useState([]);
-
+  const fetchData = async () => {
+    try {
+      const data = await getOne(productId);
+      setDetails(data);
+      setFeatures(Object.values(data['features']));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getOne(productId);
-        setDetails(data);
-        setFeatures(Object.values(data['features']));
-      } catch (error) {
-        console.error(error);
-      }
-    };
+
     fetchData();
   }, []);
 
@@ -40,7 +40,7 @@ export default function Details() {
         <h2 className="text-lg text-gray-800 mx-4">{details.default_price}</h2>
         <Styles />
         </div>
-      <div className='flex-2 w-2/3 mt-4'>
+      <div className='flex-2 w-2/3 mt-4 border-r-2 border-black'>
         <h2 className="text-lg text-gray-800 mx-10 font-bold">{details.slogan}</h2>
         <p className="text-md text-gray-800 my-2 mx-10">{details.description}</p>
         <p className="text-md text-gray-800 my-2 mx-10 underline"> Share on Social: </p>
@@ -61,7 +61,7 @@ export default function Details() {
         </button>
       </div>
       <div className='flex-1 w-1/3 mx-8 mt-4'>
-        <ul className="list-disc">
+        <ul className="list-disc" >
           {features.length > 0 && features.map((feature) => (
             <li key={feature['value']}>{feature['feature']}: {feature['value']}</li>
           )

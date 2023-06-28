@@ -11,7 +11,8 @@ const getCardInfo = async (id) => {
     let prodThumbnail = await prodThumbnailPromise;
 
     return {thumbnail: prodThumbnail.data.results[0].photos[0].thumbnail_url,
-            name: productInfo.data.name + '-' + productInfo.data.slogan,
+            name: productInfo.data.name,
+            slogan: productInfo.data.slogan,
             category: productInfo.data.category,
             price: productInfo.data.default_price,
             stars: 0//TODO UPDATE THIS
