@@ -1,4 +1,3 @@
-import setId from '../actions/productId.js'
 
 const productIdReducer = (state = 40347, action) => {
   //switch case of actions types where global state will be pulled from redux and change.
@@ -9,5 +8,4 @@ const productIdReducer = (state = 40347, action) => {
       return state
   }
 }
-
 export default productIdReducer;

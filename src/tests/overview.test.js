@@ -1,61 +1,49 @@
-import React from 'react'
-import {render, screen, waitFor} from '@testing-library/react'
-import Cart from '../components/overview/Cart.jsx';
-import {getAll} from '../apis/product.js';
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import Cart from "../components/overview/Cart.jsx";
+import store from '../redux/store.js'
+import {Provider} from 'react-redux'
+import "@testing-library/jest-dom";
 
-beforeAll(() => {
-  getAll();
+describe("Cart component meets business requirements", () => {
+  test("loads size select and displays default", () => {
+    render(
+    <Provider store={store}>
+      <Cart />
+    </Provider>);
+    const sizeSelect = screen.getByTestId("size-test");
+    expect(sizeSelect).toBeInTheDocument();
+    expect(sizeSelect).toContainElement(screen.getByText("--Select Size--"));
+  });
+  test("loads quantity select and displays default", () => {
+    render(
+      <Provider store={store}>
+        <Cart />
+      </Provider>);
+    const quantitySelect = screen.getByTestId("quantity-test");
+    expect(quantitySelect).toBeInTheDocument();
+    expect(quantitySelect).toContainElement(screen.getByText("-"));
+  });
+  test("Button displays Select Size if no size selected", async () => {
+    render(
+      <Provider store={store}>
+        <Cart />
+      </Provider>);
+    const selectSizeButton = screen.getByTestId("select-size");
+    expect(selectSizeButton).toBeInTheDocument();
+  });
 });
 
-
-describe("cart component", () => {
-  test("loads and displays select options", async () => {
-    render(<Cart />);
-    await waitFor(() => {
-      expect(screen.getByRole("select", { name: "size" })).toBeInTheDocument();
-    });
+describe("Details component meets business requirements", () => {
+  test("test example", () => {
+    //add test logic
   });
+});
+
+describe("Styles component meets business requirements", () => {
+
 })
 
-// describe("tests cart component functionality", () => {
-//   test("does not allow adding to cart if size not selected", () => {
+describe("Gallery component meets business requirements", () => {
 
-//   });
-
-//   test("updates to Out of Stock if no quantity", () => {
-
-//   });
-
-//   test("display maximum quantity of 15", () => {
-
-//   });
-
-//   test("size dropdown displays --Select Size-- by default", () => {
-
-//   });
-//   test("when size dropdown collapsed, displays size", () => {
-
-//   });
-//   test("quantity dropdown displays -- by default", () => {
-
-//   });
-//   test("quantity dropdown updates to 1 once size selected", () => {
-
-//   });
-
-//   test("adds sku and quantity to cart after adding to cart", () => {
-
-//   });
-// });
-
-// describe("styles selection", () => {
-//   test("fetches style skus from API", () => {
-//   });
-//   test("displays maximum of 4 thumnails in a row", () => {
-//   });
-//   test("only one style can be selected at a time", () => {
-//   });
-//   test("default style should be first in style list", () => {
-//   });
-// });
-
+});
