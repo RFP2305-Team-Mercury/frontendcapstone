@@ -25,7 +25,7 @@ const ReviewList = ({reviews}) => {
 
   return (
     <div className="w-8/12 px-4">
-      <div className="overflow-auto px-4 max-h-192">
+      <div className="overflow-auto px-4 max-h-[90vh]">
         {renderedReviews.map((review) => {
           return <ReviewTile review={review} key={review.review_id} />
         })}

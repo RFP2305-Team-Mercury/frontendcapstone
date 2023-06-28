@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687906329226" clover="3.2.0">
-  <project timestamp="1687906329226" name="All files">
-    <metrics statements="115" coveredstatements="46" conditionals="37" coveredconditionals="15" methods="32" coveredmethods="8" elements="184" coveredelements="69" complexity="0" loc="115" ncloc="115" packages="6" files="12" classes="12"/>
+<coverage generated="1687921299883" clover="3.2.0">
+  <project timestamp="1687921299883" name="All files">
+    <metrics statements="189" coveredstatements="96" conditionals="51" coveredconditionals="21" methods="47" coveredmethods="15" elements="287" coveredelements="132" complexity="0" loc="189" ncloc="189" packages="7" files="20" classes="20"/>
     <package name="frontendcapstone">
-      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="config.js" path="/Users/andymoc/HR/mercury/frontendcapstone/config.js">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="config.js" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/config.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
       </file>
     </package>
     <package name="frontendcapstone.src.apis">
       <metrics statements="12" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="apiConfig.js" path="/Users/andymoc/HR/mercury/frontendcapstone/src/apis/apiConfig.js">
+      <file name="apiConfig.js" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/apis/apiConfig.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
       </file>
-      <file name="cart.js" path="/Users/andymoc/HR/mercury/frontendcapstone/src/apis/cart.js">
+      <file name="cart.js" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/apis/cart.js">
         <metrics statements="10" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
@@ -32,7 +33,7 @@
     </package>
     <package name="frontendcapstone.src.components.overview">
       <metrics statements="41" coveredstatements="11" conditionals="18" coveredconditionals="6" methods="12" coveredmethods="3"/>
-      <file name="Cart.jsx" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/src/components/overview/Cart.jsx">
+      <file name="Cart.jsx" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/components/overview/Cart.jsx">
         <metrics statements="41" coveredstatements="11" conditionals="18" coveredconditionals="6" methods="12" coveredmethods="3"/>
         <line num="6" count="6" type="stmt"/>
         <line num="7" count="6" type="stmt"/>
@@ -77,16 +78,116 @@
         <line num="96" count="0" type="stmt"/>
       </file>
     </package>
+    <package name="frontendcapstone.src.components.ratingsAndReviews">
+      <metrics statements="73" coveredstatements="49" conditionals="14" coveredconditionals="6" methods="15" coveredmethods="7"/>
+      <file name="ProductBreakdown.jsx" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/components/ratingsAndReviews/ProductBreakdown.jsx">
+        <metrics statements="24" coveredstatements="18" conditionals="6" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="10" count="8" type="stmt"/>
+        <line num="12" count="8" type="cond" truecount="4" falsecount="2"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="38" count="8" type="stmt"/>
+      </file>
+      <file name="RatingSummary.jsx" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/components/ratingsAndReviews/RatingSummary.jsx">
+        <metrics statements="23" coveredstatements="23" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+      </file>
+      <file name="RatingsAndReviews.jsx" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/components/ratingsAndReviews/RatingsAndReviews.jsx">
+        <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+      </file>
+      <file name="ReviewBreakdown.jsx" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/components/ratingsAndReviews/ReviewBreakdown.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="10" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+      </file>
+      <file name="ReviewList.jsx" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/components/ratingsAndReviews/ReviewList.jsx">
+        <metrics statements="16" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+      </file>
+      <file name="ReviewTile.jsx" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/components/ratingsAndReviews/ReviewTile.jsx">
+        <metrics statements="3" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+      </file>
+      <file name="sampleReviewMeta.js" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/components/ratingsAndReviews/sampleReviewMeta.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="sampleReviews.js" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/components/ratingsAndReviews/sampleReviews.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
     <package name="frontendcapstone.src.redux">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="store.js" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/src/redux/store.js">
+      <file name="store.js" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/redux/store.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="5" count="1" type="stmt"/>
       </file>
     </package>
     <package name="frontendcapstone.src.redux.actions">
       <metrics statements="26" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="0"/>
-      <file name="index.js" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/src/redux/actions/index.js">
+      <file name="index.js" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/redux/actions/index.js">
         <metrics statements="26" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="0"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
@@ -118,11 +219,11 @@
     </package>
     <package name="frontendcapstone.src.redux.reducers">
       <metrics statements="34" coveredstatements="16" conditionals="19" coveredconditionals="9" methods="5" coveredmethods="5"/>
-      <file name="index.js" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/src/redux/reducers/index.js">
+      <file name="index.js" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/redux/reducers/index.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="8" count="1" type="stmt"/>
       </file>
-      <file name="input.js" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/src/redux/reducers/input.js">
+      <file name="input.js" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/redux/reducers/input.js">
         <metrics statements="6" coveredstatements="3" conditionals="5" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="5" count="3" type="cond" truecount="1" falsecount="3"/>
@@ -131,7 +232,7 @@
         <line num="14" count="0" type="stmt"/>
         <line num="16" count="3" type="stmt"/>
       </file>
-      <file name="outfitsReducer.js" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/src/redux/reducers/outfitsReducer.js">
+      <file name="outfitsReducer.js" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/redux/reducers/outfitsReducer.js">
         <metrics statements="8" coveredstatements="3" conditionals="3" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="3" count="3" type="cond" truecount="0" falsecount="2"/>
@@ -142,14 +243,14 @@
         <line num="10" count="0" type="stmt"/>
         <line num="13" count="3" type="stmt"/>
       </file>
-      <file name="productIdReducer.js" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/src/redux/reducers/productIdReducer.js">
+      <file name="productIdReducer.js" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/redux/reducers/productIdReducer.js">
         <metrics statements="4" coveredstatements="3" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="4" count="3" type="cond" truecount="1" falsecount="1"/>
         <line num="6" count="0" type="stmt"/>
         <line num="8" count="3" type="stmt"/>
       </file>
-      <file name="relatedReducer.js" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/src/redux/reducers/relatedReducer.js">
+      <file name="relatedReducer.js" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/redux/reducers/relatedReducer.js">
         <metrics statements="11" coveredstatements="3" conditionals="5" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="3" count="3" type="cond" truecount="1" falsecount="3"/>
@@ -163,7 +264,7 @@
         <line num="14" count="0" type="stmt"/>
         <line num="16" count="3" type="stmt"/>
       </file>
-      <file name="stylesReducer.js" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/src/redux/reducers/stylesReducer.js">
+      <file name="stylesReducer.js" path="/Users/patrickdaly/Documents/Hack Reactor/SEI-RFP2305/frontendcapstone/src/redux/reducers/stylesReducer.js">
         <metrics statements="4" coveredstatements="3" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="4" count="3" type="cond" truecount="1" falsecount="1"/>
