@@ -81,3 +81,14 @@ export const report = () => {
     type: 'REPORT'
   }
 }
+
+export const openModal = () => {
+  return {
+    type: 'Open Modal'
+  }
+}
+export const closeModal = () => {
+  return {
+    type: 'Close Modal'
+  }
+}

@@ -1,7 +1,8 @@
 import React from 'react';
-import { createStore, combineReducers } from 'redux';
-import rootReducers from '../redux/reducers';
-import { Provider, useSelector } from 'react-redux';
+import {useState} from 'react'
+import { Provider, useSelector, useDispatch } from 'react-redux';
+import {question, openModal, closeModal} from '../redux/actions/index.js'
+import Modal from './Modal.jsx'
 
 // import components
 import Overview from './overview/Overview.jsx';
@@ -10,17 +11,23 @@ import QuestionsAndAnswers from './QuestionsAnswers/QuestionsAnswers.jsx'
 import RatingsAndReviews from './ratingsAndReviews/RatingsAndReviews.jsx';
 
 export default function App() {
-
-  const store = createStore(rootReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-
+  let isOpen = useSelector(state => state.open)
+  console.log(isOpen)
+  const dispatch = useDispatch();
+  const handleClick = (() => {
+    dispatch(question())
+    dispatch(openModal())
+  })
 return (
-  <Provider store={store}>
+
   <div>
     <Overview />
     <RPandOL />
     <QuestionsAndAnswers/>
     <RatingsAndReviews />
+    <Modal isOpen={isOpen} type = {useSelector(state => state.modalType)} onClose = {() => dispatch(closeModal())}/>
+    <button onClick = {() => handleClick()}>Open Modal</button>
   </div>
-  </Provider>
+
 )
 };
