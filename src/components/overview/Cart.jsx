@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addCart, getCart } from "../../apis/cart.js";
 
-export default function Cart({ selected }) {
+export default function Cart() {
   const outfits = useSelector((state) => state.outfits);
   const productId = useSelector((state) => state.productId);
+  const selected = useSelector((state) => state.selected);
   const [quantityChoice, setQuantityChoice] = useState([]);
   const [sku, setSku] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -13,7 +14,7 @@ export default function Cart({ selected }) {
 
   const handleSize = (e) => {
     setQuantityChoice([]);
-    let skus = Object.values(selected.skus);
+    let skus = Object.values(selected['skus']);
     for (var i = 0; i < skus.length; i++) {
       if (skus[i]["size"] === e.target.value) {
         setSku([i]);
@@ -77,7 +78,7 @@ export default function Cart({ selected }) {
         >
           <option key="1">--Select Size--</option>
           {selected &&
-            Object.values(selected.skus).map((sku) => (
+            Object.values(selected['skus']).map((sku) => (
               <option key={sku.sku_id}>{sku.size}</option>
             ))}
         </select>

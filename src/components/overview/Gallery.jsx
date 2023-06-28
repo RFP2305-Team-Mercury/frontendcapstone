@@ -1,39 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Gallery() {
-  const photoArray = [
-    {
-      thumbnail_url:
-        "https://images.unsplash.com/photo-1554260570-9140fd3b7614?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-      url: "https://images.unsplash.com/photo-1554260570-9140fd3b7614?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
-    },
-    {
-      thumbnail_url:
-        "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-      url: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80",
-    },
-    {
-      thumbnail_url:
-        "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      url: "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80",
-    },
-    {
-      thumbnail_url:
-        "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      url: "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1511&q=80",
-    },
-    {
-      thumbnail_url:
-        "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      url: "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80",
-    },
-    {
-      thumbnail_url:
-        "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-      url: "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80",
-    },
-  ];
-  const [current, setCurrent] = useState(photoArray[0]["url"]);
+  const selected = useSelector((state) => state.selected);
+  const photos = selected['photos'];
+  const [current, setCurrent] = useState(selected['photos'][0]['url']);
   const [index, setIndex] = useState(0);
 
   const handleThumbnail = (index, url) => {
@@ -43,18 +14,22 @@ export default function Gallery() {
 
   const handleLeft = (
   ) => {
-    setCurrent(photoArray[index-1]["url"])
+    setCurrent(photos[index-1]["url"])
     if(index !== 0){
       setIndex(index-1);
     }
   };
 
   const handleRight = () => {
-    setCurrent(photoArray[index+1]["url"])
-    if(index !== photoArray.length-1){
+    setCurrent(photos[index+1]["url"])
+    if(index !== photos.length-1){
       setIndex(index+1);
     }
   };
+
+  useEffect(() => {
+    setCurrent(selected['photos'][0]['url']);
+  }, [selected])
 
   const handleExpand = () => {};
 
@@ -76,7 +51,7 @@ export default function Gallery() {
         </svg>
       </button>
       <div className="absolute top-[40vh] left-[10vw] transform -translate-y-1/2">
-        {photoArray.map((photo, index) => {
+        {photos.map((photo, index) => {
           return (
             <img
               key={photo["thumbnail_url"]}
