@@ -5,7 +5,7 @@ export const addOutfitItem = (prodID) => {
     payload: prodID
   };
 };
-export const removeItem = (prodID) => {
+export const removeOutfitItem = (prodID) => {
   return {
     type: 'REMOVE_OUTFIT_ITEM',
     payload: prodID

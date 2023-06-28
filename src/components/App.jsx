@@ -19,7 +19,7 @@ return (
     {/* <Overview /> */}
     <RPandOL />
     {/* <QuestionsAndAnswers/> */}
-    <RatingsAndReviews />
+    {/* <RatingsAndReviews /> */}
   </div>
   </Provider>
 )

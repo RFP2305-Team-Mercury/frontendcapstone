@@ -8,7 +8,7 @@ const outfitsReducer = (state = [], action) => {
       return state;
     case 'REMOVE_OUTFIT_ITEM':
       let indexOfRemoved = state.indexOf(action.payload)
-      state = state.slice(0,indexOfRemoved).concat(state.slice(indexOfRemoved))
+      state = state.slice(0,indexOfRemoved).concat(state.slice(indexOfRemoved, state.length-1))
       return state;
     default:
       return state;

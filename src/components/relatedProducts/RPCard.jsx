@@ -16,7 +16,6 @@ const RPCard = ({ id }) => {
   }, [])
 
   const addToOutfit= ()=>{
-    console.log('adding to outfits...(RPCard.jsx)')
     dispatch(addOutfitItem(id))
   }
   return (
