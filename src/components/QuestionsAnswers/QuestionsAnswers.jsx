@@ -5,7 +5,7 @@ import SearchQuestions from './SearchQuestions.jsx'
 const QuestionsAndAnswers = () => {
   return(
     <>
-    <h3>QUESTIONS & ANSWERS</h3>
+    <h3>Questions & Answers</h3>
     <SearchQuestions/>
     </>
   )

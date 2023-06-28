@@ -10,7 +10,7 @@ const RatingsAndReviews = () => {
   let productId = useSelector(state=>state.productId);
   return (
     <div className="border-solid border-2 w-10/12 m-4 p-4 m-auto">
-      <h2 className="text-lg text-gray-800">Ratings & Reviews</h2>
+      <h2 className="text-lg text-gray-800" id='reviews'>Ratings & Reviews</h2>
       <div className="flex justify-between">
         <RatingSummary metaData={sampleReviewMeta} />
         <ReviewList reviews={sampleReviews.results} />
