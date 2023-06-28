@@ -16,10 +16,10 @@ export default function App() {
 return (
   <Provider store={store}>
   <div>
-    {/* <Overview /> */}
+    <Overview />
     <RPandOL />
-    {/* <QuestionsAndAnswers/> */}
-    {/* <RatingsAndReviews /> */}
+    <QuestionsAndAnswers/>
+    <RatingsAndReviews />
   </div>
   </Provider>
 )
