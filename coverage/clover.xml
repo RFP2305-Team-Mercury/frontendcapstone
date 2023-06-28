@@ -4,19 +4,19 @@
     <metrics statements="115" coveredstatements="46" conditionals="37" coveredconditionals="15" methods="32" coveredmethods="8" elements="184" coveredelements="69" complexity="0" loc="115" ncloc="115" packages="6" files="12" classes="12"/>
     <package name="frontendcapstone">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="config.js" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/config.js">
+      <file name="config.js" path="/Users/andymoc/HR/mercury/frontendcapstone/config.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
+        <line num="1" count="1" type="stmt"/>
       </file>
     </package>
     <package name="frontendcapstone.src.apis">
       <metrics statements="12" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="apiConfig.js" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/src/apis/apiConfig.js">
+      <file name="apiConfig.js" path="/Users/andymoc/HR/mercury/frontendcapstone/src/apis/apiConfig.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
       </file>
-      <file name="cart.js" path="/Users/carolinerobbins/hackreactor/junior/frontendcapstone/src/apis/cart.js">
+      <file name="cart.js" path="/Users/andymoc/HR/mercury/frontendcapstone/src/apis/cart.js">
         <metrics statements="10" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
