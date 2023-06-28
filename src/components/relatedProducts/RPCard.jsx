@@ -20,7 +20,7 @@ const RPCard = ({ id }) => {
   }
   return (
     <>
-      <div className='grid-auto-rows'>
+      <div className='grid-auto-rows' data-testid="RP Card">
         <div  onClick={() => { console.log('clicked id:',id) }}>
           <div className='max-w-sm max-h-md'>
             <img src={itemInfo.thumbnail} />
