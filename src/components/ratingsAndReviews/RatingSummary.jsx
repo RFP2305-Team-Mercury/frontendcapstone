@@ -37,7 +37,7 @@ const RatingSummary = ({metaData}) => {
     <div className="w-4/12 flex flex-col">
       <div className="text-5xl font-bold my-4 flex flex-row place-items-start">
         {average}
-        <div className="relative -top-[16px] left-2">
+        <div className="relative -top-[16px] left-2" data-testid="summary-average">
           {average ? <StarRatings
             rating={Number(average)}
             numberOfStars={5}
