@@ -7,7 +7,7 @@ import { setList } from '../../redux/actions'
 const OutfitList = () => {
   let outfits = useSelector(state => state.outfits);
 
-  return (<div className='max-h-96'><div className='text-lg font-semibold'>Your Outfit</div><div className="flex justify-between overflow-x-scroll ">{outfits.map((itemId) => (<OutfitCard key={itemId} id={itemId} />))}</div></div>)
+  return (<div className='max-h-96'><div className='text-lg font-semibold'>Your Outfit</div><div className="flex justify-between overflow-x-scroll "><OutfitCard />{outfits.map((itemId) => (<OutfitCard key={itemId} id={itemId} />))}</div></div>)
 
 }
 export default OutfitList

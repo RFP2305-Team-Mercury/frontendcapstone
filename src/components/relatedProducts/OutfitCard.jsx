@@ -4,19 +4,31 @@ import { addOutfitItem, removeOutfitItem, setId } from '../../redux/actions'
 import api from '../../apis/RPandOL.js'
 
 const OutfitCard = ({ id }) => {
-  const [itemInfo, setItemInfo] = useState({})
-  const dispatch = useDispatch()//line 20: dispatch(setId(id)) instead of console.log
+  if (id === undefined) {
+    return (<>
+      <div className='grid-auto-rows' data-testid="Outfit Card">
+        <div  onClick={() => { console.log('clicked id:',id) }}>
+          <div className='max-w-sm max-h-md'>
+            <div className='font-medium text-lg'>Click to add to Your Outfit</div>
+          </div>
+        </div>
+        <button onClick={() => { addOutfitItem(useSelector(state=>state.productId)) }}>Click Me!</button>
+      </div>
+    </>)
+  }
 
+  const [itemInfo, setItemInfo] = useState({})
+  const dispatch = useDispatch()//line 24: dispatch(setId(id)) instead of console.log
+  const fetchCard = async () => {
+    let card = await api.getCardInfo(id);
+    setItemInfo(card)
+  };
   useEffect(() => {
-    const fetchCard = async () => {
-      let card = await api.getCardInfo(id);
-      setItemInfo(card)
-    }
-    fetchCard()
+    fetchCard();
   }, [])
 
   const removeItem= ()=>{
-    dispatch(removeOutfitItem(id))
+    dispatch(removeOutfitItem(id));
   }
   return (
     <>

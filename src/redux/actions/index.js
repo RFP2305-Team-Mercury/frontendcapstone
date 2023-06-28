@@ -92,3 +92,12 @@ export const closeModal = () => {
     type: 'Close Modal'
   }
 }
+export const comparisonModal = ()=>{
+  return {
+    type: 'COMPARISON_MODAL'
+  }
+}
+export const comparisonId = () =>{
+  return {
+    type: 'SET_COMPARISON_ID'}
+}
