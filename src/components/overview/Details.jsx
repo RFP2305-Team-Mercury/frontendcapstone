@@ -9,18 +9,18 @@ export default function Details() {
   const productId = useSelector((state) => state.productId);
   const [details, setDetails] = useState({});
   const [features, setFeatures] = useState([]);
-
+  const fetchData = async () => {
+    try {
+      const data = await getOne(productId);
+      setDetails(data);
+      setFeatures(Object.values(data['features']));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getOne(productId);
-        setDetails(data);
-        setFeatures(Object.values(data['features']));
-      } catch (error) {
-        console.error(error);
-      }
-    };
+
     fetchData();
   }, []);
 

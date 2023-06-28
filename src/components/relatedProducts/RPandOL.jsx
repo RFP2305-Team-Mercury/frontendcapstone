@@ -1,11 +1,12 @@
 import React from 'react'
-import ListScroll from './ListScroll.jsx'
+import RelatedProducts from './RelatedProducts.jsx'
+import OutfitList from './OutfitList.jsx'
 
 const RPandOL = () => {
   return (
   <>
-    {/* {<ListScroll type="outfit" />} */}
-    {<ListScroll type="related" />}
+    {<RelatedProducts />}
+    {<OutfitList />}
   </>
   )
 }

@@ -11,6 +11,8 @@ const modalTypeReducer = (state = 'InputModal', action) => {
     case 'REPORT':
       //do something
       return state;
+    case 'COMPARISON_MODAL':
+      return state = 'ComparisonModal'
     default:
       return state
   }
