@@ -61,10 +61,6 @@ const RatingsAndReviews = () => {
   }
 
   useEffect(() => {
-    console.log('Filters:', filters)
-  }, [filters])
-
-  useEffect(() => {
     handleGetReviews();
   }, [productId]);
 
