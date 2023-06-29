@@ -5,6 +5,7 @@ import api from '../../apis/RPandOL.js';
 
 const RPCard = ({ id }) => {
   const [itemInfo, setItemInfo] = useState({});
+  let starClicked = false;
   const dispatch = useDispatch();
   const fetchCard = async () => {
     let card = await api.getCardInfo(id);
@@ -16,14 +17,24 @@ const RPCard = ({ id }) => {
   }, []);
 
   const star = () => {
+    starClicked =true
     dispatch(setComparisonId(id));
     dispatch(comparisonModal());
     dispatch(openModal());
+    setTimeout(()=>starClicked =false, 10)
   }
+  const changeCard = () => {
+    setTimeout(()=>{
+      if (starClicked === false) {
+        dispatch(setId(id));
+      }
+    }, 5);
+  }
+
   return (
     <>
-      <div className='grid flex w-4/12 m-2 p-1 border-solid border-2' data-testid="RP Card">
-        <div onClick={() => { dispatch(setId(id)) }}>
+      <div className='justify-center min-w-30 m-2 p-1 border-solid border-2' data-testid="RP Card">
+        <div onClick={() => { changeCard() }}>
           <div className='relative min-w-xs min-h-sm'>
             <img className="w-full h-full object-cover m-auto" src={itemInfo.thumbnail} />
             <button onClick={() => { star() }}><svg
@@ -34,7 +45,6 @@ const RPCard = ({ id }) => {
           <path
             fillRule="evenodd"
             fill="gold"
-            fill-opacity="1"
             d=" M15.422,18.129l-5.264-2.768l-5.265,2.768l1.006-5.863L1.64,8.114l5.887-0.855
             l2.632-5.334l2.633,5.334l5.885,0.855l-4.258,4.152L15.422,18.129z"
             clipRule="evenodd"
