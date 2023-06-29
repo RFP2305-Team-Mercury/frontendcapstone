@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addOutfitItem, setId, openModal, comparisonModal} from '../../redux/actions'
+import { addOutfitItem, setId, openModal, comparisonModal, setComparisonId } from '../../redux/actions'
 import api from '../../apis/RPandOL.js'
 
 const RPCard = ({ id }) => {
   const [itemInfo, setItemInfo] = useState({})
-  const dispatch = useDispatch()//line 20: dispatch(setId(id)) instead of console.log
+  const dispatch = useDispatch()
   const fetchCard = async () => {
     let card = await api.getCardInfo(id);
     setItemInfo(card)
@@ -15,7 +15,9 @@ const RPCard = ({ id }) => {
     fetchCard()
   }, [])
 
-  const star= ()=>{
+  const star = () => {
+    //set comparison to id
+    dispatch(setComparisonId(id))
     //open comparison modal
     dispatch(comparisonModal())
     dispatch(openModal())
@@ -23,7 +25,7 @@ const RPCard = ({ id }) => {
   return (
     <>
       <div className='grid-auto-rows' data-testid="RP Card">
-        <div  onClick={() => { dispatch(setId(id)) }}>
+        <div onClick={() => { dispatch(setId(id)) }}>
           <div className='max-w-sm max-h-md'>
             <img src={itemInfo.thumbnail} />
           </div>

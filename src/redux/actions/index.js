@@ -97,7 +97,9 @@ export const comparisonModal = ()=>{
     type: 'COMPARISON_MODAL'
   }
 }
-export const comparisonId = () =>{
+export const setComparisonId = (id) =>{
   return {
-    type: 'SET_COMPARISON_ID'}
+    type: 'SET_COMPARISON_ID',
+    payload:id
+  }
 }

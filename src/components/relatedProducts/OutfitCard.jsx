@@ -33,7 +33,7 @@ const OutfitCard = ({ id }) => {
   return (
     <>
       <div className='grid-auto-rows' data-testid="Outfit Card">
-        <div  onClick={() => { console.log('clicked id:',id) }}>
+        <div  onClick={() => { dispatch(setId(id)) }}>
           <div className='max-w-sm max-h-md'>
             <img src={itemInfo.thumbnail} />
           </div>
