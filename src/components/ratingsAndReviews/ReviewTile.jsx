@@ -1,5 +1,6 @@
 import React from 'react';
 import { format, parseISO } from 'date-fns';
+import StarRatings from 'react-star-ratings';
 
 const ReviewTile = ({review}) => {
   let formattedDate = format(parseISO(review.date), 'MMMM dd, yyyy');
@@ -7,7 +8,12 @@ const ReviewTile = ({review}) => {
   return (
     <div className="border-b-2 border-gray-800 py-4 mb-4">
       <div className="flex justify-between">
-        <span>Stars: {review.rating}</span>
+        <span><StarRatings
+            rating={Number(review.rating)}
+            numberOfStars={5}
+            starDimension="15px"
+            starSpacing="1px"
+          /></span>
         <span className="font-thin">{review.reviewer_name}, {formattedDate}</span>
       </div>
       <div className="py-2">
