@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import ReactDom from 'react-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import {closeModal} from '../../redux/actions/index.js'
-import { getOne } from '../../apis/product.js';
+import api from '../../apis/RPandOL.js'
 
 export default function ComparisonModal({onClose, id}) {
   const dispatch = useDispatch();
@@ -10,17 +10,24 @@ export default function ComparisonModal({onClose, id}) {
   const comparisonId = useSelector(state=>state.comparisonId);
   const [baseDetails, setBaseDetails] = useState({});
   const [comparedDetails, setComparedDetails] = useState({});
+  let features = new Set([]);
 
   const fetchData = async () => {
     try {
-      const data = await getOne(productId);
-      const compared = await getOne(comparisonId)
+      const data = await api.getCardInfo(productId);
+      const compared = await api.getCardInfo(comparisonId)
       setBaseDetails(data);
       setComparedDetails(compared);
+      console.log('basedetails are ', baseDetails)
+      // baseDetails.features.forEach((featureObj)=> {features.push(featureObj.feature)});
+  // comparedDetails.features.forEach((featureObj)=> {features.push(featureObj.feature)})
+  console.log('all features are: ',features)
+
     } catch (error) {
       console.error(error);
     }
   };
+
 
   useEffect(() => {
     fetchData();
@@ -51,14 +58,38 @@ return ReactDom.createPortal(
                   </button>
                 </div>
                 {/*body*/}
-                <div className="relative p-6 flex-auto">
-                  <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                    I always felt like I could do anything. That’s the main
-                    thing people are controlled by! Thoughts- their perception
-                    of themselves! They're slowed down by their perception of
-                    themselves. If you're taught you can’t do anything, you
-                    won’t do anything. I was taught I could do everything.
-                  </p>
+                <div className="relative w-full flex flex-col shadow-large">
+                  <div className='bg-transparent m-4 p-4'>
+                    <table className='w-auto'>
+                      <thead >
+                        <tr className='flex block justify-between w-full'>
+                          <th className='text-lg px-6 py-3 w-1/3 justify-center'>{baseDetails.name}</th>
+                          <th className='text-lg px-6 py-3 w-1/3'>Product</th>
+                          <th className='text-lg px-6 py-3 w-1/3'>{comparedDetails.name}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className='flex block justify-between'>
+                          <img className='px-6 py-3 w-1/3 text-center' src={baseDetails.thumbnail} />
+                          <div className='px-6 py-3 w-1/3'></div>
+                          <img className='px-6 py-3 w-1/3 text-center' src={comparedDetails.thumbnail}/>
+                        </tr>
+                        <tr className='flex block justify-between'>
+                          <th className='text-md px-6 py-3 text-center'>{baseDetails.price}</th>
+                          <th className='text-md px-6 py-3'>Price</th>
+                          <th className='text-md px-6 py-3 text-center'>{comparedDetails.price}</th>
+                        </tr>
+                        {/* {features.map((feature)=>{
+
+                        })} */}
+                        <tr className='flex block justify-between'>
+                          <th className='text-lg px-6 py-3'></th>
+                          <th className='text-lg px-6 py-3'></th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="table"></div>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
