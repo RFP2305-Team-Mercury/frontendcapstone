@@ -17,7 +17,6 @@ export default function ComparisonModal({onClose, id}) {
       const compared = await getOne(comparisonId)
       setBaseDetails(data);
       setComparedDetails(compared);
-      console.log(compared)
     } catch (error) {
       console.error(error);
     }

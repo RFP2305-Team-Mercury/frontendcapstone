@@ -14,7 +14,7 @@ const RelatedProducts = () => {
   useEffect(() => {
     api.getList(id)
       .then((RP) => { dispatch(setList(RP)) })
-  }, [])
+  }, [id])
 
   return (<div><div className='text-lg font-semibold'>Related Products</div><div className="flex justify-between overflow-x-scroll ">{list.map((itemId) => (<RPCard key={itemId} id={itemId} />))}</div></div>)
 

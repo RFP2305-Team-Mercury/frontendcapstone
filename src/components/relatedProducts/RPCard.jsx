@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addOutfitItem, setId, openModal, comparisonModal, setComparisonId } from '../../redux/actions'
-import api from '../../apis/RPandOL.js'
+import { addOutfitItem, setId, openModal, comparisonModal, setComparisonId } from '../../redux/actions';
+import api from '../../apis/RPandOL.js';
 
 const RPCard = ({ id }) => {
-  const [itemInfo, setItemInfo] = useState({})
-  const dispatch = useDispatch()
+  const [itemInfo, setItemInfo] = useState({});
+  const dispatch = useDispatch();
   const fetchCard = async () => {
     let card = await api.getCardInfo(id);
-    setItemInfo(card)
+    setItemInfo(card);
   }
 
   useEffect(() => {
-    fetchCard()
-  }, [])
+    fetchCard();
+  }, []);
 
   const star = () => {
-    //set comparison to id
-    dispatch(setComparisonId(id))
-    //open comparison modal
-    dispatch(comparisonModal())
-    dispatch(openModal())
+    dispatch(setComparisonId(id));
+    dispatch(comparisonModal());
+    dispatch(openModal());
   }
   return (
     <>
-      <div className='grid-auto-rows' data-testid="RP Card">
+      <div className='grid flex w-4/12 m-2 p-1 border-solid border-2' data-testid="RP Card">
         <div onClick={() => { dispatch(setId(id)) }}>
           <div className='max-w-sm max-h-md'>
             <img src={itemInfo.thumbnail} />
@@ -40,4 +38,4 @@ const RPCard = ({ id }) => {
       </div>
     </>)
 }
-export default RPCard
+export default RPCard;
