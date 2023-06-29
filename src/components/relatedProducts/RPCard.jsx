@@ -24,8 +24,22 @@ const RPCard = ({ id }) => {
     <>
       <div className='grid flex w-4/12 m-2 p-1 border-solid border-2' data-testid="RP Card">
         <div onClick={() => { dispatch(setId(id)) }}>
-          <div className='max-w-sm max-h-md'>
-            <img src={itemInfo.thumbnail} />
+          <div className='relative min-w-xs min-h-sm'>
+            <img className="w-full h-full object-cover m-auto" src={itemInfo.thumbnail} />
+            <button onClick={() => { star() }}><svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 30 30"
+          className="absolute top-[1rem] right-[5%] w-10 h-10"
+        >
+          <path
+            fillRule="evenodd"
+            fill="gold"
+            fill-opacity="1"
+            d=" M15.422,18.129l-5.264-2.768l-5.265,2.768l1.006-5.863L1.64,8.114l5.887-0.855
+            l2.632-5.334l2.633,5.334l5.885,0.855l-4.258,4.152L15.422,18.129z"
+            clipRule="evenodd"
+            stroke='black'
+          /></svg></button>
           </div>
           <div>
             <div className='italic text-m'>{itemInfo.category}</div>
@@ -34,7 +48,6 @@ const RPCard = ({ id }) => {
             <div className='italic text-sm'>{itemInfo.price}</div>
           </div>
         </div>
-        <button onClick={() => { star() }}>star</button>
       </div>
     </>)
 }
