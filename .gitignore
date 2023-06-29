@@ -8,3 +8,5 @@ coverage/
 dist/
 *.vscode
 src/apis/apiConfig.js
+coverage/
+

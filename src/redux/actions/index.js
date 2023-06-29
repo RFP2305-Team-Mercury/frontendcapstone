@@ -1,13 +1,13 @@
 //RPandOLActions.js
-export const addItem = (prodID) => {
+export const addOutfitItem = (prodID) => {
   return {
-    type: 'ADD_PRODUCT',
+    type: 'ADD_OUTFIT_ITEM',
     payload: prodID
   };
 };
-export const removeItem = (prodID) => {
+export const removeOutfitItem = (prodID) => {
   return {
-    type: 'REMOVE_PRODUCT',
+    type: 'REMOVE_OUTFIT_ITEM',
     payload: prodID
   };
 };
@@ -86,5 +86,16 @@ export const openModal = () => {
 export const closeModal = () => {
   return {
     type: 'CLOSE_MODAL'
+  }
+}
+export const comparisonModal = ()=>{
+  return {
+    type: 'COMPARISON_MODAL'
+  }
+}
+export const setComparisonId = (id) =>{
+  return {
+    type: 'SET_COMPARISON_ID',
+    payload:id
   }
 }

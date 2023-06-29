@@ -2,32 +2,19 @@ import React from 'react';
 import StarRatings from 'react-star-ratings';
 import ReviewBreakdown from './ReviewBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
+import getMetrics from './getMetrics.js';
 
 const { useState, useEffect } = React;
 
-const RatingSummary = ({metaData}) => {
+const RatingSummary = ({metaData, filters, handleChangeFilters}) => {
   const [count, setCount] = useState(0);
   const [average, setAverage] = useState(0);
   const [recPct, setRecPct] = useState(0);
 
-  const getMetrics = () => {
-    let calcCount = 0;
-    let total = 0;
-    for (let i = 1; i < 6; i++) {
-      let newCount = metaData.ratings[i];
-      calcCount += Number(newCount);
-      total += (Number(newCount) * i);
-    }
-    let calcAvg = (total / calcCount).toPrecision(2);
-    calcAvg = (Math.round(calcAvg * 4) / 4).toPrecision(3)
-    let calcRecPct = (Number(metaData.recommended.true) / (Number(metaData.recommended.true) + Number(metaData.recommended.false))).toPrecision(3);
 
-    let result = {calcCount, calcAvg, calcRecPct};
-    return result;
-  };
 
   useEffect(() => {
-    let metrics = getMetrics();
+    let metrics = getMetrics(metaData);
     setCount(metrics.calcCount);
     setAverage(metrics.calcAvg);
     setRecPct(metrics.calcRecPct)
@@ -49,7 +36,7 @@ const RatingSummary = ({metaData}) => {
       <div className="my-2">
         {recPct * 100}% of reviews recommend this product
       </div>
-      <ReviewBreakdown ratings={metaData.ratings} count={count} />
+      <ReviewBreakdown ratings={metaData.ratings} count={count} filters={filters} handleChangeFilters={handleChangeFilters} />
       <ProductBreakdown characteristics={metaData.characteristics} />
     </div>
   );

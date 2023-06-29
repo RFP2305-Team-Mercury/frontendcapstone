@@ -13,7 +13,6 @@ import RatingsAndReviews from './ratingsAndReviews/RatingsAndReviews.jsx';
 export default function App() {
 
   let isOpen = useSelector(state => state.open)
-
   const dispatch = useDispatch();
 
   const handleClick = (() => {
@@ -24,11 +23,12 @@ export default function App() {
 return (
 
   <div>
-    {/* <Overview />
-    <RPandOL /> */}
+    <Overview />
+    <RPandOL />
     <QuestionsAndAnswers/>
-    {/* <RatingsAndReviews /> */}
+    <RatingsAndReviews />
     <Modal isOpen={isOpen} type = {useSelector(state => state.modalType)} onClose = {() => dispatch(closeModal())}/>
+    <button onClick = {() => handleClick()}>Open Modal</button>{/* Eventually, move this button inside your component */}
   </div>
 
 )

@@ -8,6 +8,11 @@ const modalTypeReducer = (state = 'InputModal', action) => {
     case 'ADD_ANSWER':
       //do something
       return state = 'AnswerModal';
+    case 'REPORT':
+      //do something
+      return state;
+    case 'COMPARISON_MODAL':
+      return state = 'ComparisonModal'
     default:
       return state
   }
