@@ -4,7 +4,6 @@ const modalOpenReducer = (state = false, action) => {
   switch(action.type){
     case 'Open Modal':
       state = true
-      console.log('Modal SHould Open because state is: ',state)
       return state
     case 'Close Modal':
       return state = false
