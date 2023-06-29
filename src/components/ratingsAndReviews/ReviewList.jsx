@@ -3,15 +3,23 @@ import ReviewTile from './ReviewTile.jsx';
 
 const { useState, useEffect } = React;
 
-const ReviewList = ({reviews, sortOption, handleChangeSort}) => {
+const ReviewList = ({reviews, sortOption, handleChangeSort, filters}) => {
   const [count, setCount] = useState(2);
   const [renderedReviews, setRenderedReviews] = useState([]);
 
   const setReviews = () => {
     let result = [];
+    let filtered;
+    if (filters.length > 0) {
+      filtered = reviews.filter((review) => {
+        return filters.includes(review.rating);
+      })
+    } else {
+      filtered = reviews;
+    }
     for (let i = 0; i < count; i++) {
-      if (reviews[i]) {
-        result.push(reviews[i]);
+      if (filtered[i]) {
+        result.push(filtered[i]);
       } else {
         break;
       }
@@ -21,7 +29,7 @@ const ReviewList = ({reviews, sortOption, handleChangeSort}) => {
 
   useEffect(() => {
     setReviews();
-  }, [count]);
+  }, [count, filters]);
 
   useEffect(() => {
     setCount(2);

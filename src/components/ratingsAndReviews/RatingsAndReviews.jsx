@@ -42,12 +42,17 @@ const RatingsAndReviews = () => {
   };
 
   const handleChangeFilters = (newFilter, reset) => {
+    let sortFn = function(a, b) {
+      return b - a;
+    };
+
     if (reset) {
       setFilters([]);
       return;
     }
     if (!filters.includes(newFilter)) {
-      setFilters([...filters, newFilter]);
+      let sorted = [...filters, newFilter].sort(sortFn);
+      setFilters(sorted);
       return;
     } else {
       let toKeep = [];
@@ -56,7 +61,8 @@ const RatingsAndReviews = () => {
           toKeep.push(filter)
         }
       }
-      setFilters([...toKeep]);
+      let sorted = toKeep.sort(sortFn);
+      setFilters(sorted);
     }
   }
 
@@ -69,7 +75,7 @@ const RatingsAndReviews = () => {
       <h2 className="text-lg text-gray-800" id='reviews'>Ratings & Reviews</h2>
       <div className="flex justify-between">
         {metaData ? <RatingSummary metaData={metaData} filters={filters} handleChangeFilters={handleChangeFilters} /> : ''}
-        {reviews ? <ReviewList reviews={reviews} sortOption={sortOption} handleChangeSort={handleChangeSort} /> : ''}
+        {reviews ? <ReviewList reviews={reviews} sortOption={sortOption} handleChangeSort={handleChangeSort} filters={filters} /> : ''}
       </div>
     </div>
   );
