@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {closeModal} from '../../redux/actions/index.js'
 
 
-export default function InputModal({onClose}) {
+export default function AnswerModal({onClose}) {
   const dispatch = useDispatch();
 
 return ReactDom.createPortal(
@@ -18,7 +18,7 @@ return ReactDom.createPortal(
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-3xl font-semibold">
-                    Ask a Question!
+                    Answer a Question!
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"

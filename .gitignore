@@ -4,6 +4,7 @@
 *main.js
 config.js
 node_modules/
+coverage/
 dist/
 *.vscode
 src/apis/apiConfig.js

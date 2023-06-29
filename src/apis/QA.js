@@ -3,8 +3,8 @@ import apiConfig from './apiConfig'
 
 const getQA = async(id) => {
   try{
-    const response = await axios.get(`/qa/questions/?product_id=40347`,apiConfig)
-    // console.log(response.data.results)
+    const response = await axios.get(`/qa/questions/?product_id=${id}`,apiConfig)
+    console.log(response)
     return response.data.results
   }
   catch(error){
