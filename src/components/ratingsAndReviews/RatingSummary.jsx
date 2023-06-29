@@ -5,7 +5,7 @@ import ProductBreakdown from './ProductBreakdown.jsx';
 
 const { useState, useEffect } = React;
 
-const RatingSummary = ({metaData}) => {
+const RatingSummary = ({metaData, filters, handleChangeFilters}) => {
   const [count, setCount] = useState(0);
   const [average, setAverage] = useState(0);
   const [recPct, setRecPct] = useState(0);
@@ -49,7 +49,7 @@ const RatingSummary = ({metaData}) => {
       <div className="my-2">
         {recPct * 100}% of reviews recommend this product
       </div>
-      <ReviewBreakdown ratings={metaData.ratings} count={count} />
+      <ReviewBreakdown ratings={metaData.ratings} count={count} filters={filters} handleChangeFilters={handleChangeFilters} />
       <ProductBreakdown characteristics={metaData.characteristics} />
     </div>
   );
