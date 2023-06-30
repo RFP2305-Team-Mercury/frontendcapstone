@@ -18,7 +18,7 @@ const RatingSummary = ({metaData, filters, handleChangeFilters}) => {
     setCount(metrics.calcCount);
     setAverage(metrics.calcAvg);
     setRecPct(metrics.calcRecPct)
-  }, []);
+  }, [metaData]);
 
   return (
     <div className="w-4/12 flex flex-col">
