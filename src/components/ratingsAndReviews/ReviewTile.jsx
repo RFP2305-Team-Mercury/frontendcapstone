@@ -17,9 +17,12 @@ const ReviewTile = ({review}) => {
         <span className="font-thin">{review.reviewer_name}, {formattedDate}</span>
       </div>
       <div className="py-2">
-        <p className="text-lg text-gray-800 font-bold">{review.summary}</p>
-        <p>{review.body}</p>
+        <p className="text-lg text-gray-800 font-bold break-words hyphens-auto capitalize">{review.summary}</p>
+        <p className="hyphens-auto">{review.body}</p>
       </div>
+      {review.photos.length ? review.photos.map((photo) => {
+        return <img className="shadow-md object-cover h-32 w-24 inline m-2" src={photo.url} />
+      }) : ''}
       {review.recommend ? <div>&#10003; I recommend this product</div> : ""}
       <div className="font-light text-gray-600 py-2">
         <span className="mr-1">Helpful?
