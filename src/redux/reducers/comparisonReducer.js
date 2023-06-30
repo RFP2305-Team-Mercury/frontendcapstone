@@ -1,5 +1,5 @@
 
-const comparisonIdReducer = (state = 0, action) => {
+const comparisonReducer = (state = 0, action) => {
   //switch case of actions types where global state will be pulled from redux and change.
   switch(action.type){
     case 'SET_COMPARISON_ID':
@@ -8,4 +8,4 @@ const comparisonIdReducer = (state = 0, action) => {
       return state
   }
 }
-export default comparisonIdReducer;
+export default comparisonReducer;
