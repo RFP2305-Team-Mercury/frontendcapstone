@@ -68,28 +68,24 @@ export const SET_SELECTED = (data) => {
 //input.js
 export const question = () => {
   return {
-    type: 'ADD QUESTION'
+    type: 'ADD_QUESTION'
   }
 };
 export const answer = () => {
   return {
-    type: 'ADD ANSWER'
+    type: 'ADD_ANSWER'
   }
 };
-export const report = () => {
-  return {
-    type: 'REPORT'
-  }
-}
+
 
 export const openModal = () => {
   return {
-    type: 'Open Modal'
+    type: 'OPEN_MODAL'
   }
 }
 export const closeModal = () => {
   return {
-    type: 'Close Modal'
+    type: 'CLOSE_MODAL'
   }
 }
 export const comparisonModal = ()=>{
