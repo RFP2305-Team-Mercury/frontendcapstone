@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { ExpandIcon, LeftArrow, RightArrow } from "../../utils/icons.jsx";
 
 export default function Gallery() {
   const selected = useSelector((state) => state.selected);
-  const photos = selected['photos'];
-  const [current, setCurrent] = useState(selected['photos'][0]['url']);
+  const photos = selected["photos"];
+  let count = 0;
+  const [current, setCurrent] = useState(selected["photos"][0]["url"]);
   const [index, setIndex] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -13,99 +15,74 @@ export default function Gallery() {
     setIndex(index);
   };
 
-  const handleLeft = (
-  ) => {
-    setCurrent(photos[index-1]["url"])
-    if(index !== 0){
-      setIndex(index-1);
+  const handleLeft = () => {
+    setCurrent(photos[index - 1]["url"]);
+    if (index !== 0) {
+      setIndex(index - 1);
     }
   };
 
   const handleRight = () => {
-    setCurrent(photos[index+1]["url"])
-    if(index !== photos.length-1){
-      setIndex(index+1);
+    setCurrent(photos[index + 1]["url"]);
+    if (index !== photos.length - 1) {
+      setIndex(index + 1);
     }
   };
 
   useEffect(() => {
-    setCurrent(selected['photos'][0]['url']);
-  }, [selected])
+    setCurrent(selected["photos"][0]["url"]);
+  }, [selected]);
 
   const handleExpand = () => {
     setIsExpanded(!isExpanded);
   };
 
   return (
-    <div className="flex-2 w-2/3 h-[600px] justify-center bg-gray-300 border-black border-2 mt-2">
-      <img className="w-full h-full object-cover m-auto" src={current} />
-      <button onClick={() => handleExpand()}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          className="absolute top-[5rem] right-[37%] w-6 h-6"
-        >
-          <path
-            fillRule="evenodd"
-            d="M15 3.75a.75.75 0 01.75-.75h4.5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0V5.56l-3.97 3.97a.75.75 0 11-1.06-1.06l3.97-3.97h-2.69a.75.75 0 01-.75-.75zm-12 0A.75.75 0 013.75 3h4.5a.75.75 0 010 1.5H5.56l3.97 3.97a.75.75 0 01-1.06 1.06L4.5 5.56v2.69a.75.75 0 01-1.5 0v-4.5zm11.47 11.78a.75.75 0 111.06-1.06l3.97 3.97v-2.69a.75.75 0 011.5 0v4.5a.75.75 0 01-.75.75h-4.5a.75.75 0 010-1.5h2.69l-3.97-3.97zm-4.94-1.06a.75.75 0 010 1.06L5.56 19.5h2.69a.75.75 0 010 1.5h-4.5a.75.75 0 01-.75-.75v-4.5a.75.75 0 011.5 0v2.69l3.97-3.97a.75.75 0 011.06 0z"
-            clipRule="evenodd"
+    <div className="relative flex-2 w-2/3 h-[600px] bg-gray-300  mt-2 flex justify-end">
+      {isExpanded ? (
+        <>
+          <img
+            className="w-full h-[600px] overflow-x-visible object-fill cursor-zoom-out custom-cursor border-black border-2 z-1"
+            src={current}
+            onClick={handleExpand}
+            style={{
+              transform: "translateX(25%) scaleX(1.5)",
+              transition: "transform 0.1s ease",
+            }}
           />
-        </svg>
-      </button>
-      <div className="absolute top-[23rem] left-[10vw] transform -translate-y-1/2">
-        {photos.map((photo, index) => {
-          return (
-            <img
-              key={photo["thumbnail_url"]}
-              className={`border-2 w-16 h-16 mb-2 object-cover`}
-              src={photo["thumbnail_url"]}
-              onClick={() => handleThumbnail(index, photo["url"])}
-            />
-          );
-        })}
-      </div>
-      {index === 0 ? '' : <button
-        onClick={() => {
-          handleLeft();
-        }}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={2}
-          stroke="black"
-          className="absolute top-[20rem] left-[17vw] transform -translate-y-1/2 w-6 h-6 bold rounded-full bg-gray-300"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+          {index !== 0 && <LeftArrow onClick={handleLeft} />}
+        </>
+      ) : (
+        <>
+          <img
+            className="w-full h-[600px] object-contain m-auto cursor-zoom-in custom-cursor border-black border-2"
+            src={current}
+            onClick={handleExpand}
           />
-        </svg>
-      </button>}
-      {index === photos.length-1 ? '' :
-      <button
-        onClick={() => {
-          handleRight();
-        }}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="2"
-          stroke="black"
-          className="absolute top-[20rem] right-[38vw] transform -translate-y-1/2 w-6 h-6 bold rounded-full bg-gray-300"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-          />
-        </svg>
-      </button>}
+          <ExpandIcon onClick={handleExpand} />
+          <div className="absolute top-1/2 left-10 transform -translate-y-1/2">
+            {photos.map((photo, position) => {
+              count++;
+              if (count <= 7) {
+                return (
+                  <img
+                    key={photo["thumbnail_url"]}
+                    className={
+                      index === position
+                        ? "border-b-8 border-2 border-black w-16 h-16 mb-2 object-cover"
+                        : "border-2 w-16 h-16 mb-2 object-cover"
+                    }
+                    src={photo["thumbnail_url"]}
+                    onClick={() => handleThumbnail(position, photo["url"])}
+                  />
+                );
+              }
+            })}
+          </div>
+          {index !== 0 && <LeftArrow onClick={handleLeft} />}
+          {index !== photos.length - 1 && <RightArrow onClick={handleRight} />}
+        </>
+      )}
     </div>
   );
 }
