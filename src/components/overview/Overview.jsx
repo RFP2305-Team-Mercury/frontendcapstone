@@ -1,15 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Details from './Details.jsx';
 import Gallery from './Gallery.jsx';
 import Header from './Header.jsx';
 
 export default function Overview() {
+const [isExpanded, setIsExpanded] = useState(false);
+
+const setExpanded = (value) => setIsExpanded(value);
+
   return (
     <>
     <Header />
-    <div className='w-10/12 flex flex-wrap m-auto'>
-    <Gallery />
-    <Details />
+    <div className='w-10/12 flex flex-wrap justify-center  m-auto'>
+    <Gallery isExpanded={isExpanded}  setIsExpanded={setExpanded}/>
+    {isExpanded ? <></> : <Details />}
     </div>
     </>
   )
