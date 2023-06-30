@@ -71,7 +71,7 @@ const RatingsAndReviews = () => {
   }, [productId]);
 
   return (
-    <div className="border-solid border-2 w-10/12 m-4 p-4 m-auto">
+    <div className="w-10/12 m-4 p-4 m-auto">
       <h2 className="text-lg text-gray-800" id='reviews'>Ratings & Reviews</h2>
       <div className="flex justify-between">
         {metaData ? <RatingSummary metaData={metaData} filters={filters} handleChangeFilters={handleChangeFilters} /> : ''}
