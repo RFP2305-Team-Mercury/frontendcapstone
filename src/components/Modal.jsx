@@ -1,5 +1,6 @@
 import React from 'react'
 import InputModal from './QuestionsAnswers/InputModal.jsx'
+import AnswerModal from './QuestionsAnswers/AnswerModal.jsx'
 import ComparisonModal from './relatedProducts/ComparisonModal.jsx'
 
 export default function Modal({type, onClose, isOpen}){
