@@ -47,9 +47,9 @@ export default function Styles() {
                     onClick={() => handleSelect(style.style_id)}
                     className="w-16 h-16 rounded-full border-4 border-black mx-4 mt-2"
                   />
-                  <span className="absolute top-0 right-0 m-2 flex items-center justify-center rounded-full w-6 h-6">
+                  <span className="absolute top-0 right-0 flex items-center justify-center rounded-full w-5 h-5">
                     <svg
-                      className="w-4 h-4 text-white"
+                      className="w-6 h-6 text-black"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"

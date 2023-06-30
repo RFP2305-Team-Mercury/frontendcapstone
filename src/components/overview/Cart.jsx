@@ -101,7 +101,7 @@ export default function Cart() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 ml-[95px]"
+              className="w-6 h-6 ml-[170px]"
             >
               <path
                 strokeLinecap="round"

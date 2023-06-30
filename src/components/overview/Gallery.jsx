@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ExpandIcon, LeftArrow, RightArrow } from "../../utils/icons.jsx";
 
-export default function Gallery() {
+export default function Gallery( {isExpanded, setIsExpanded}) {
   const selected = useSelector((state) => state.selected);
   const photos = selected["photos"];
   let count = 0;
   const [current, setCurrent] = useState(selected["photos"][0]["url"]);
   const [index, setIndex] = useState(0);
-  const [isExpanded, setIsExpanded] = useState(false);
+
 
   const handleThumbnail = (index, url) => {
     setCurrent(url);
@@ -38,22 +38,21 @@ export default function Gallery() {
   };
 
   return (
-    <div className="relative flex-2 w-2/3 h-[600px] bg-gray-300  mt-2 flex justify-end">
+    <>
       {isExpanded ? (
-        <>
+         <div className="relative h-[600px] mt-2 flex justify-center  items-center content-center overflow-x-visible z-1">
           <img
             className="w-full h-[600px] overflow-x-visible object-fill cursor-zoom-out custom-cursor border-black border-2 z-1"
             src={current}
             onClick={handleExpand}
-            style={{
-              transform: "translateX(25%) scaleX(1.5)",
-              transition: "transform 0.1s ease",
-            }}
           />
+          <ExpandIcon onClick={handleExpand} />
           {index !== 0 && <LeftArrow onClick={handleLeft} />}
-        </>
+          {index !== photos.length - 1 && <RightArrow onClick={handleRight} />}
+        </div>
       ) : (
         <>
+        <div className="relative flex-2 w-2/3 h-[600px] bg-gray-300  mt-2 flex justify-end">
           <img
             className="w-full h-[600px] object-contain m-auto cursor-zoom-in custom-cursor border-black border-2"
             src={current}
@@ -81,8 +80,9 @@ export default function Gallery() {
           </div>
           {index !== 0 && <LeftArrow onClick={handleLeft} />}
           {index !== photos.length - 1 && <RightArrow onClick={handleRight} />}
+          </div>
         </>
       )}
-    </div>
+    </>
   );
 }

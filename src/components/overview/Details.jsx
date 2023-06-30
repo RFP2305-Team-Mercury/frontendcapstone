@@ -25,12 +25,12 @@ export default function Details() {
 
   useEffect(() => {
     fetchData();
-  }, [productId]);
+  }, []);
 
   return (
     <>
-      <div className="flex-1 w-1/3">
-        <div className="mx-4 z-0">
+      <div className="flex-1 w-1/3 z-0">
+        <div className="mx-4">
           <StarRatings
             rating={3.5}
             numberOfStars={5}
