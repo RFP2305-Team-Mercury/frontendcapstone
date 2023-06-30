@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addOutfitItem, setId, openModal, comparisonModal, setComparisonId } from '../../redux/actions';
 import api from '../../apis/RPandOL.js';
+import StarRatings from 'react-star-ratings'
 
 const RPCard = ({ id }) => {
   const [itemInfo, setItemInfo] = useState({});
+  const [stars, setStars] = useState(5);
   let starClicked = false;
   const dispatch = useDispatch();
   const fetchCard = async () => {
     let card = await api.getCardInfo(id);
     setItemInfo(card);
+    setStars(card.stars)
   }
 
   useEffect(() => {
@@ -56,6 +59,14 @@ const RPCard = ({ id }) => {
             <div className='font-medium text-lg'>{itemInfo.name}</div>
             <div>{itemInfo.slogan}</div>
             <div className='italic text-sm'>{itemInfo.price}</div>
+            <div className="" >
+          {<StarRatings
+            rating={Number(stars)}
+            numberOfStars={5}
+            starDimension="15px"
+            starSpacing="2px"
+          />}
+        </div>
           </div>
         </div>
       </div>

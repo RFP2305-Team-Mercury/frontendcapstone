@@ -62,17 +62,18 @@ return ReactDom.createPortal(
                   <div className='bg-transparent m-4 p-4'>
                     <table className='w-auto'>
                       <thead >
-                        <tr className='flex block justify-between w-full'>
-                          <th className='text-lg px-6 py-3 w-1/3 justify-center'>{baseDetails.name}</th>
-                          <th className='text-lg px-6 py-3 w-1/3'>Product</th>
-                          <th className='text-lg px-6 py-3 w-1/3'>{comparedDetails.name}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
+
                         <tr className='flex block justify-between'>
                           <img className='px-6 py-3 w-1/3 text-center' src={baseDetails.thumbnail} />
                           <div className='px-6 py-3 w-1/3'></div>
                           <img className='px-6 py-3 w-1/3 text-center' src={comparedDetails.thumbnail}/>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <tr className='flex block justify-between w-full'>
+                          <th className='text-lg px-6 py-3 w-1/3 justify-center'>{baseDetails.name}</th>
+                          <th className='text-lg px-6 py-3 w-1/3'>Product</th>
+                          <th className='text-lg px-6 py-3 w-1/3'>{comparedDetails.name}</th>
                         </tr>
                         <tr className='flex block justify-between'>
                           <th className='text-md px-6 py-3 text-center'>{baseDetails.price}</th>
