@@ -21,7 +21,6 @@ const getMetaData = async (params) => {
 
 const markHelpful = async (id) => {
   try {
-    console.log(id);
     await axios.put(`/reviews/${id}/helpful`, null, apiConfig);
   } catch (err) {
     console.log(err)
@@ -30,7 +29,7 @@ const markHelpful = async (id) => {
 
 const reportReview = async (id) => {
   try {
-    await axios.put(`/reviews/${id}/report`, apiConfig);
+    await axios.put(`/reviews/${id}/report`, null, apiConfig);
   } catch (err) {
     console.log(err)
   }

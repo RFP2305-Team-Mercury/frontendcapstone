@@ -9,6 +9,7 @@ const ReviewTile = ({review}) => {
   const [helpfulClicked, setHelpfulClicked] = useState(false);
   const [helpfulCount, setHelpfulCount] = useState(0);
   const [requestSent, setRequestSent] = useState(false);
+  const [reported, setReported] = useState(false);
   const formattedDate = format(parseISO(review.date), 'MMMM dd, yyyy');
 
   useEffect(() => {
@@ -34,7 +35,14 @@ const ReviewTile = ({review}) => {
     }
   };
 
+  const handleReportClick = () => {
+    // api.reportReview(review.review_id); // Not working
+    setReported(true);
+  }
 
+  if (reported) {
+    return <></>
+  }
 
   return (
     <div className="border-b-2 border-gray-800 py-4 mb-4">
@@ -61,7 +69,7 @@ const ReviewTile = ({review}) => {
           <span>({helpfulCount})</span>
         </span>
           <span className="mx-4 text-xl font-thin">|</span>
-          <span className="underline">Report</span>
+          <span className="underline cursor-pointer" onClick={handleReportClick}>Report</span>
       </div>
     </div>
   );
