@@ -11,11 +11,8 @@ const getCardInfo = async (id) => {
     let productInfo = await productInfoPromise;
     let prodThumbnail = await prodThumbnailPromise;
     let metaData = await metaDataPromise;
-    console.log(metaData.data)
     let stars = getMetrics(metaData.data)
-    console.log('thumbnail is...',prodThumbnail.data.results[0].photos[0].thumbnail_url)
-    console.log('stars for ',id, ":", stars.calcAvg)
-    console.log('features of product are:',productInfo.data.features)
+
 
     return {thumbnail: prodThumbnail.data.results[0].photos[0].thumbnail_url,
             name: productInfo.data.name,

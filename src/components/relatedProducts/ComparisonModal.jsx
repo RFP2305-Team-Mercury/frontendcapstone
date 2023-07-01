@@ -13,7 +13,7 @@ export default function ComparisonModal({ onClose, id }) {
   const [comparedDetails, setComparedDetails] = useState({});
   const [baseStars, setBaseStars] = useState(0);
   const [comparedStars, setComparedStars] = useState(0);
-
+  let baseFeatures, comparedFeatures;
   let features = new Set([]);
 
   const fetchData = async () => {
@@ -24,11 +24,20 @@ export default function ComparisonModal({ onClose, id }) {
       setComparedDetails(compared);
       setBaseStars(data.stars);
       setComparedStars(compared.stars);
-      console.log('basedetails are ', baseDetails)
-      // baseDetails.features.forEach((featureObj)=> {features.push(featureObj.feature)});
-      // comparedDetails.features.forEach((featureObj)=> {features.push(featureObj.feature)})
-      console.log('all features are: ', features)
-
+      data.features.forEach((featureObj) => {
+        features.add(featureObj.feature)
+        let feat = {};
+        feat[featureObj.feature] = featureObj.value
+        console.log(feat)
+        baseFeatures = { ...baseFeatures, ...feat }
+      });
+      compared.features.forEach((featureObj) => {
+        features.add(featureObj.feature)
+        let feat = {};
+        feat[featureObj.feature] = featureObj.value
+        comparedFeatures = { ...comparedFeatures, ...feat }
+      });
+      console.log('features:', features, 'baseFeatures:', baseFeatures, 'comparedFeat:',comparedFeatures)
     } catch (error) {
       console.error(error);
     }
@@ -101,13 +110,14 @@ export default function ComparisonModal({ onClose, id }) {
                       <th className='text-md px-6 py-3'>Price</th>
                       <th className='text-md px-6 py-3 text-center'>{comparedDetails.price}</th>
                     </tr>
-                    {/* {features.map((feature)=>{
+                    {[...features].map((feature)=>{ return (
+                      <tr className='flex block justify-between'>
+                      <th className='text-lg px-6 py-3 w-1/3'>{baseFeatures[feature]?baseFeatures[feature]:''}</th>
+                      <th className='text-lg px-6 py-3 w-1/3'>{feature}</th>
+                      <th className='text-lg px-6 py-3 w-1/3'>{comparedFeatures[feature]?comparedFeatures[feature]:''}</th>
+                    </tr>)
+                        })}
 
-                        })} */}
-                    <tr className='flex block justify-between'>
-                      <th className='text-lg px-6 py-3'></th>
-                      <th className='text-lg px-6 py-3'></th>
-                    </tr>
                   </tbody>
                 </table>
               </div>
