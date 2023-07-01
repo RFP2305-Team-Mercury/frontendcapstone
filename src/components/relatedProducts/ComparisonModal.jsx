@@ -37,7 +37,8 @@ export default function ComparisonModal({ onClose, id }) {
         feat[featureObj.feature] = featureObj.value
         comparedFeatures = { ...comparedFeatures, ...feat }
       });
-      console.log('features:', features, 'baseFeatures:', baseFeatures, 'comparedFeat:',comparedFeatures)
+      console.log('features:', [...features], 'baseFeatures:', baseFeatures, 'comparedFeat:',comparedFeatures)
+
     } catch (error) {
       console.error(error);
     }
@@ -111,11 +112,13 @@ export default function ComparisonModal({ onClose, id }) {
                       <th className='text-md px-6 py-3 text-center'>{comparedDetails.price}</th>
                     </tr>
                     {[...features].map((feature)=>{ return (
-                      <tr className='flex block justify-between'>
-                      <th className='text-lg px-6 py-3 w-1/3'>{baseFeatures[feature]?baseFeatures[feature]:''}</th>
-                      <th className='text-lg px-6 py-3 w-1/3'>{feature}</th>
-                      <th className='text-lg px-6 py-3 w-1/3'>{comparedFeatures[feature]?comparedFeatures[feature]:''}</th>
-                    </tr>)
+                      <div>Hello {feature}</div>
+                      // <tr className='flex block justify-between'>
+                      // <th className='text-lg px-6 py-3 w-1/3'>{baseFeatures[feature]?baseFeatures[feature]:''}</th>
+                      // <th className='text-lg px-6 py-3 w-1/3'>{feature}</th>
+                      // <th className='text-lg px-6 py-3 w-1/3'>{comparedFeatures[feature]?comparedFeatures[feature]:''}</th>
+                    // </tr>
+                    )
                         })}
 
                   </tbody>
