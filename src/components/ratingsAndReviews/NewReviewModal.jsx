@@ -16,6 +16,8 @@ export default function NewReviewModal({ onClose }) {
   const [body, setBody] = useState('');
   const [photos, setPhotos] = useState([]);
   const [photoKey, setPhotoKey] = useState(0);
+  const [nickname, setNickname] = useState(null);
+  const [email, setEmail] = useState(null);
   const [characteristics, setCharacteristics] = useState([]);
   const [size, setSize] = useState(null);
   const [width, setWidth] = useState(null);
@@ -180,16 +182,22 @@ export default function NewReviewModal({ onClose }) {
                   <input
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 my-2"
                     type='text'
-                    placeholder="review text"
+                    placeholder="Example: jackson11!"
+                    maxLength="60"
+                    onChange={(event) => { setNickname(event.target.value) }}
                   />
+                  <div className="text-sm font-light pl-2">For privacy reasons, do not use your full name or email address</div>
                 </div>
                 <div className="my-2">
                   <label className="underline">email</label>
                   <input
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 my-2"
                     type='text'
-                    placeholder="review text"
+                    placeholder="Example: jackson11@email.com"
+                    maxLength="60"
+                    onChange={(event) => { setEmail(event.target.value) }}
                   />
+                  <div className="text-sm font-light pl-2">For privacy reasons, do not use your full name or email address</div>
                 </div>
               </div>
               <div className="w-2/4 px-12">
