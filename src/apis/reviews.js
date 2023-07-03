@@ -23,7 +23,7 @@ const markHelpful = async (id) => {
   try {
     await axios.put(`/reviews/${id}/helpful`, null, apiConfig);
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 };
 
@@ -31,8 +31,16 @@ const reportReview = async (id) => {
   try {
     await axios.put(`/reviews/${id}/report`, null, apiConfig);
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 };
 
-export default { getReviews, getMetaData, markHelpful, reportReview };
+const postReview = async (body) => {
+  try {
+    await axios.post('/reviews', body, apiConfig);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export default { getReviews, getMetaData, markHelpful, reportReview, postReview };

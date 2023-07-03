@@ -351,8 +351,8 @@ export default function NewReviewModal({ onClose }) {
                 onClick={() => {
                   if(validateForm()) {
                     let body = createResponseBody();
-                    // axios post request
-                    dispatch(closeModal())
+                    api.postReview(body);
+                    dispatch(closeModal());
                   }
                 }}
               >Submit</button>
