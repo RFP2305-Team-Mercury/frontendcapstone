@@ -31,7 +31,6 @@ const ReviewList = ({reviews, sortOption, handleChangeSort, filters}) => {
   };
 
   const handleAddReview = () => {
-    console.log('clicked');
     dispatch(newReviewModal());
     dispatch(openModal());
   };
