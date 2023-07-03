@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { closeModal } from '../../redux/actions/index.js'
 import api from '../../apis/RPandOL.js'
 import StarRatings from 'react-star-ratings'
+import salePrice from '../../utils/salePrice.jsx'
 
 export default function ComparisonModal({ onClose, id }) {
   const dispatch = useDispatch();
@@ -33,16 +34,16 @@ export default function ComparisonModal({ onClose, id }) {
         let feat = {};
         feat[featureObj.feature] = featureObj.value
         console.log(feat)
-        bFeatures = {...bFeatures, ...feat }
+        bFeatures = { ...bFeatures, ...feat }
       });
       compared.features.forEach((featureObj) => {
         featuresSet.add(featureObj.feature)
         let feat = {};
         feat[featureObj.feature] = featureObj.value
-        cFeatures = {...cFeatures, ...feat }
+        cFeatures = { ...cFeatures, ...feat }
       });
       const set = [...featuresSet]
-      console.log('features:', set, 'baseFeatures:', bFeatures, 'comparedFeat:',cFeatures)
+      console.log('features:', set, 'baseFeatures:', bFeatures, 'comparedFeat:', cFeatures)
       setFeatures(set)
       setBaseFeatures(bFeatures)
       setCompFeatures(cFeatures)
@@ -115,18 +116,37 @@ export default function ComparisonModal({ onClose, id }) {
                       />}</th>
                     </tr>
                     <tr className='flex block w-full justify-between'>
-                      <th className='text-md px-6 py-3 w-1/3'>{baseDetails.price}</th>
-                      <th className='text-lg px-6 py-3 w-1/3'>Price</th>
-                      <th className='text-md px-6 py-3 w-1/3'>{comparedDetails.price}</th>
+                      {baseDetails.sales_price ? (
+                        <th className='text-md px-6 py-3 w-1/3'>
+                          {baseDetails.sales_price}
+                          {salePrice(baseDetails.original_price)}
+                        </th>
+                      ) : (
+                        <th className='text-md px-6 py-3 w-1/3'>
+                          {baseDetails.original_price}
+                        </th>
+                      )}
+                      <th className='text- px-6 py-3 w-1/3'>Price</th>
+                      {comparedDetails.sales_price ? (
+                        <th className='text-md px-6 py-3 w-1/3'>
+                          {comparedDetails.sales_price}
+                          {salePrice(comparedDetails.original_price)}
+                        </th>
+                      ) : (
+                        <th className='text-md px-6 py-3 w-1/3'>
+                          {comparedDetails.original_price}
+                        </th>
+                      )}
                     </tr>
-                    {features.map((feature)=>{ return (
-                      <tr className='flex block justify-between'>
-                      <th className='text-md px-6 py-3 w-1/3'>{baseFeatures[feature]?baseFeatures[feature]:''}</th>
-                      <th className='text-lg px-6 py-3 w-1/3'>{feature}</th>
-                      <th className='text-md px-6 py-3 w-1/3'>{compFeatures[feature]?compFeatures[feature]:''}</th>
-                    </tr>
-                    )
-                        })}
+                    {features.map((feature) => {
+                      return (
+                        <tr className='flex block justify-between'>
+                          <th className='text-md px-6 py-3 w-1/3'>{baseFeatures[feature] ? baseFeatures[feature] : ''}</th>
+                          <th className='text-lg px-6 py-3 w-1/3'>{feature}</th>
+                          <th className='text-md px-6 py-3 w-1/3'>{compFeatures[feature] ? compFeatures[feature] : ''}</th>
+                        </tr>
+                      )
+                    })}
 
                   </tbody>
                 </table>
