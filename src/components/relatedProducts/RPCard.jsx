@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addOutfitItem, setId, openModal, comparisonModal, setComparisonId } from '../../redux/actions';
 import api from '../../apis/RPandOL.js';
+import StarRatings from 'react-star-ratings'
 
 const RPCard = ({ id }) => {
   const [itemInfo, setItemInfo] = useState({});
+  const [stars, setStars] = useState(5);
   let starClicked = false;
   const dispatch = useDispatch();
   const fetchCard = async () => {
     let card = await api.getCardInfo(id);
     setItemInfo(card);
+    setStars(card.stars)
   }
 
   useEffect(() => {
@@ -33,10 +36,10 @@ const RPCard = ({ id }) => {
 
   return (
     <>
-      <div className='justify-center min-w-30 m-2 p-1 border-solid border-2' data-testid="RP Card">
+      <div className='m-2 p-1 border-solid border-2 w-[200px]' data-testid="RP Card">
         <div onClick={() => { changeCard() }}>
-          <div className='relative min-w-xs min-h-sm'>
-            <img className="w-full h-full object-cover m-auto" src={itemInfo.thumbnail} />
+          <div className='relative max-w-full bg-gray-300 '>
+            <img className="w-full h-[150px] object-contain justify-center items-center" src={itemInfo.thumbnail} />
             <button onClick={() => { star() }}><svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 30 30"
@@ -56,6 +59,14 @@ const RPCard = ({ id }) => {
             <div className='font-medium text-lg'>{itemInfo.name}</div>
             <div>{itemInfo.slogan}</div>
             <div className='italic text-sm'>{itemInfo.price}</div>
+            <div className="" >
+          {<StarRatings
+            rating={Number(stars)}
+            numberOfStars={5}
+            starDimension="15px"
+            starSpacing="2px"
+          />}
+        </div>
           </div>
         </div>
       </div>
