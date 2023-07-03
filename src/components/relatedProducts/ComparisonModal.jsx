@@ -95,9 +95,9 @@ export default function ComparisonModal({ onClose, id }) {
                   </thead>
                   <tbody>
                     <tr className='flex block justify-between w-full'>
-                      <th className='text-lg px-6 py-3 w-1/3 justify-center'>{baseDetails.name}</th>
+                      <th className='text-xl px-6 py-3 w-1/3 justify-center'>{baseDetails.name}</th>
                       <th className='text-lg px-6 py-3 w-1/3'>Product</th>
-                      <th className='text-lg px-6 py-3 w-1/3'>{comparedDetails.name}</th>
+                      <th className='text-xl px-6 py-3 w-1/3'>{comparedDetails.name}</th>
                     </tr>
                     <tr className='flex block justify-between w-full'>
                       <th className='text-lg px-6 py-3 w-1/3 justify-center'>{<StarRatings
@@ -115,15 +115,15 @@ export default function ComparisonModal({ onClose, id }) {
                       />}</th>
                     </tr>
                     <tr className='flex block w-full justify-between'>
-                      <th className='text-md px-6 py-3'>{baseDetails.price}</th>
-                      <th className='text-md px-6 py-3'>Price</th>
-                      <th className='text-md px-6 py-3'>{comparedDetails.price}</th>
+                      <th className='text-md px-6 py-3 w-1/3'>{baseDetails.price}</th>
+                      <th className='text-lg px-6 py-3 w-1/3'>Price</th>
+                      <th className='text-md px-6 py-3 w-1/3'>{comparedDetails.price}</th>
                     </tr>
                     {features.map((feature)=>{ return (
                       <tr className='flex block justify-between'>
-                      <th className='text-lg px-6 py-3 w-1/3'>{baseFeatures[feature]?baseFeatures[feature]:''}</th>
+                      <th className='text-md px-6 py-3 w-1/3'>{baseFeatures[feature]?baseFeatures[feature]:''}</th>
                       <th className='text-lg px-6 py-3 w-1/3'>{feature}</th>
-                      <th className='text-lg px-6 py-3 w-1/3'>{compFeatures[feature]?compFeatures[feature]:''}</th>
+                      <th className='text-md px-6 py-3 w-1/3'>{compFeatures[feature]?compFeatures[feature]:''}</th>
                     </tr>
                     )
                         })}
