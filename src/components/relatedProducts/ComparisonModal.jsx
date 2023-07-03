@@ -37,7 +37,7 @@ export default function ComparisonModal({ onClose, id }) {
         feat[featureObj.feature] = featureObj.value
         comparedFeatures = { ...comparedFeatures, ...feat }
       });
-      console.log('features:', [...features], 'baseFeatures:', baseFeatures, 'comparedFeat:',comparedFeatures)
+      console.log('features:', [...git features], 'baseFeatures:', baseFeatures, 'comparedFeat:',comparedFeatures)
 
     } catch (error) {
       console.error(error);
