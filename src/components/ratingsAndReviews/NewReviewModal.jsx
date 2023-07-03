@@ -11,6 +11,11 @@ export default function NewReviewModal({ onClose }) {
   let productId = useSelector(state=>state.productId);
 
   const [rating, setRating] = useState(0);
+  const [recommended, setRecommended] = useState(null);
+  const [summary, setSummary] = useState('');
+  const [body, setBody] = useState('');
+  const [photos, setPhotos] = useState([]);
+  const [photoKey, setPhotoKey] = useState(0);
   const [characteristics, setCharacteristics] = useState([]);
   const [size, setSize] = useState(null);
   const [width, setWidth] = useState(null);
@@ -54,6 +59,15 @@ export default function NewReviewModal({ onClose }) {
         return '4 Stars - "Good"';
       case 5:
         return '5 Stars - "Great"';
+    }
+  };
+
+  const handleAddPhoto = () => {
+    let url = prompt("Please add a URL:");
+    if (url) {
+      let photo = {photoKey, url}
+      setPhotos([...photos, photo]);
+      setPhotoKey(photoKey + 1);
     }
   };
 
@@ -108,9 +122,10 @@ export default function NewReviewModal({ onClose }) {
                     {rating > 0 ? <div className="pl-4">{getStarRatingText(rating)}</div> : ''}
                   </div>
                 </div>
-                <div className="mb-2">
+                <div className="my-2">
                   <div className="underline">Do You Recommend?</div>
                   <input
+                    onClick={() => { setRecommended(true) }}
                     className="ml-6 mr-2"
                     type='radio'
                     name='recommend'
@@ -119,6 +134,7 @@ export default function NewReviewModal({ onClose }) {
                   />
                   <label htmlFor='rec_yes'>Yes</label>
                   <input
+                    onClick={() => { setRecommended(false) }}
                     className="ml-6 mr-2"
                     type='radio'
                     name='recommend'
@@ -127,40 +143,48 @@ export default function NewReviewModal({ onClose }) {
                   />
                   <label htmlFor='rec_no'>No</label>
                 </div>
-                <div>
-                  <label>Summary</label>
+                <div className="my-2">
+                  <label className="underline">Summary</label>
                   <input
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 my-2"
                     type='text'
                     placeholder="Example: Best purchase ever!"
+                    maxLength="60"
+                    onChange={(event) => { setSummary(event.target.value) }}
                   />
                 </div>
-                <div>
-                  <label>Body</label>
-                  <input
+                <div className="my-2">
+                  <label className="underline">Body</label>
+                  <textarea
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 my-2"
-                    type='text'
                     placeholder="Why did you like the product or not?"
-                  />
+                    maxLength="1000"
+                    onChange={(event) => { setBody(event.target.value) }}
+                  ></textarea>
+                  <div className="text-sm font-light pl-2">{body.length < 50 ? `Minimum required characters left: ${50 - body.length}` : 'Minimum Reached!'}</div>
                 </div>
-                <div>
-                  <label>Photos</label>
+                <div className="my-2 flex flex-col">
+                  <label className="underline pb-2">Photos</label>
+                  {photos.length < 5 ? <button
+                    className="text-xs font-light text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 rounded-lg px-2 py-1 w-24"
+                    onClick={handleAddPhoto}
+                  >Choose File</button> : ''}
+                  <div className="pl-2 text-xs font-light">
+                    {photos.length > 0 ? photos.map((photo) => {
+                      return <img className="shadow-md object-cover h-32 w-24 inline m-2" key={photo.photoKey} src={photo.url} />
+                    }) : "No Photos Added"}
+                  </div>
+                </div>
+                <div className="my-2">
+                  <label className="underline">Nickname</label>
                   <input
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 my-2"
                     type='text'
                     placeholder="review text"
                   />
                 </div>
-                <div>
-                  <label>Nickname</label>
-                  <input
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 my-2"
-                    type='text'
-                    placeholder="review text"
-                  />
-                </div>
-                <div>
-                  <label>email</label>
+                <div className="my-2">
+                  <label className="underline">email</label>
                   <input
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 my-2"
                     type='text'
@@ -170,7 +194,7 @@ export default function NewReviewModal({ onClose }) {
               </div>
               <div className="w-2/4 px-12">
                 <div className="mb-2 divide-y divide-dashed">
-                  {characteristics.map((each) => { return <FormCharacteristics characteristic={each} handleRateCharacter={handleRateCharacter} />})}
+                  {characteristics.map((each) => { return <FormCharacteristics characteristic={each} handleRateCharacter={handleRateCharacter} key={each} />})}
                 </div>
               </div>
             </div>
