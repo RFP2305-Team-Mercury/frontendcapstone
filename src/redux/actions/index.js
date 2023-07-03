@@ -99,3 +99,8 @@ export const setComparisonId = (id) =>{
     payload:id
   }
 }
+export const newReviewModal = ()=>{
+  return {
+    type: 'NEW_REVIEW_MODAL'
+  }
+}

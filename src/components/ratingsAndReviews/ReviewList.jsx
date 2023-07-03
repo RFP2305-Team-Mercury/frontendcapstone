@@ -1,11 +1,14 @@
 import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
+import { useSelector, useDispatch } from 'react-redux';
+import { openModal, newReviewModal } from '../../redux/actions';
 
 const { useState, useEffect } = React;
 
 const ReviewList = ({reviews, sortOption, handleChangeSort, filters}) => {
   const [count, setCount] = useState(2);
   const [renderedReviews, setRenderedReviews] = useState([]);
+  const dispatch = useDispatch();
 
   const setReviews = () => {
     let result = [];
@@ -25,6 +28,11 @@ const ReviewList = ({reviews, sortOption, handleChangeSort, filters}) => {
       }
     }
     setRenderedReviews(result);
+  };
+
+  const handleAddReview = () => {
+    dispatch(newReviewModal());
+    dispatch(openModal());
   };
 
   useEffect(() => {
@@ -52,7 +60,7 @@ const ReviewList = ({reviews, sortOption, handleChangeSort, filters}) => {
           <option value="helpful">Helpful</option>
         </select>
       </div>
-      <div className="overflow-auto px-4 max-h-[86vh]">
+      <div className="overflow-auto px-4 max-h-[85vh] border-solid border-2 my-4">
         {renderedReviews.map((review) => {
           return <ReviewTile review={review} key={review.review_id} />
         })}
@@ -62,6 +70,7 @@ const ReviewList = ({reviews, sortOption, handleChangeSort, filters}) => {
         className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow mr-4"
       >MORE REVIEWS</button> : ''}
       <button
+        onClick={handleAddReview}
         className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow"
       >ADD A REVIEW +</button>
     </div>
