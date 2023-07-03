@@ -42,6 +42,21 @@ export default function NewReviewModal({ onClose }) {
     }
   };
 
+  const getStarRatingText = (rating) => {
+    switch (rating) {
+      case 1:
+        return '1 Star - "Poor"';
+      case 2:
+        return '2 Stars - "Fair"';
+      case 3:
+        return '3 Stars - "Average"';
+      case 4:
+        return '4 Stars - "Good"';
+      case 5:
+        return '5 Stars - "Great"';
+    }
+  };
+
   useEffect(() => {
     async function fetchMeta() {
       try {
@@ -75,21 +90,23 @@ export default function NewReviewModal({ onClose }) {
             {/* <h2 className="px-6 py-2 text-xl">for product {productId}</h2> */}
             <div className="relative p-6 flex justify-between space-x-12 divide-x divide-solid">
               <div className="w-2/4 pl-12">
-                <div className="flex flex-col justify-between mb-2">
+                <div className="flex flex-col mb-2">
                   <label className="underline">Overall Rating:</label>
-                  <StarRatings
-                    rating={rating}
-                    starRatedColor="blue"
-                    changeRating={setRating}
-                    numberOfStars={5}
-                    name='rating'
-                    starDimension="24px"
-                    starSpacing="5px"
-                    starRatedColor="green"
-                    starEmptyColor="lightgray"
-                    starHoverColor="green"
-                  />
-                  {rating > 0 ? <div>{rating} stars</div> : ''}
+                  <div className="flex flex-row">
+                    <StarRatings
+                      rating={rating}
+                      starRatedColor="blue"
+                      changeRating={setRating}
+                      numberOfStars={5}
+                      name='rating'
+                      starDimension="24px"
+                      starSpacing="5px"
+                      starRatedColor="green"
+                      starEmptyColor="lightgray"
+                      starHoverColor="green"
+                    />
+                    {rating > 0 ? <div className="pl-4">{getStarRatingText(rating)}</div> : ''}
+                  </div>
                 </div>
                 <div className="mb-2">
                   <div className="underline">Do You Recommend?</div>
