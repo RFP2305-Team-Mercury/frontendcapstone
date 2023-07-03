@@ -56,7 +56,7 @@ let productId = useSelector(state=>state.productId)
   const mapSearch = mapQuestions.map((el,index) => {
 
   if(!el.loadAnswers){
-   el.loadAnswers = 'Load More Answers'
+   el.loadAnswers = 'LOAD MORE ANSWERS'
  }
 
 
@@ -144,7 +144,9 @@ let productId = useSelector(state=>state.productId)
    const photos = el.answers[a].photos.map((pic) => {
     return(
       <>
-      <img className = 'flex item-center p-0 w-20 h-20 border border-black font-bold' src = {pic} alt ="answer"/>
+      <div className = 'p-2'>
+      <img className = 'flex item-center p-0 w-25 h-20 border border-black font-bold' src = {pic} alt ="answer"/>
+      </div>
       </>
     )
    })
@@ -153,23 +155,24 @@ let productId = useSelector(state=>state.productId)
     while(index < ACount){
       return(
         <>
-        <div className = 'flex item-center'>
-          <h3 className = 'font-bold p-2'>A:</h3>
-           <p className = 'UserAnswers p-2'>{el.answers[a].body}</p>
+        <div className = 'text-lg flex items-center'>
+          <h3 className = 'font-bold py-2'>A:</h3>
+           <p className = 'UserAnswers pl-2 text-base'>{el.answers[a].body}</p>
         </div>
 
-           <p className = 'flex item-center'>{photos}</p>
+           <p className = 'flex items-center px-5'>{photos}</p>
 
-         <div className = 'flex item-center p-2'>
-           <aside>by {(el.answers[a].answerer_name === 'Seller' || el.answers[a].answerer_name === 'seller') ? <strong>{el.answers[a].answerer_name}</strong> : el.answers[a].answerer_name},  {date}</aside>
-          </div>
-          <div className = 'p-2'>
-           <label className ='helpful'>
-             Helpful? <button onClick = {helpfulAClick}>Yes ({el.answers[a].helpfulness}) </button>
+         <div className = 'flex items-center text-xs px-5'>
+           <aside className = 'p-2'>by {(el.answers[a].answerer_name === 'Seller' || el.answers[a].answerer_name === 'seller') ? <strong>{el.answers[a].answerer_name}</strong> : el.answers[a].answerer_name},  {date}</aside>
+           <div className = 'border-l border-gray-400 h-4'></div>
+          <div className = 'text-xs'>
+           <label className ='helpful p-2 '>
+             Helpful? <button className = 'underline' onClick = {helpfulAClick}>Yes</button> ({el.answers[a].helpfulness})
            </label>
-           <label className ='p-2'>
-           <button onClick = {reportClick}>{el.answers[a].report}</button>
+           <label className ='border-l border-gray-400 h-4'>
+           <button className ='underline p-2' onClick = {reportClick}>{el.answers[a].report}</button>
            </label>
+           </div>
            </div>
         </>
       )
@@ -189,13 +192,19 @@ let productId = useSelector(state=>state.productId)
     return(
       <>
       <div key = {el} className ='QA' >
-      <div className = 'flex items-center'>
-      <h3 key = {el.question_id} className = 'font-bold p-2'>Q: {el.question_body}</h3>
-      <label className ='helpful'>
-        Helpful? <button key = {index} onClick = {helpfulQClick}> Yes ({el.question_helpfulness})</button>
+      <div className = 'flex justify-between'>
+      <h3 key = {el.question_id} className = 'text-lg font-bold'>Q:</h3>
+      <h3 className = 'text-lg font-bold px-2'>{el.question_body}</h3>
+      <div className = 'ml-auto'>
+      <label className ='helpful px-2 text-xs'>
+        Helpful? <button className = 'underline' key = {index} onClick = {helpfulQClick}> Yes </button> ({el.question_helpfulness})
       </label>
-      <label className ='Add Answer p-2'>
-      <button onClick = {() => handleAClick()}>Add Answer</button>
+      </div>
+      <div className = 'flex items-center'>
+      <div className = 'border-l border-gray-400 h-4 p-1'></div>
+      </div>
+      <label className ='Add Answer'>
+      <button className ='underline text-xs' onClick = {() => handleAClick()}>Add Answer</button>
       </label>
       </div>
 
@@ -207,14 +216,19 @@ let productId = useSelector(state=>state.productId)
       </div>
       <div className = 'p-2'>
       <label>
-        {(key.length > 2) ? <button className = 'p-2 font-bold' onClick = {loadA}>{el.loadAnswers}</button> : ''}
+        {(key.length > 2) ? <button className = 'p-2 font-bold text-sm' onClick = {loadA}>{el.loadAnswers}</button> : ''}
       </label>
       <label>
-        <button className = 'p-2 font-bold' onClick = {function(){setQCount(data.length)}}>{el.length > 2 ? 'Load More Questions' : ''}</button>
+        <button className = 'p-2 font-bold' onClick = {function(){setQCount(data.length)}}>{el.length > 2 ? 'LOAD MORE QUESTIONS' : ''}</button>
       </label>
       <br></br>
       <label className = 'p-2'>
-      <button className = ' w-60 h-10 border border-gray-300 font-bold'onClick = {() => handleQClick()}>Add Question +</button>
+      <button className="w-60 h-10 border border-gray-300 font-bold flex items-center justify-center" onClick={() => handleQClick()}>
+      <span className="mr-2">ADD QUESTION</span>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+      </svg>
+      </button>
       </label>
      </div>
       </>

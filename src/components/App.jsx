@@ -17,6 +17,7 @@ export default function App() {
 
   const handleClick = (() => {
     dispatch(question())
+    dispatch(answer())
     dispatch(openModal())
   })
 
@@ -28,7 +29,6 @@ return (
     <QuestionsAndAnswers/>
     <RatingsAndReviews />
     <Modal isOpen={isOpen} type = {useSelector(state => state.modalType)} onClose = {() => dispatch(closeModal())}/>
-    <button onClick = {() => handleClick()}>Open Modal</button>{/* Eventually, move this button inside your component */}
   </div>
 
 )
