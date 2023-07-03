@@ -19,6 +19,7 @@ export default function NewReviewModal({ onClose }) {
   const [nickname, setNickname] = useState(null);
   const [email, setEmail] = useState(null);
   const [characteristics, setCharacteristics] = useState([]);
+  const [characterAPI, setCharacterAPI] = useState(null);
   const [size, setSize] = useState(null);
   const [width, setWidth] = useState(null);
   const [comfort, setComfort] = useState(null);
@@ -156,6 +157,56 @@ export default function NewReviewModal({ onClose }) {
     }
     // validation passed, return true
     return true;
+  };
+
+  const createResponseBody = () => {
+    let result = {};
+    result.product_id = productId;
+    result.rating = rating;
+    result.summary = summary;
+    result.body = body;
+    result.recommend = recommended;
+    result.name = nickname;
+    result.email = email;
+
+    let photoArr = [];
+    for (let photo of photos) {
+      photoArr.push(photo.url);
+    }
+    result.photos = photoArr;
+
+    let characterObj = {};
+    for (let character of characteristics) {
+      let key;
+      switch (character.toLowerCase()) {
+        case 'size':
+          key = characterAPI.Size.id;
+          characterObj[key] = size;
+          break;
+        case 'width':
+          key = characterAPI.Width.id;
+          characterObj[key] = width;
+          break;
+        case 'comfort':
+          key = characterAPI.Comfort.id;
+          characterObj[key] = comfort;
+          break;
+        case 'quality':
+          key = characterAPI.Quality.id;
+          characterObj[key] = quality;
+          break;
+        case 'length':
+          key = characterAPI.Length.id;
+          characterObj[key] = length;
+          break;
+        case 'fit':
+          key = characterAPI.Fit.id;
+          characterObj[key] = fit;
+          break;
+      }
+    }
+    result.characteristics = characterObj;
+    return result;
   }
 
   useEffect(() => {
@@ -166,6 +217,7 @@ export default function NewReviewModal({ onClose }) {
         }
         let metaResult = await api.getMetaData(metaParams);
         setCharacteristics(Object.keys(metaResult.characteristics));
+        setCharacterAPI(metaResult.characteristics);
       } catch (err) {
         console.log(err);
       }
@@ -298,6 +350,8 @@ export default function NewReviewModal({ onClose }) {
                 type="button"
                 onClick={() => {
                   if(validateForm()) {
+                    let body = createResponseBody();
+                    // axios post request
                     dispatch(closeModal())
                   }
                 }}
