@@ -16,7 +16,7 @@ const RelatedProducts = () => {
       .then((RP) => { dispatch(setList(RP)) })
   }, [id])
 
-  return (<><div className='text-lg text-gray-800 m-1 p-1'>Related Products</div><div className="flex justify-between overflow-x-scroll ">{list.map((itemId) => (<RPCard key={itemId} id={itemId} />))}</div></>)
+  return (<><div className='text-lg text-gray-800 m-1 p-1'>Related Products</div><div className="flex justify-left overflow-x-scroll ">{list.map((itemId) => (<RPCard key={itemId} id={itemId} />))}</div></>)
 
 }
 export default RelatedProducts

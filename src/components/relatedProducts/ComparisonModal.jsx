@@ -13,11 +13,15 @@ export default function ComparisonModal({ onClose, id }) {
   const [comparedDetails, setComparedDetails] = useState({});
   const [baseStars, setBaseStars] = useState(0);
   const [comparedStars, setComparedStars] = useState(0);
-  let baseFeatures, comparedFeatures;
-  let features = new Set([]);
+  const [features, setFeatures] = useState([])
+  const [baseFeatures, setBaseFeatures] = useState([])
+  const [compFeatures, setCompFeatures] = useState([])
+
+  let featuresSet = new Set([]);
 
   const fetchData = async () => {
     try {
+      let bFeatures, cFeatures;
       const data = await api.getCardInfo(productId);
       const compared = await api.getCardInfo(comparisonId)
       setBaseDetails(data);
@@ -25,19 +29,23 @@ export default function ComparisonModal({ onClose, id }) {
       setBaseStars(data.stars);
       setComparedStars(compared.stars);
       data.features.forEach((featureObj) => {
-        features.add(featureObj.feature)
+        featuresSet.add(featureObj.feature)
         let feat = {};
         feat[featureObj.feature] = featureObj.value
         console.log(feat)
-        baseFeatures = { ...baseFeatures, ...feat }
+        bFeatures = {...bFeatures, ...feat }
       });
       compared.features.forEach((featureObj) => {
-        features.add(featureObj.feature)
+        featuresSet.add(featureObj.feature)
         let feat = {};
         feat[featureObj.feature] = featureObj.value
-        comparedFeatures = { ...comparedFeatures, ...feat }
+        cFeatures = {...cFeatures, ...feat }
       });
-      console.log('features:', [...git features], 'baseFeatures:', baseFeatures, 'comparedFeat:',comparedFeatures)
+      const set = [...featuresSet]
+      console.log('features:', set, 'baseFeatures:', bFeatures, 'comparedFeat:',cFeatures)
+      setFeatures(set)
+      setBaseFeatures(bFeatures)
+      setCompFeatures(cFeatures)
 
     } catch (error) {
       console.error(error);
@@ -47,9 +55,9 @@ export default function ComparisonModal({ onClose, id }) {
 
   useEffect(() => {
     fetchData();
+    // setFeatures([...featuresSet])
+    // console.log('inside use effect', features)
   }, []);
-
-
 
   return ReactDom.createPortal(
     <>
@@ -106,18 +114,17 @@ export default function ComparisonModal({ onClose, id }) {
                         starSpacing="2px"
                       />}</th>
                     </tr>
-                    <tr className='flex block justify-between w-full'>
-                      <th className='text-md px-6 py-3 text-center'>{baseDetails.price}</th>
+                    <tr className='flex block w-full justify-between'>
+                      <th className='text-md px-6 py-3'>{baseDetails.price}</th>
                       <th className='text-md px-6 py-3'>Price</th>
-                      <th className='text-md px-6 py-3 text-center'>{comparedDetails.price}</th>
+                      <th className='text-md px-6 py-3'>{comparedDetails.price}</th>
                     </tr>
-                    {[...features].map((feature)=>{ return (
-                      <div>Hello {feature}</div>
-                      // <tr className='flex block justify-between'>
-                      // <th className='text-lg px-6 py-3 w-1/3'>{baseFeatures[feature]?baseFeatures[feature]:''}</th>
-                      // <th className='text-lg px-6 py-3 w-1/3'>{feature}</th>
-                      // <th className='text-lg px-6 py-3 w-1/3'>{comparedFeatures[feature]?comparedFeatures[feature]:''}</th>
-                    // </tr>
+                    {features.map((feature)=>{ return (
+                      <tr className='flex block justify-between'>
+                      <th className='text-lg px-6 py-3 w-1/3'>{baseFeatures[feature]?baseFeatures[feature]:''}</th>
+                      <th className='text-lg px-6 py-3 w-1/3'>{feature}</th>
+                      <th className='text-lg px-6 py-3 w-1/3'>{compFeatures[feature]?compFeatures[feature]:''}</th>
+                    </tr>
                     )
                         })}
 
