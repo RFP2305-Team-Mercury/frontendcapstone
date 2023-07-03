@@ -10,7 +10,7 @@ const ReviewTile = ({review}) => {
   const [helpfulCount, setHelpfulCount] = useState(0);
   const [requestSent, setRequestSent] = useState(false);
   const [reported, setReported] = useState(false);
-  const formattedDate = format(parseISO(review.date), 'MMMM dd, yyyy');
+  const formattedDate = format(parseISO(review.date.slice(0, 10)), 'MMMM dd, yyyy');
 
   useEffect(() => {
     setHelpfulCount(review.helpfulness);
