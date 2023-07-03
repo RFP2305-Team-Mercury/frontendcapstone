@@ -65,13 +65,98 @@ export default function NewReviewModal({ onClose }) {
   };
 
   const handleAddPhoto = () => {
+    const isValidUrl = (string) => {
+      try {
+        new URL(string);
+        return true;
+      } catch (err) {
+        return false;
+      }
+    }
     let url = prompt("Please add a URL:");
-    if (url) {
+    if (!isValidUrl(url)) {
+      alert("Not a Valid URL");
+      return;
+    } else {
       let photo = {photoKey, url}
       setPhotos([...photos, photo]);
       setPhotoKey(photoKey + 1);
     }
   };
+
+  const validateForm = () => {
+    // verify overall rating selected
+    if (!rating) {
+      alert('Please Choose and Overall Rating!');
+      return false;
+    }
+    // verify recommended selection
+    if (recommended === null) {
+      alert('Please select an option for "Do You Recommend?"');
+      return false;
+    }
+    // verify body is at least 50 characters
+    if (body.length < 50) {
+      alert('Please provide a "Review Body" of at least 50 characters.');
+      return false;
+    }
+    // verify any photo urls are valid
+     // validating in the addPhoto function
+
+    // verify nickname provided
+    if (!nickname || !nickname.length) {
+      alert('Please provide a Nickname!');
+      return false;
+    }
+    // verify email provided and valid format
+    if (!email || !email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)) {
+      alert('Please provide a Valid Email!');
+      return false;
+    }
+    // verify all relevant characteristics have ratings
+    for (let character of characteristics) {
+      switch (character.toLowerCase()) {
+        case 'size':
+          if (!size) {
+            alert(`Please select a rating for "${character}".`)
+            return false;
+          }
+          break;
+        case 'width':
+          if (!width) {
+            alert(`Please select a rating for "${character}".`)
+            return false;
+          }
+          break;
+        case 'comfort':
+          if (!comfort) {
+            alert(`Please select a rating for "${character}".`)
+            return false;
+          }
+          break;
+        case 'quality':
+          if (!quality) {
+            alert(`Please select a rating for "${character}".`)
+            return false;
+          }
+          break;
+        case 'length':
+          if (!length) {
+            alert(`Please select a rating for "${character}".`)
+            return false;
+          }
+          break;
+        case 'fit':
+          if (!fit) {
+            alert(`Please select a rating for "${character}".`)
+            return false;
+          }
+          break;
+      }
+    }
+    // validation passed, return true
+    return true;
+  }
 
   useEffect(() => {
     async function fetchMeta() {
@@ -211,7 +296,11 @@ export default function NewReviewModal({ onClose }) {
               <button
                 className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
-                onClick={() => dispatch(closeModal())}
+                onClick={() => {
+                  if(validateForm()) {
+                    dispatch(closeModal())
+                  }
+                }}
               >Submit</button>
               <button
                 className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
