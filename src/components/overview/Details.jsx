@@ -44,7 +44,7 @@ export default function Details() {
         </h3>
         <h2
         data-testid="category-test"
-        className="text-lg text-gray-800 mx-4">{details.category}</h2>
+        className="text-lg text-gray-800 mx-4">{details['category']}</h2>
         <h1 className="text-3xl text-gray-800 font-bold my-4 mx-4"
         data-testid="name-test"
         >
