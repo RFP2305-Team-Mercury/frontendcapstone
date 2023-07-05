@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getStyles } from "../../apis/product.js";
 import Cart from "./Cart.jsx";
+import { CircleCheck } from "../../utils/icons.jsx";
 
 export default function Styles() {
   const productId = useSelector((state) => state.productId);
@@ -14,8 +15,8 @@ export default function Styles() {
       const data = await getStyles(productId);
       dispatch({ type: "SET_STYLES", payload: data });
       dispatch({ type: "SET_SELECTED", payload: data[0] });
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -39,25 +40,28 @@ export default function Styles() {
           if (style === selected) {
             return (
               <>
-                <div className="relative">
+                <div className="relative" >
                   <img
+                    data-testid="style-selected"
                     src={style.photos[0].thumbnail_url}
                     alt={style.name}
                     key={style.style_id}
                     onClick={() => handleSelect(style.style_id)}
-                    className="w-16 h-16 rounded-full border-4 border-black mx-4 mt-2"
+                    className="w-16 h-16 rounded-full mx-4 mt-2 object-cover border-2 border-black"
                   />
-                  <span className="absolute top-0 right-0 flex items-center justify-center rounded-full w-5 h-5">
+                  <span className="absolute top-1 right-1 flex items-center justify-center w-8 h-8 z-1">
                     <svg
-                      className="w-6 h-6 text-black"
+                      className="w-5 h-5"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
-                      fill="currentColor"
+                      fill="white"
+                      strokeWidth="1"
+                      stroke="black"
                     >
                       <path
-                        fillRule="evenodd"
-                        d="M8.061 13.528l-4.279-4.28-1.414 1.414 5.693 5.693 11.312-11.313-1.414-1.414z"
-                        clipRule="evenodd"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
                   </span>
@@ -70,8 +74,9 @@ export default function Styles() {
                 src={style.photos[0].thumbnail_url}
                 alt={style.name}
                 key={style.style_id}
+                data-testid="style-image"
                 onClick={() => handleSelect(style.style_id)}
-                className="w-16 h-16 rounded-full mt-2 mx-4"
+                className="w-16 h-16 rounded-full mt-2 mx-4 object-cover"
               />
             );
           }
