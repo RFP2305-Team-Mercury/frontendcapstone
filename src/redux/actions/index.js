@@ -1,16 +1,4 @@
 //RPandOLActions.js
-export const addOutfitItem = (prodID) => {
-  return {
-    type: 'ADD_OUTFIT_ITEM',
-    payload: prodID
-  };
-};
-export const removeOutfitItem = (prodID) => {
-  return {
-    type: 'REMOVE_OUTFIT_ITEM',
-    payload: prodID
-  };
-};
 export const setList = (array) => {
   return {
     type: 'SET_LIST',

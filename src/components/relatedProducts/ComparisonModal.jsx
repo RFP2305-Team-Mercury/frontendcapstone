@@ -56,8 +56,6 @@ export default function ComparisonModal({ onClose, id }) {
 
   useEffect(() => {
     fetchData();
-    // setFeatures([...featuresSet])
-    // console.log('inside use effect', features)
   }, []);
 
   return ReactDom.createPortal(

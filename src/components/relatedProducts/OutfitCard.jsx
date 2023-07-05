@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addOutfitItem, removeOutfitItem, setId } from '../../redux/actions'
+import { addOutfitItem, setId, openModal, comparisonModal, setComparisonId } from '../../redux/actions';
 import api from '../../apis/RPandOL.js'
+import StarRatings from 'react-star-ratings'
 
 const OutfitCard = ({ id }) => {
-  const [itemInfo, setItemInfo] = useState({})
-  const dispatch = useDispatch()//line 24: dispatch(setId(id)) instead of console.log
+  const [itemInfo, setItemInfo] = useState({});
+  const [stars, setStars] = useState(5);
+  let starClicked = false;
+  const dispatch = useDispatch();
+  let prodId = useSelector(state=>state.productId);
+  let outfit = JSON.parse(localStorage.getItem('outfit'));
   const fetchCard = async () => {
     let card = await api.getCardInfo(id);
-    setItemInfo(card)
+    setItemInfo(card);
   };
+
   const addCard = ()=>{
-    addOutfitItem(useSelector(state=>state.productId));
-    localStorage.setItem('outfit', JSON.stringify(useSelector(state=>state.outfits)));
+    if (!outfit.includes(prodId)) {
+    outfit = [...outfit, prodId]
+    localStorage.setItem('outfit', JSON.stringify(outfit));
+    }
   }
 
   useEffect(() => {
     fetchCard();
-  }, [useSelector(state=>state.outfits)])
+  }, [])
 
   const star = () => {
     starClicked =true
@@ -35,7 +43,7 @@ const OutfitCard = ({ id }) => {
   }
   if (id === undefined) {
     return (<>
-      <div className='items-center m-2 p-1 border-solid border-2 w-[200px] h-[350px]' data-testid="Outfit Card" onClick={() => { addCard() }}>
+      <div className='shrink-0 m-2 p-1 border-solid border-2 w-2/8 h-[250px]' data-testid="Outfit Card" onClick={() => { addCard() }}>
           <div className='max-w-sm max-h-md'>
             <div className='font-medium text-lg'>Click to add to Your Outfit</div>
           </div>
@@ -43,26 +51,9 @@ const OutfitCard = ({ id }) => {
     </>)
   }
 
-  return (
-    <>
-      <div className='grid-auto-rows' data-testid="Outfit Card">
-        <div  onClick={() => { dispatch(setId(id)) }}>
-          <div className='max-w-sm max-h-md'>
-            <img src={itemInfo.thumbnail} />
-          </div>
-          <div>
-            <div className='italic text-m'>{itemInfo.category}</div>
-            <div className='font-medium text-lg'>{itemInfo.name}</div>
-            <div>{itemInfo.slogan}</div>
-            <div className='italic text-sm'>{itemInfo.price}</div>
-          </div>
-        </div>
-        <button onClick={() => { removeItem() }}>unstar</button>
-      </div>
-    </>)
 return (
     <>
-      <div className='m-2 p-1 border-solid border-2 w-[200px]' data-testid="Outfit Card">
+      <div className='shrink-0 m-2 p-1 border-solid border-2 w-[200px]' data-testid="Outfit Card">
         <div onClick={() => { changeCard() }}>
           <div className='relative max-w-full bg-gray-300 '>
             <img className="w-full h-[150px] object-contain justify-center items-center" src={itemInfo.thumbnail} />
