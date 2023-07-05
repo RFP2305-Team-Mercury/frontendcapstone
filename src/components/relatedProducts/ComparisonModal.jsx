@@ -42,9 +42,9 @@ export default function ComparisonModal({ onClose, id }) {
         feat[featureObj.feature] = featureObj.value
         cFeatures = { ...cFeatures, ...feat }
       });
-      const set = [...featuresSet]
+      const fset = [...featuresSet]
       console.log('features:', set, 'baseFeatures:', bFeatures, 'comparedFeat:', cFeatures)
-      setFeatures(set)
+      setFeatures(fset)
       setBaseFeatures(bFeatures)
       setCompFeatures(cFeatures)
 
