@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getStyles } from "../../apis/product.js";
 import Cart from "./Cart.jsx";
 import { CircleCheck } from "../../utils/icons.jsx";
+import { CircleCheck } from "../../utils/icons.jsx";
 
 export default function Styles() {
   const productId = useSelector((state) => state.productId);
@@ -15,6 +16,8 @@ export default function Styles() {
       const data = await getStyles(productId);
       dispatch({ type: "SET_STYLES", payload: data });
       dispatch({ type: "SET_SELECTED", payload: data[0] });
+    } catch (err) {
+      console.error(err);
     } catch (err) {
       console.error(err);
     }
@@ -40,8 +43,9 @@ export default function Styles() {
           if (style === selected) {
             return (
               <>
-                <div className="relative">
+                <div className="relative" >
                   <img
+                    data-testid="style-selected"
                     data-testid="style-selected"
                     src={style.photos[0].thumbnail_url}
                     alt={style.name}
