@@ -5,7 +5,9 @@ import { useSelector } from 'react-redux';
 import { setList } from '../../redux/actions'
 
 const OutfitList = () => {
-  let outfits = useSelector(state => state.outfits);
+  let outfits = JSON.parse(localStorage.getItem('outfits'));
+  if (outfits === null) outfits = []
+  console.log(outfits)
 
   return (<div className='min-h-96'><div className='text-lg font-semibold'>Your Outfit</div><div className="flex justify-between overflow-x-scroll "><OutfitCard />{outfits.map((itemId) => (<OutfitCard key={itemId} id={itemId} />))}</div></div>)
 

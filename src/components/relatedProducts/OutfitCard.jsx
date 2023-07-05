@@ -4,7 +4,6 @@ import { addOutfitItem, removeOutfitItem, setId } from '../../redux/actions'
 import api from '../../apis/RPandOL.js'
 
 const OutfitCard = ({ id }) => {
-
   const [itemInfo, setItemInfo] = useState({})
   const dispatch = useDispatch()//line 24: dispatch(setId(id)) instead of console.log
   const fetchCard = async () => {
@@ -12,12 +11,13 @@ const OutfitCard = ({ id }) => {
     setItemInfo(card)
   };
   const addCard = ()=>{
-    addOutfitItem(useSelector(state=>state.productId))
+    addOutfitItem(useSelector(state=>state.productId));
+    localStorage.setItem('outfit', JSON.stringify(useSelector(state=>state.outfits)));
   }
 
   useEffect(() => {
     fetchCard();
-  }, [])
+  }, [useSelector(state=>state.outfits)])
 
   const star = () => {
     starClicked =true
