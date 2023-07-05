@@ -2,6 +2,7 @@ import React from 'react'
 import InputModal from './QuestionsAnswers/InputModal.jsx'
 import AnswerModal from './QuestionsAnswers/AnswerModal.jsx'
 import ComparisonModal from './relatedProducts/ComparisonModal.jsx'
+import NewReviewModal from './ratingsAndReviews/NewReviewModal.jsx'
 
 export default function Modal({type, onClose, isOpen}){
  if (!isOpen) return null;
@@ -12,6 +13,8 @@ switch(type){
     return <ComparisonModal onClose={onClose}/>
   case 'AnswerModal':
     return <AnswerModal onClose={onClose}/>
+  case 'NewReviewModal':
+    return <NewReviewModal onClose={onClose}/>
 }
 
 }
