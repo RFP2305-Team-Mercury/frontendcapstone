@@ -43,7 +43,7 @@ export default function ComparisonModal({ onClose, id }) {
         cFeatures = { ...cFeatures, ...feat }
       });
       const fset = [...featuresSet]
-      console.log('features:', set, 'baseFeatures:', bFeatures, 'comparedFeat:', cFeatures)
+      console.log('features:', features, 'baseFeatures:', bFeatures, 'comparedFeat:', cFeatures)
       setFeatures(fset)
       setBaseFeatures(bFeatures)
       setCompFeatures(cFeatures)
@@ -136,14 +136,13 @@ export default function ComparisonModal({ onClose, id }) {
                         </th>
                       )}
                     </tr>
-                    {features.map((feature) => {
-                      return (
+                    {features.map((feature) => { return (<>
                         <tr className='flex block justify-between'>
                           <th className='text-md px-6 py-3 w-1/3'>{baseFeatures[feature] ? baseFeatures[feature] : ''}</th>
                           <th className='text-lg px-6 py-3 w-1/3'>{feature}</th>
                           <th className='text-md px-6 py-3 w-1/3'>{compFeatures[feature] ? compFeatures[feature] : ''}</th>
                         </tr>
-                      )
+                        </>)
                     })}
 
                   </tbody>
