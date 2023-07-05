@@ -21,6 +21,7 @@ export default function App() {
 
   const handleClick = (() => {
     dispatch(question())
+    dispatch(answer())
     dispatch(openModal())
   })
 
