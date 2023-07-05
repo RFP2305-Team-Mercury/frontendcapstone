@@ -34,4 +34,5 @@ return (
     <Modal isOpen={isOpen} id = {id} type = {useSelector(state => state.modalType.type)} onClose = {() => dispatch(closeModal())}/>
   </div>
 )
-};
+}
+
