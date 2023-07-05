@@ -41,6 +41,22 @@ export const LeftArrow = ({ onClick }) => {
       </svg>
     </button>
     </>
+    <button onClick={onClick} data-testid="leftArrow">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={2}
+        stroke="black"
+        className="absolute top-1/2 left-1 transform -translate-y-1/2 w-6 h-6 bold rounded-full bg-white"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+        />
+      </svg>
+    </button>
   );
 };
 

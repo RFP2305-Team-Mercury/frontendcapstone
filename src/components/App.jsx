@@ -22,7 +22,6 @@ export default function App() {
 
   const handleClick = (() => {
     dispatch(question())
-    dispatch(answer())
     dispatch(openModal())
   })
 let id = useSelector(state => state.modalType.id)

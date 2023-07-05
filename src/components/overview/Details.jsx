@@ -24,6 +24,7 @@ export default function Details() {
   useEffect(() => {
     fetchData();
   }, [productId]);
+  }, [productId]);
 
   return (
     <>
