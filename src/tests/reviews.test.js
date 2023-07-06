@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDom from 'react-dom';
 import { render, screen, fireEvent } from "@testing-library/react";
 import {Provider} from 'react-redux';
 import store from '../redux/store.js';
@@ -11,6 +12,8 @@ import ReviewBreakdown from '../components/ratingsAndReviews/ReviewBreakdown.jsx
 import ProductBreakdown from '../components/ratingsAndReviews/ProductBreakdown.jsx';
 import ReviewList from '../components/ratingsAndReviews/ReviewList.jsx';
 import ReviewTile from '../components/ratingsAndReviews/ReviewTile.jsx';
+import NewReviewModal from '../components/ratingsAndReviews/NewReviewModal.jsx';
+import FormCharacteristics from '../components/ratingsAndReviews/FormCharacteristics.jsx';
 
 describe(RatingsAndReviews, () => {
   test("Ratings and Reviews renders to the page", () => {
@@ -170,3 +173,54 @@ describe(ReviewTile, () => {
     expect(screen.getByTestId('helpful-count')).toHaveTextContent('0');
   })
 })
+
+describe(NewReviewModal, () => {
+  test("Render New Review Modal", () => {
+    let closed = false;
+    let closedFn = () => { closed = true };
+    render(<div id="portal"></div>)
+    render(
+      <Provider store={store}>
+        <NewReviewModal onClose={closedFn} />
+      </Provider>
+    )
+    const newReviewModal = screen.getByText('Write Your Review');
+    expect(newReviewModal).toBeInTheDocument();
+    expect(screen.getByText('Submit')).toBeInTheDocument();
+    expect(screen.getByText('Discard')).toBeInTheDocument();
+  })
+  test("Submit Button", async () => {
+    let closed = false;
+    let closedFn = () => { closed = true };
+    render(<div id="portal"></div>)
+    render(
+      <Provider store={store}>
+        <NewReviewModal onClose={closedFn} />
+      </Provider>
+    )
+    const button = screen.getByText('Discard');
+    await fireEvent.click(button);
+  })
+});
+
+describe(FormCharacteristics, () => {
+  test("Render any characteristic", async () => {
+    await render(<FormCharacteristics characteristic={'Size'} />)
+    expect(screen.getByText('Size')).toBeInTheDocument();
+    await render(<FormCharacteristics characteristic={'Width'} />)
+    expect(screen.getByText('Width')).toBeInTheDocument();
+    await render(<FormCharacteristics characteristic={'Comfort'} />)
+    expect(screen.getByText('Comfort')).toBeInTheDocument();
+    await render(<FormCharacteristics characteristic={'Quality'} />)
+    expect(screen.getByText('Quality')).toBeInTheDocument();
+    await render(<FormCharacteristics characteristic={'Length'} />)
+    expect(screen.getByText('Length')).toBeInTheDocument();
+    await render(<FormCharacteristics characteristic={'Fit'} />)
+    expect(screen.getByText('Fit')).toBeInTheDocument();
+  })
+
+  test("Render all rating options", () => {
+    render(<FormCharacteristics characteristic={'Size'} />)
+    expect(screen.getAllByRole('radio').length).toEqual(5);
+  })
+});
