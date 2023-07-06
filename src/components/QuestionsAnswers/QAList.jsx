@@ -51,7 +51,7 @@ let productId = useSelector(state=>state.productId)
    .catch((err) => {
     console.log('Error', err)
    })
- },[ACount,search,productId])
+ },[search,productId])
 
 
  useEffect(() => {
@@ -204,17 +204,17 @@ useEffect(() => {
   })
 
   const loadA = () => {
+    el.loadAnswers = 'COLLAPSE ANSWERS'
     setACount(key.length)
   }
-
-  if(ACount > 2) {
-    el.loadAnswers = 'COLLAPSE ANSWERS'
+  const collapseA = () => {
+    el.loadAnswers = 'LOAD MORE ANSWERS'
+    setACount(2)
   }
-
 
 
    //Create a while loop which will run while the index of our QUESTION map array is less than the state QCount which will be 4 initially per Business Requirements
-  while(index < QCount){
+  while(index < QCount && key.length >= 1){
 
     return(
       <>
@@ -236,29 +236,12 @@ useEffect(() => {
       </div>
 
       {ACount > 2 ? <div className = 'overflow-y-auto h-32 ...'> {userAnswers} </div> : userAnswers}
-
-
-
-
       </div>
       <div className = 'p-2'>
       <label>
-        {(key.length > 2) ? <button className = 'p-2 font-bold text-sm' onClick = {loadA}>{el.loadAnswers}</button> : ''}
+        {(el.loadAnswers === "LOAD MORE ANSWERS") ? <button className = 'p-2 font-bold text-sm' onClick = {loadA}>{el.loadAnswers}</button> : <button className = 'p-2 font-bold text-sm' onClick = {collapseA}>{el.loadAnswers}</button>}
       </label>
       <br></br>
-      <div className = 'flex space-x-2'>
-      <label>
-        <button className = "w-60 h-10 border border-gray-300 font-bold flex items-center justify-center" onClick = {function(){setQCount(data.length)}}>{data.length > 2 ? 'LOAD MORE QUESTIONS' : ''}</button>
-      </label>
-      <label >
-      <button data-testid="QButton" className="w-60 h-10 border border-gray-300 font-bold flex items-center justify-center" onClick={() => handleQClick()}>
-      <span className="mr-2">ADD QUESTION</span>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
-      </svg>
-      </button>
-      </label>
-      </div>
      </div>
       </>
     )
@@ -277,6 +260,19 @@ if(data.length === 0){
         </svg>
         </button>
         </label>
+        <div className = 'flex space-x-2'>
+      <label>
+        <button className = "w-56 h-14 border border-black font-bold flex items-center justify-center text-base p-4" onClick = {function(){setQCount(data.length)}}>{data.length > 2 ? 'MORE ANSWERED QUESTIONS' : ''}</button>
+      </label>
+      <label >
+      <button data-testid="QButton" className="w-56 h-14 border border-black font-bold flex items-center justify-center text-base p-4" onClick={() => handleQClick()}>
+      <span className="mr-2">ADD QUESTION</span>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+      </svg>
+      </button>
+      </label>
+      </div>
         </>
   )
 } else {
@@ -284,6 +280,19 @@ if(data.length === 0){
     <>
     <div data-testid="scroll" role="region" className = 'overflow-y-auto h-128 ...'>
       {mapSearch}
+      <div className = 'flex space-x-2'>
+      <label>
+        <button className = "w-56 h-14 border border-black font-bold flex items-center justify-center text-base p-4" onClick = {function(){setQCount(data.length)}}>{data.length > 2 ? 'MORE ANSWERED QUESTIONS' : ''}</button>
+      </label>
+      <label >
+      <button data-testid="QButton" className="w-56 h-14 border border-black font-bold flex items-center justify-center text-base p-4" onClick={() => handleQClick()}>
+      <span className="mr-2">ADD QUESTION</span>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+      </svg>
+      </button>
+      </label>
+      </div>
       </div>
     </>
   )
