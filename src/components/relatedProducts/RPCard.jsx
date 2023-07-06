@@ -36,10 +36,10 @@ const RPCard = ({ id }) => {
 
   return (
     <>
-      <div className='m-2 p-1 border-solid border-2 w-[200px]' data-testid="RP Card">
+      <div className='shrink-0 m-2 p-1 border-solid border-2 max-w-2/6' data-testid="RP Card">
         <div onClick={() => { changeCard() }}>
-          <div className='relative max-w-full bg-gray-300 '>
-            <img className="w-full h-[150px] object-contain justify-center items-center" src={itemInfo.thumbnail} />
+          <div className='relative max-w-full h-[250px] bg-gray-300 items-center bg-center'>
+            <img className="shadow-md object-cover h-32 w-24 inline m-2" src={itemInfo.thumbnail} />
             <button onClick={() => { star() }}><svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 30 30"
@@ -54,12 +54,12 @@ const RPCard = ({ id }) => {
             stroke='black'
           /></svg></button>
           </div>
-          <div>
+          <div className='flex flex-col'>
             <div className='italic text-m'>{itemInfo.category}</div>
             <div className='font-medium text-lg'>{itemInfo.name}</div>
             <div>{itemInfo.slogan}</div>
             <div className='italic text-sm'>{itemInfo.price}</div>
-            <div className="" >
+            <div className="justify-bot" >
           {<StarRatings
             rating={Number(stars)}
             numberOfStars={5}

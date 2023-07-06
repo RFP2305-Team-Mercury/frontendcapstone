@@ -15,11 +15,13 @@ const getCardInfo = async (id) => {
 
 
     return {thumbnail: prodThumbnail.data.results[0].photos[0].thumbnail_url,
+            id: id,
             name: productInfo.data.name,
+            sales_price: productInfo.data.sales_price,
             slogan: productInfo.data.slogan,
             category: productInfo.data.category,
             features: productInfo.data.features,
-            price: productInfo.data.default_price,
+            original_price: productInfo.data.default_price,
             stars: stars.calcAvg
           };
 

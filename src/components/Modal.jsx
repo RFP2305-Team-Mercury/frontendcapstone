@@ -4,7 +4,7 @@ import AnswerModal from './QuestionsAnswers/AnswerModal.jsx'
 import ComparisonModal from './relatedProducts/ComparisonModal.jsx'
 import NewReviewModal from './ratingsAndReviews/NewReviewModal.jsx'
 
-export default function Modal({type, onClose, isOpen}){
+export default function Modal({type, onClose, isOpen, id}){
  if (!isOpen) return null;
 switch(type){
   case 'InputModal':
@@ -12,7 +12,7 @@ switch(type){
   case 'ComparisonModal':
     return <ComparisonModal onClose={onClose}/>
   case 'AnswerModal':
-    return <AnswerModal onClose={onClose}/>
+    return <AnswerModal id = {id} onClose={onClose}/>
   case 'NewReviewModal':
     return <NewReviewModal onClose={onClose}/>
 }

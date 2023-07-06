@@ -65,7 +65,7 @@ const selectReducer = (state = initialState, action) => {
     case 'SET_SELECTED':
       return action.payload;
     default:
-      return state
+      return state;
   }
 }
 
