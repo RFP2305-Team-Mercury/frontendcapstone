@@ -35,21 +35,32 @@ export const SET_DETAILS = (data) => {
 };
 
 //input.js
-export const question = () => {
+export const question = (data) => {
   return {
-    type: 'ADD_QUESTION'
+    type: 'ADD_QUESTION',
+    payload: data
   }
 };
-export const answer = () => {
+export const answer = (id) => {
+
   return {
-    type: 'ADD_ANSWER'
+    type: 'ADD_ANSWER',
+    payload: id
   }
+};
+export const setQuestionId = (id) => {
+
+  return {
+    type: 'SET_QUESTION_ID',
+    payload: id
+  };
 };
 
 
-export const openModal = () => {
+export const openModal = (id) => {
   return {
-    type: 'OPEN_MODAL'
+    type: 'OPEN_MODAL',
+    payload: id
   }
 }
 export const closeModal = () => {

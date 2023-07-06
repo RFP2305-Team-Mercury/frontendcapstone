@@ -2,7 +2,7 @@ import React from "react";
 
 export const ExpandIcon = ({ onClick }) => {
   return (
-    <button onClick={onClick} data-testid="expand">
+    <>
     <button onClick={onClick} data-testid="expand">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -17,11 +17,13 @@ export const ExpandIcon = ({ onClick }) => {
         />
       </svg>
     </button>
+    </>
   );
 };
 
 export const LeftArrow = ({ onClick }) => {
   return (
+    <>
     <button onClick={onClick} data-testid="leftArrow">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -38,28 +40,13 @@ export const LeftArrow = ({ onClick }) => {
         />
       </svg>
     </button>
-    <button onClick={onClick} data-testid="leftArrow">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={2}
-        stroke="black"
-        className="absolute top-1/2 left-1 transform -translate-y-1/2 w-6 h-6 bold rounded-full bg-white"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-        />
-      </svg>
-    </button>
+    </>
   );
 };
 
 export const RightArrow = ({ onClick }) => {
   return (
-    <button onClick={onClick} data-testid="rightArrow">
+    <>
     <button onClick={onClick} data-testid="rightArrow">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -76,6 +63,7 @@ export const RightArrow = ({ onClick }) => {
         />
       </svg>
     </button>
+    </>
   );
 };
 

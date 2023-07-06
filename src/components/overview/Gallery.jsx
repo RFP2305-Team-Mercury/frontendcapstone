@@ -17,8 +17,7 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
   const [index, setIndex] = useState(0);
   const maxThumbnails = 7;
   const [isZoomed, setIsZoomed] = useState(false);
-  const maxThumbnails = 7;
-  const [isZoomed, setIsZoomed] = useState(false);
+
 
   const handleThumbnail = (index, url) => {
     setCurrent(url);
@@ -67,23 +66,6 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
     setIsZoomed(false);
   };
 
-  const handleZoom = () => {
-    setIsZoomed(!isZoomed);
-  };
-
-  const scrollUp = () => {
-    setCurrent(photos[index - 1]["url"]);
-    if (index !== 0) {
-      setIndex(index - 1);
-    }
-  };
-
-  const scrollDown = () => {
-    setCurrent(photos[index + 1]["url"]);
-    if (index !== photos.length - 1) {
-      setIndex(index + 1);
-    }
-  };
 
   return (
     <>

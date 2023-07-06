@@ -16,7 +16,7 @@ import QuestionsAndAnswers from "./QuestionsAnswers/QuestionsAnswers.jsx";
 import RatingsAndReviews from "./ratingsAndReviews/RatingsAndReviews.jsx";
 
 export default function App() {
-  let isOpen = useSelector((state) => state.open);
+
   let isOpen = useSelector((state) => state.open);
   const dispatch = useDispatch();
 
@@ -25,15 +25,14 @@ export default function App() {
     dispatch(answer())
     dispatch(openModal())
   })
-
+let id = useSelector(state => state.modalType.id)
 return (
   <div>
     <Overview />
     <RPandOL />
     <QuestionsAndAnswers/>
     <RatingsAndReviews />
-    <Modal isOpen={isOpen} type = {useSelector(state => state.modalType)} onClose = {() => dispatch(closeModal())}/>
+    <Modal isOpen={isOpen} id = {id} type = {useSelector(state => state.modalType.type)} onClose = {() => dispatch(closeModal())}/>
   </div>
 )
-}
-
+};
