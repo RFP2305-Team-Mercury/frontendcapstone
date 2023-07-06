@@ -1,6 +1,6 @@
 import axios from 'axios';
 import config from './apiConfig.js';
-// import getMetrics from '../components/ratingsAndReviews/RatingSummary.jsx'
+import getMetrics from '../components/ratingsAndReviews/getMetrics.js'
 
 const getCardInfo = async (id) => {
   try {
@@ -11,15 +11,18 @@ const getCardInfo = async (id) => {
     let productInfo = await productInfoPromise;
     let prodThumbnail = await prodThumbnailPromise;
     let metaData = await metaDataPromise;
-    console.log('features of product are:',productInfo.data.features)
+    let stars = getMetrics(metaData.data)
+
 
     return {thumbnail: prodThumbnail.data.results[0].photos[0].thumbnail_url,
+            id: id,
             name: productInfo.data.name,
+            sales_price: productInfo.data.sales_price,
             slogan: productInfo.data.slogan,
             category: productInfo.data.category,
             features: productInfo.data.features,
-            price: productInfo.data.default_price,
-            stars: 0//TODO UPDATE THIS
+            original_price: productInfo.data.default_price,
+            stars: stars.calcAvg
           };
 
   } catch (err) {

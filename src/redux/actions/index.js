@@ -1,16 +1,4 @@
 //RPandOLActions.js
-export const addOutfitItem = (prodID) => {
-  return {
-    type: 'ADD_OUTFIT_ITEM',
-    payload: prodID
-  };
-};
-export const removeOutfitItem = (prodID) => {
-  return {
-    type: 'REMOVE_OUTFIT_ITEM',
-    payload: prodID
-  };
-};
 export const setList = (array) => {
   return {
     type: 'SET_LIST',
@@ -107,5 +95,10 @@ export const setComparisonId = (id) =>{
   return {
     type: 'SET_COMPARISON_ID',
     payload:id
+  }
+}
+export const newReviewModal = ()=>{
+  return {
+    type: 'NEW_REVIEW_MODAL'
   }
 }
