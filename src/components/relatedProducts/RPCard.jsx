@@ -39,7 +39,7 @@ const RPCard = ({ id }) => {
       <div className='shrink-0 m-2 p-1 border-solid border-2 max-w-2/6' data-testid="RP Card">
         <div onClick={() => { changeCard() }}>
           <div className='relative max-w-full h-[250px] bg-gray-300 items-center bg-center'>
-            <img className="h-full object-contain justify-center items-center" src={itemInfo.thumbnail} />
+            <img className="shadow-md object-cover h-32 w-24 inline m-2" src={itemInfo.thumbnail} />
             <button onClick={() => { star() }}><svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 30 30"

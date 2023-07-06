@@ -71,14 +71,6 @@ export default function ComparisonModal({ onClose, id }) {
               <h3 className="text-3xl font-semibold">
                 Comparison of {baseDetails.name} and {comparedDetails.name}
               </h3>
-              <button
-                className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                onClick={() => dispatch(closeModal())}
-              >
-                <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                  ×
-                </span>
-              </button>
             </div>
             {/*body*/}
             <div className="relative w-full flex flex-col shadow-large">
@@ -131,7 +123,7 @@ export default function ComparisonModal({ onClose, id }) {
                           {salePrice(comparedDetails.original_price)}
                         </th>
                       ) : (
-                        <th className='text-md px-6 py-3 w-1/3'>
+                        <th className='text-md px-6 py-3 w-1/3' data-testid='prices'>
                           {comparedDetails.original_price}
                         </th>
                       )}
@@ -154,7 +146,7 @@ export default function ComparisonModal({ onClose, id }) {
             <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
               <button
                 className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button"
+                type="button" data-testid='closeButton'
                 onClick={() => dispatch(closeModal())}
               >
                 Close
