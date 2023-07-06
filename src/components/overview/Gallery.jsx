@@ -52,6 +52,19 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
   const handleZoom = () => {
     setIsZoomed(!isZoomed);
   };
+  const scrollUp = () => {
+    setCurrent(photos[index - 1]["url"]);
+    if (index !== 0) {
+      setIndex(index - 1);
+    }
+  };
+
+  const scrollDown = () => {
+    setCurrent(photos[index + 1]["url"]);
+    if (index !== photos.length - 1) {
+      setIndex(index + 1);
+    }
+  };
 
   return (
     <>
@@ -72,12 +85,12 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
               alt="Expanded Product Image"
             />
             <ExpandIcon onClick={handleExpand} />
+            {index !== 0 && <UpChevron onClick={scrollUp}/>}
             <div
               className="absolute top-1/2 left-10 transform -translate-y-1/2 z-8"
               data-testid="thumbnail-div"
              style={{ height: "150px", overflow: "auto", width: "50px" }}
             >
-            {photos.length > 6 ? <UpChevron /> : ""}
             {photos.map((photo, position) => {
                   return (
                     <img
@@ -98,7 +111,7 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
                   );
                 })}
             </div>
-            {photos.length > 6 ? <DownChevron /> : ""}
+            {index !== photos.length - 1 && <DownChevron onClick={scrollDown}/>}
             {index !== 0 && <LeftArrow onClick={handleLeft} />}
             {index !== photos.length - 1 && (
               <RightArrow onClick={handleRight} />

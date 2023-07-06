@@ -4,6 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
+    "start": "node server/index.js",
     "test": "npx jest --verbose --coverage",
     "dev": "webpack --watch",
     "build": "npx webpack",

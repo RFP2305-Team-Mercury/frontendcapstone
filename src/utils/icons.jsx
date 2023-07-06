@@ -74,9 +74,9 @@ export const DownChevron = ({ onClick }) => {
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
-        strokeWidth="1.5"
-        stroke="currentColor"
-        className="w-3 h-3 justify-center"
+        strokeWidth="3"
+        stroke="white"
+        className="w-4 h-4 justify-center absolute top-[58vh] left-10 transform -translate-y-1/2 z-8"
       >
         <path
           strokeLinecap="round"
@@ -95,9 +95,9 @@ export const UpChevron = ({ onClick }) => {
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
-        strokeWidth="1.5"
-        stroke="currentColor"
-        className="w-3 h-3 justify-center"
+        strokeWidth="3"
+        stroke="white"
+        className="w-4 h-4 justify-center absolute top-[33vh] left-10 transform -translate-y-1/2 z-8"
       >
         <path
           strokeLinecap="round"
