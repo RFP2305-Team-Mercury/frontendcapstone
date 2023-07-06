@@ -144,7 +144,7 @@ describe("Styles component meets business requirements", () => {
     });
   });
 
-  test("dfas", async () => {
+  test("Check if styles change when clicking a new image", async () => {
     render(
       <Provider store={store}>
         <Styles />

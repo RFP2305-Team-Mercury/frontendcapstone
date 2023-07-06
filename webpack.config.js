@@ -8,6 +8,7 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -41,4 +42,13 @@ module.exports = {
       }),
     }),
   ],
+  devServer: {
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    port: 3000, 
+    proxy: {
+      'http://localhost:3000',
+    },
+  },
 };
