@@ -32,7 +32,7 @@ return (
     <RPandOL />
     <QuestionsAndAnswers/>
     <RatingsAndReviews />
-    <Modal isOpen={isOpen} type = {useSelector(state => state.modalType)} onClose = {() => dispatch(closeModal())}/>
+    <Modal isOpen={isOpen} id={useSelector(state => state.modalType.id)} type = {useSelector(state => state.modalType.type)} onClose = {() => dispatch(closeModal())}/>
   </div>
 )
 }
