@@ -70,7 +70,7 @@ export default function Cart() {
           onChange={(e) => setQuantity(e.target.value)}
           className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow ml-7 m-4 p-4 w-24"
         >
-          {!sku ? <option key="100">-</option> : <option key="101">1</option>}
+          {!sku ? <option key="320128">-</option> : <option key="2132312">1</option>}
           {quantityChoice.map((num) => (
             <option value={num} key={num}>
               {num}
