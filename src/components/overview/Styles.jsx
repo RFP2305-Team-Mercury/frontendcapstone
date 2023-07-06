@@ -43,7 +43,7 @@ export default function Styles() {
           if (style === selected) {
             return (
               <>
-                <div className="relative" >
+                <div className="relative">
                   <img
                     data-testid="style-selected"
                     data-testid="style-selected"
