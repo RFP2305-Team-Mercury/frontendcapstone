@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDom from 'react-dom';
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import {Provider} from 'react-redux';
 import store from '../redux/store.js';
 import "@testing-library/jest-dom";
+import axios from 'axios';
+import config from "../apis/apiConfig.js";
+import { sampleReviews, exampleMetaData } from './reviewsTestData.js';
 
 import RatingsAndReviews from '../components/ratingsAndReviews/RatingsAndReviews.jsx';
 import RatingSummary from '../components/ratingsAndReviews/RatingSummary.jsx';
@@ -15,6 +18,8 @@ import ReviewTile from '../components/ratingsAndReviews/ReviewTile.jsx';
 import NewReviewModal from '../components/ratingsAndReviews/NewReviewModal.jsx';
 import FormCharacteristics from '../components/ratingsAndReviews/FormCharacteristics.jsx';
 
+jest.mock("axios");
+
 describe(RatingsAndReviews, () => {
   test("Ratings and Reviews renders to the page", () => {
     render(
@@ -24,41 +29,21 @@ describe(RatingsAndReviews, () => {
     );
     expect(screen.getByRole('heading')).toHaveTextContent('Ratings & Reviews');
   })
+
+  test("Pulls product reviews", async () => {
+    jest.spyOn(axios, "get").mockResolvedValue({ data: exampleMetaData });
+    render(
+      <Provider store={store}>
+        <RatingsAndReviews />
+      </Provider>
+    );
+    await waitFor(() => {
+      expect(screen.getByTestId('summary-average'))
+    })
+  })
 });
 
 describe(RatingSummary, () => {
-  const exampleMetaData = {
-    "product_id": "40346",
-    "ratings": {
-        "1": "25",
-        "2": "54",
-        "3": "53",
-        "4": "42",
-        "5": "94"
-    },
-    "recommended": {
-        "false": "70",
-        "true": "198"
-    },
-    "characteristics": {
-        "Fit": {
-            "id": 135224,
-            "value": "2.8423645320197044"
-        },
-        "Length": {
-            "id": 135225,
-            "value": "3.1219512195121951"
-        },
-        "Comfort": {
-            "id": 135226,
-            "value": "3.0000000000000000"
-        },
-        "Quality": {
-            "id": 135227,
-            "value": "3.3830845771144279"
-        }
-    }
-  };
   test("Calculate Metrics Correctly", () => {
     const exampleResult = getMetrics(exampleMetaData);
     expect(exampleResult.calcCount).toEqual(268);
@@ -144,18 +129,7 @@ describe(ReviewList, () => {
 });
 
 describe(ReviewTile, () => {
-  const exampleReview = {
-    "review_id": 1280250,
-    "rating": 3,
-    "summary": "I loved it",
-    "recommend": true,
-    "response": null,
-    "body": "this is a great onesie",
-    "date": "2023-07-03T00:00:00.000Z",
-    "reviewer_name": "onesielover",
-    "helpfulness": 0,
-    "photos": []
-  }
+  const exampleReview = sampleReviews.results[0];
 
   test("Render Individual Review Tile", () => {
     render(<ReviewTile review={exampleReview} />)
@@ -176,6 +150,7 @@ describe(ReviewTile, () => {
 
 describe(NewReviewModal, () => {
   test("Render New Review Modal", () => {
+    jest.spyOn(axios, "get").mockResolvedValue({ data: exampleMetaData });
     let closed = false;
     let closedFn = () => { closed = true };
     render(<div id="portal"></div>)
@@ -185,9 +160,26 @@ describe(NewReviewModal, () => {
       </Provider>
     )
     const newReviewModal = screen.getByText('Write Your Review');
+    const submitInput = screen.getByText('Submit')
+    const discardInput = screen.getByText('Discard')
+    const overallRatingInput = screen.getByText('Overall Rating:')
+    const recommendInput = screen.getByText('Do You Recommend?')
+    const summaryInput = screen.getByText('Summary')
+    const bodyInput = screen.getByText('Body')
+    const photosInput = screen.getByText('Photos')
+    const nicknameInput = screen.getByText('Nickname')
+    const emailInput = screen.getByText('Email')
+    const qualityCharacteristic = screen.getByText('Quality')
     expect(newReviewModal).toBeInTheDocument();
-    expect(screen.getByText('Submit')).toBeInTheDocument();
-    expect(screen.getByText('Discard')).toBeInTheDocument();
+    expect(submitInput).toBeInTheDocument();
+    expect(discardInput).toBeInTheDocument();
+    expect(overallRatingInput).toBeInTheDocument();
+    expect(recommendInput).toBeInTheDocument();
+    expect(summaryInput).toBeInTheDocument();
+    expect(bodyInput).toBeInTheDocument();
+    expect(photosInput).toBeInTheDocument();
+    expect(nicknameInput).toBeInTheDocument();
+    expect(emailInput).toBeInTheDocument();
   })
   test("Submit Button", async () => {
     let closed = false;
