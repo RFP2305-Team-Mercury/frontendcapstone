@@ -8,7 +8,7 @@ const app = express();
 // MIDDLEWARE
 app.use(morgan('dev'));
 app.use(cors());
-app.use(express.static(path.join(__dirname, '../dist/main.js')));
+app.use(express.static(path.join(__dirname, '../dist')));
 app.use(express.json());
 
 app.listen(3000, () => {
