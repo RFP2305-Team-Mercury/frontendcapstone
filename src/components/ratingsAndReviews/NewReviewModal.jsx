@@ -326,7 +326,7 @@ export default function NewReviewModal({ onClose }) {
                   <div className="text-sm font-light pl-2">For privacy reasons, do not use your full name or email address</div>
                 </div>
                 <div className="my-2">
-                  <label className="underline">email</label>
+                  <label className="underline">Email</label>
                   <input
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 my-2"
                     type='text'
