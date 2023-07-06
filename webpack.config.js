@@ -46,9 +46,7 @@ module.exports = {
     historyApiFallback: true,
     contentBase: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    port: 3000, 
-    proxy: {
-      'http://localhost:3000',
-    },
-  },
+    port: 3000,
+    proxy: 'http://localhost:3000/'
+  }
 };
