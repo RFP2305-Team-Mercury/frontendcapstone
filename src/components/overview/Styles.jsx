@@ -43,18 +43,18 @@ export default function Styles() {
           if (style === selected) {
             return (
               <>
-                <div className="relative" >
+                <div className="relative">
                   <img
                     data-testid="style-selected"
                     src={style.photos[0].thumbnail_url}
                     alt={style.name}
                     key={style.style_id}
                     onClick={() => handleSelect(style.style_id)}
-                    className="w-16 h-16 rounded-full mx-4 mt-2 object-cover border-2 border-black"
+                    className="w-16 h-16 rounded-full mx-2 mt-2 object-cover border-2 border-black z-0"
                   />
-                  <span className="absolute top-1 right-1 flex items-center justify-center w-8 h-8 z-1">
+                  <span className="absolute top-1 right-1 w-16 h-16 z-1 justify-center">
                     <svg
-                      className="w-5 h-5"
+                      className="w-5 h-5 rounded-full"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="white"
@@ -64,11 +64,7 @@ export default function Styles() {
                       strokeWidth="1"
                       stroke="black"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
+                      <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm7 7.457l-9.005 9.565-4.995-5.865.761-.649 4.271 5.016 8.24-8.752.728.685z"/>
                     </svg>
                   </span>
                 </div>
@@ -83,7 +79,7 @@ export default function Styles() {
                 data-testid="style-image"
                 data-testid="style-image"
                 onClick={() => handleSelect(style.style_id)}
-                className="w-16 h-16 rounded-full mt-2 mx-4 object-cover"
+                className="w-16 h-16 rounded-full mt-2 mx-2 object-cover"
               />
             );
           }
