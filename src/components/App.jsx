@@ -25,9 +25,9 @@ return (
 
   <div>
     <Overview />
-    {/* <RPandOL /> */}
+    <RPandOL />
     <QuestionsAndAnswers/>
-    {/* <RatingsAndReviews /> */}
+    <RatingsAndReviews />
     <Modal isOpen={isOpen} type = {useSelector(state => state.modalType)} onClose = {() => dispatch(closeModal())}/>
   </div>
 

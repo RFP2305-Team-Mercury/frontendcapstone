@@ -79,5 +79,5 @@ const reportA = async(id,data) => {
 }
 
 
-export default {getQA ,postQ, putQ, putA, reportA};
+export default {getQA ,postQ, postA, putQ, putA, reportA};
 
