@@ -1,3 +1,5 @@
+import api from '../../apis/QA.js'
+
 
 const modalTypeReducer = (state = 'InputModal', action) => {
   //switch case of actions types where global state will be pulled from redux and change.
@@ -6,11 +8,13 @@ const modalTypeReducer = (state = 'InputModal', action) => {
       //do something
       return state = 'InputModal';
     case 'ADD_ANSWER':
-      //do something
-      return state = 'AnswerModal';
-    case 'REPORT':
-      //do something
-      return state;
+      //do something,
+      const questionId = action.payload
+      return {
+        ...state,
+        type: "AnswerModal",
+        questionId: questionId
+      };
     case 'COMPARISON_MODAL':
       return state = 'ComparisonModal'
     default:

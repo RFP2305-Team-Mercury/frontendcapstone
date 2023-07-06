@@ -24,10 +24,10 @@ export default function App() {
 return (
 
   <div>
-    <Overview />
-    <RPandOL />
+    {/* <Overview />
+    <RPandOL /> */}
     <QuestionsAndAnswers/>
-    <RatingsAndReviews />
+    {/* <RatingsAndReviews /> */}
     <Modal isOpen={isOpen} type = {useSelector(state => state.modalType)} onClose = {() => dispatch(closeModal())}/>
   </div>
 
