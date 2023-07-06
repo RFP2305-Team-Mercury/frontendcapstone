@@ -6,32 +6,6 @@ export const setList = (array) => {
   };
 };
 
-//cartAction.js
-export const addToCart = (sku_id) => {
-  return {
-    type: 'ADD_ITEM',
-    payload: sku_id
-  };
-};
-
-export const selectSize = () => {
-  return {
-    type: 'SELECT_SIZE'
-  };
-};
-
-export const selectQuantity = () => {
-  return {
-    type: 'SELECT_QUANTITY'
-  };
-};
-export const selectStyle = () => {
-  return {
-    type: 'SELECT_STYLE'
-  };
-};
-
-
 //productId.js
 export const setId = (id) => {
   return {
@@ -49,6 +23,13 @@ export const SET_STYLES = (data) => {
 export const SET_SELECTED = (data) => {
   return {
     type: 'SET_SELECTED',
+    payload: data
+  };
+};
+
+export const SET_DETAILS = (data) => {
+  return {
+    type: 'SET_DETAILS',
     payload: data
   };
 };

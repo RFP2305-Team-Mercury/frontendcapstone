@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getStyles } from "../../apis/product.js";
 import Cart from "./Cart.jsx";
+import { CircleCheck } from "../../utils/icons.jsx";
 
 export default function Styles() {
   const productId = useSelector((state) => state.productId);
@@ -14,8 +15,8 @@ export default function Styles() {
       const data = await getStyles(productId);
       dispatch({ type: "SET_STYLES", payload: data });
       dispatch({ type: "SET_SELECTED", payload: data[0] });
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -34,31 +35,31 @@ export default function Styles() {
   return (
     <>
       <h2 className="text-lg text-gray-800 mx-4">Style - {selected.name}</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid grid-cols-4 max-w-md">
         {styles.map((style) => {
           if (style === selected) {
             return (
               <>
                 <div className="relative">
                   <img
+                    data-testid="style-selected"
+                    data-testid="style-selected"
                     src={style.photos[0].thumbnail_url}
                     alt={style.name}
                     key={style.style_id}
                     onClick={() => handleSelect(style.style_id)}
-                    className="w-16 h-16 rounded-full border-4 border-black mx-4 mt-2"
+                    className="w-16 h-16 rounded-full mx-2 mt-2 object-cover border-2 border-black z-0"
                   />
-                  <span className="absolute top-0 right-0 flex items-center justify-center rounded-full w-5 h-5">
+                  <span className="absolute top-1 right-1 w-16 h-16 z-1 justify-center">
                     <svg
-                      className="w-6 h-6 text-black"
+                      className="w-5 h-5 rounded-full"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
-                      fill="currentColor"
+                      fill="white"
+                      strokeWidth="1"
+                      stroke="black"
                     >
-                      <path
-                        fillRule="evenodd"
-                        d="M8.061 13.528l-4.279-4.28-1.414 1.414 5.693 5.693 11.312-11.313-1.414-1.414z"
-                        clipRule="evenodd"
-                      />
+                      <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm7 7.457l-9.005 9.565-4.995-5.865.761-.649 4.271 5.016 8.24-8.752.728.685z"/>
                     </svg>
                   </span>
                 </div>
@@ -70,8 +71,9 @@ export default function Styles() {
                 src={style.photos[0].thumbnail_url}
                 alt={style.name}
                 key={style.style_id}
+                data-testid="style-image"
                 onClick={() => handleSelect(style.style_id)}
-                className="w-16 h-16 rounded-full mt-2 mx-4"
+                className="w-16 h-16 rounded-full mt-2 mx-2 object-cover"
               />
             );
           }
