@@ -69,13 +69,12 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
       {isExpanded ? (
         isZoomed ? (
           <>
-          <ZoomedImage image={current} handleZoom={handleZoom} />
-          <ExpandIcon onClick={handleExpand} />
+          <ZoomedImage image={current} handleExpand={handleExpand} />
           </>
       ) : (
-        <div className="relative h-[600px] mt-2 flex justify-center  items-center content-center overflow-x-visible z-1 bg-gray-300" data-testid="expanded-img">
+        <div className="relative h-[800px] mt-2 flex justify-center items-center content-center overflow-x-visible z-1 bg-gray-300" data-testid="expanded-img">
           <img
-            className="w-[85vw] h-[600px] object-cover cursor-crosshair  custom-cursor border-black border-2 z-1 transition ease-in"
+            className="w-[85vw] h-[800px] object-cover cursor-crosshair custom-cursor border-black border-2 z-1 transition ease-in"
             src={current}
             onClick={handleZoom}
           />

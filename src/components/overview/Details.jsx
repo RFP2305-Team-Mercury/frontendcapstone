@@ -10,14 +10,12 @@ export default function Details() {
   const productId = useSelector((state) => state.productId);
   const selected = useSelector((state) => state.selected);
   const details = useSelector((state) => state.details);
-  const [features, setFeatures] = useState([]);
   const dispatch = useDispatch();
 
   const fetchData = async () => {
     try {
       const data = await getOne(productId);
       dispatch({ type: "SET_DETAILS", payload: data });
-      setFeatures(Object.values(data["features"]));
     } catch (error) {
       console.error(error);
     }

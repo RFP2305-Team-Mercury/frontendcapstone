@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
+import {ExpandIcon} from "../../utils/icons.jsx";
 
-const ZoomedImage = ({ image }) => {
+const ZoomedImage = ({ image, handleExpand }) => {
   const lensRef = useRef(null);
   const imgRef = useRef(null);
   const ratio = 2.5;
@@ -38,7 +39,7 @@ const ZoomedImage = ({ image }) => {
   };
 
   return (
-    <div className="w-full h-[600px] relative" data-testid="zoomed">
+    <div className="w-full h-[800px] relative mt-2" data-testid="zoomed">
       <div
         ref={lensRef}
         className="absolute w-[150px] h-[150px] bg-center bg-no-repeat z-2 border-2 cursor-none bg-repeat-none"
@@ -49,8 +50,9 @@ const ZoomedImage = ({ image }) => {
         ref={imgRef}
         src={image}
         alt="Zoomed Image"
-        className="w-full h-[600px] object-cover m-auto cursor-zoom-in custom-cursor border-black border-2 z-1"
+        className="w-full h-[800px] object-fill m-auto cursor-zoom-in custom-cursor border-black border-2 z-1"
       />
+      <ExpandIcon onClick={handleExpand} />
     </div>
   );
 };

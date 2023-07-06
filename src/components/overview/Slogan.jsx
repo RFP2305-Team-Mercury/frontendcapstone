@@ -9,26 +9,17 @@ import { getOne } from "../../apis/product.js";
 export default function Slogan() {
   const productId = useSelector((state) => state.productId);
   const selected = useSelector((state) => state.selected);
-  const [details, setDetails] = useState({});
+  const details = useSelector((state) => state.details);
   const [features, setFeatures] = useState([]);
-  const dispatch = useDispatch();
-
-  const fetchData = async () => {
-    try {
-      const data = await getOne(productId);
-      setDetails(data);
-      setFeatures(Object.values(data["features"]));
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   useEffect(() => {
-    fetchData();
-  }, [productId]);
+    setFeatures(Object.values(details["features"]));
+  },[productId])
+
+
   return (
     <>
-      <div className="flex-2 w-2/3 mt-4 border-r-2 border-black">
+      <div className="flex-2 w-2/3 mt-4 mb-4 border-r-2 border-black">
         <h2 className="text-lg text-gray-800 mx-10 font-bold"
         data-testid="slogan-test">
           {details.slogan}
