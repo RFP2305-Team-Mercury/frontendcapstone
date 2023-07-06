@@ -9,6 +9,8 @@ import RatingSummary from '../components/ratingsAndReviews/RatingSummary.jsx';
 import getMetrics from '../components/ratingsAndReviews/getMetrics.js';
 import ReviewBreakdown from '../components/ratingsAndReviews/ReviewBreakdown.jsx';
 import ProductBreakdown from '../components/ratingsAndReviews/ProductBreakdown.jsx';
+import ReviewList from '../components/ratingsAndReviews/ReviewList.jsx';
+import ReviewTile from '../components/ratingsAndReviews/ReviewTile.jsx';
 
 describe(RatingsAndReviews, () => {
   test("Ratings and Reviews renders to the page", () => {
@@ -125,3 +127,46 @@ describe(RatingSummary, () => {
     expect(testClicked).toEqual(true);
   })
 });
+
+describe(ReviewList, () => {
+  test('Render Review List', () => {
+    render(
+      <Provider store={store}>
+        <ReviewList reviews={[]} sortOption={'relevant'} filters={[]} />
+      </Provider>
+    )
+    const reviewList = screen.getByText(/Reviews/);
+    expect(reviewList).toBeInTheDocument();
+  })
+});
+
+describe(ReviewTile, () => {
+  const exampleReview = {
+    "review_id": 1280250,
+    "rating": 3,
+    "summary": "I loved it",
+    "recommend": true,
+    "response": null,
+    "body": "this is a great onesie",
+    "date": "2023-07-03T00:00:00.000Z",
+    "reviewer_name": "onesielover",
+    "helpfulness": 0,
+    "photos": []
+  }
+
+  test("Render Individual Review Tile", () => {
+    render(<ReviewTile review={exampleReview} />)
+    const reviewTitle = screen.getByText("I loved it");
+    expect(reviewTitle).toBeInTheDocument();
+  })
+
+  test("Helpfulness Button should Increment", async () => {
+    render(<ReviewTile review={exampleReview} />)
+    const button = screen.getByText('Yes');
+    expect(screen.getByTestId('helpful-count')).toHaveTextContent('0');
+    await fireEvent.click(button);
+    expect(screen.getByTestId('helpful-count')).toHaveTextContent('1');
+    await fireEvent.click(button);
+    expect(screen.getByTestId('helpful-count')).toHaveTextContent('0');
+  })
+})

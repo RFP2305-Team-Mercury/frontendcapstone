@@ -66,7 +66,7 @@ const ReviewTile = ({review}) => {
       <div className="font-light text-gray-600 py-2">
         <span className="mr-1">Helpful?
           <span className="underline mx-2 cursor-pointer" onClick={handleHelpfulClick}>Yes</span>
-          <span>({helpfulCount})</span>
+          <span data-testid="helpful-count">({helpfulCount})</span>
         </span>
           <span className="mx-4 text-xl font-thin">|</span>
           <span className="underline cursor-pointer" onClick={handleReportClick}>Report</span>
