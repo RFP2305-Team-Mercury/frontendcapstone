@@ -14,7 +14,7 @@ const setExpanded = (value) => setIsExpanded(value);
     <Header />
     <div className='w-10/12 flex flex-wrap justify-center m-auto'>
     <Gallery isExpanded={isExpanded}  setIsExpanded={setExpanded}/>
-    {isExpanded ? <></> : <Details />}
+    {isExpanded ? "" : <Details />}
     <Slogan />
     </div>
     </>

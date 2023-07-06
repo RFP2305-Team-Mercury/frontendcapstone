@@ -30,9 +30,9 @@ return (
   <div>
     <Overview />
     <RPandOL />
-    <QuestionsAndAnswers/>
+    {/* <QuestionsAndAnswers/>
     <RatingsAndReviews />
-    <Modal isOpen={isOpen} type = {useSelector(state => state.modalType)} onClose = {() => dispatch(closeModal())}/>
+    <Modal isOpen={isOpen} type = {useSelector(state => state.modalType)} onClose = {() => dispatch(closeModal())}/> */}
   </div>
 )
 }
