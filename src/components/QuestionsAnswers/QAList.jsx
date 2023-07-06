@@ -19,7 +19,7 @@ let isOpen = useSelector(state => state.open)
     dispatch(question())
   })
   const handleAClick = ((id) => {
-    dispatch(openModal())
+    dispatch(openModal(id))
     dispatch(answer(id))
   })
 
@@ -218,20 +218,20 @@ useEffect(() => {
 
     return(
       <>
-      <div key = {el} className ='QA' >
+      <div key = {el} className ='QA' data-testid="Questions">
       <div className = 'flex justify-between'>
       <h3 key = {el.question_id} className = 'text-lg font-bold'>Q:</h3>
       <h3 className = 'text-lg font-bold px-2'>{el.question_body}</h3>
       <div className = 'ml-auto'>
       <label className ='helpful px-2 text-xs'>
-        Helpful? <button className = 'underline' key = {index} onClick = {helpfulQClick}> Yes </button> ({el.question_helpfulness})
+        Helpful? <button  data-testid="helpful"className = 'underline' key = {index} onClick = {helpfulQClick}> Yes </button> ({el.question_helpfulness})
       </label>
       </div>
       <div className = 'flex items-center'>
       <div className = 'border-l border-gray-400 h-4 p-1'></div>
       </div>
       <label className ='Add Answer'>
-      <button className ='underline text-xs' onClick = {() => handleAClick(el.question_id)}>Add Answer</button>
+      <button data-testid="AButton" className ='underline text-xs' onClick = {() => handleAClick(el.question_id)}>Add Answer</button>
       </label>
       </div>
 
@@ -251,7 +251,7 @@ useEffect(() => {
         <button className = "w-60 h-10 border border-gray-300 font-bold flex items-center justify-center" onClick = {function(){setQCount(data.length)}}>{data.length > 2 ? 'LOAD MORE QUESTIONS' : ''}</button>
       </label>
       <label >
-      <button className="w-60 h-10 border border-gray-300 font-bold flex items-center justify-center" onClick={() => handleQClick()}>
+      <button data-testid="QButton" className="w-60 h-10 border border-gray-300 font-bold flex items-center justify-center" onClick={() => handleQClick()}>
       <span className="mr-2">ADD QUESTION</span>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
@@ -270,7 +270,7 @@ if(data.length === 0){
   return(
         <>
         <label className = 'p-2'>
-        <button className="w-60 h-10 border border-gray-300 font-bold flex items-center justify-center" onClick={() => handleQClick()}>
+        <button data-testid="QButton" className="w-60 h-10 border border-gray-300 font-bold flex items-center justify-center" onClick={() => handleQClick()}>
         <span className="mr-2">ADD QUESTION</span>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
@@ -282,7 +282,7 @@ if(data.length === 0){
 } else {
   return (
     <>
-    <div className = 'overflow-y-auto h-128 ...'>
+    <div data-testid="scroll" role="region" className = 'overflow-y-auto h-128 ...'>
       {mapSearch}
       </div>
     </>

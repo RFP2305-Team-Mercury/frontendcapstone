@@ -28,23 +28,25 @@ const postQ = async(id,body,name,email) => {
     console.log('Error posting Q :',error)
   }
 }
-const postA = async(id,body,name,email,photos) => {
-  try{
+const postA = async (body, name, email, photos,id) => {
+
+  try {
     const response = await axios.post(`/qa/questions/${id}/answers`,
-    {
-      body: body,
-      name: name,
-      email: email,
-      photos: photos
-  }
-    ,apiConfig)
-    console.log('Response:',response)
+      {
+        body: body,
+        name: name,
+        email: email,
+        photos: [photos]
+      },
+      apiConfig
+    );
+    console.log('Response:', response);
+  } catch (error) {
+    console.log('Error posting A:', error);
+
   }
 
-  catch(error){
-    console.log('Error posting A :',error)
-  }
-}
+};
 
 const putQ = async(id,data) => {
 

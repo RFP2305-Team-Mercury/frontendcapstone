@@ -6,19 +6,15 @@ const modalTypeReducer = (state = 'InputModal', action) => {
   switch(action.type){
     case 'ADD_QUESTION':
       //do something
-      return state = 'InputModal';
+      return state = {type: 'InputModal'};
     case 'ADD_ANSWER':
       //do something,
       const questionId = action.payload
-      return {
-        ...state,
-        type: "AnswerModal",
-        questionId: questionId
-      };
+      return state = {type: 'AnswerModal', id: questionId}
     case 'COMPARISON_MODAL':
-      return state = 'ComparisonModal'
+      return state = {type: 'ComparisonModal'}
     case 'NEW_REVIEW_MODAL':
-      return state = 'NewReviewModal'
+      return state = {type: 'NewReviewModal'}
     default:
       return state
   }

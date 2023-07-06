@@ -20,7 +20,7 @@ export default function App() {
     dispatch(answer())
     dispatch(openModal())
   })
-
+let id = useSelector(state => state.modalType.id)
 return (
 
   <div>
@@ -28,7 +28,7 @@ return (
     <RPandOL />
     <QuestionsAndAnswers/>
     <RatingsAndReviews />
-    <Modal isOpen={isOpen} type = {useSelector(state => state.modalType)} onClose = {() => dispatch(closeModal())}/>
+    <Modal isOpen={isOpen} id = {id} type = {useSelector(state => state.modalType.type)} onClose = {() => dispatch(closeModal())}/>
   </div>
 
 )

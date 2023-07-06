@@ -8,17 +8,17 @@ import axios from 'axios'
 
 
 
-export default function AnswerModal({onClose}) {
+
+export default function AnswerModal({onClose, id}) {
 
 
   const dispatch = useDispatch();
-  let questionId = useSelector(state => state.payload)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [body, setBody] = useState('')
   const [photos, setPhotos] = useState('')
   const [submit, setSubmit] = useState(false)
-  console.log('what is this',questionId)
+  const [qId, setqId] = useState(id)
 
 
   const handleName = (e) => {
@@ -36,14 +36,14 @@ export default function AnswerModal({onClose}) {
 
   useEffect(() => {
     const postAnswer = async () => {
-      const posting = await api.postQ(questionId,body,name,email,photos)
+      const posting = await api.postA(body,name,email,photos,qId)
      }
      postAnswer()
   },[submit])
 
   const handleSubmit = async () => {
     try {
-      await dispatch(answer({'name':name, 'email':email,'body':body, 'photos': photos}))
+      await dispatch(answer({'name':name, 'email':email,'body':body, 'photos': [photos]}))
       setTimeout(() => {
         dispatch(closeModal())
       },100)
@@ -62,7 +62,7 @@ return ReactDom.createPortal(
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t" data-testid="AnswerModal">
                   <h3 className="text-3xl font-semibold">
                     Answer a Question!
                   </h3>
@@ -79,16 +79,16 @@ return ReactDom.createPortal(
                 <div className="relative p-6 flex-auto">
                   <label>
                     Name:
-                  <input className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleName} type = 'text'></input>
+                  <input data-testid="name" className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleName} type = 'text'></input>
                   <br></br>
                     Email:
-                  <input className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleEmail} type = 'text'></input>
+                  <input data-testid="email" className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleEmail} type = 'text'></input>
                   <br></br>
                     Body:
-                  <input className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleBody} type = 'text'></input>
+                  <input  data-testid="body"className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleBody} type = 'text'></input>
                   <br></br>
                     Photos:
-                  <input className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handlePhoto} type = 'text'></input>
+                  <input  data-testid="photo"className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handlePhoto} type = 'text'></input>
                   </label>
                 </div>
                 {/*footer*/}

@@ -61,14 +61,14 @@ export const question = (data) => {
   }
 };
 export const answer = (id) => {
-  console.log(id)
+
   return {
     type: 'ADD_ANSWER',
     payload: id
   }
 };
 export const setQuestionId = (id) => {
-  console.log(id)
+
   return {
     type: 'SET_QUESTION_ID',
     payload: id
@@ -76,9 +76,10 @@ export const setQuestionId = (id) => {
 };
 
 
-export const openModal = () => {
+export const openModal = (id) => {
   return {
-    type: 'OPEN_MODAL'
+    type: 'OPEN_MODAL',
+    payload: id
   }
 }
 export const closeModal = () => {
