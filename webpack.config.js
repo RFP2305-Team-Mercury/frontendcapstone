@@ -7,7 +7,7 @@ module.exports = {
   entry: path.join(__dirname, './src/index.jsx'),
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
   },
   module: {
@@ -47,6 +47,8 @@ module.exports = {
     contentBase: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     port: 3000,
-    proxy: 'http://localhost:3000'
+    proxy: {
+      'http://localhost:3000',
+    },
   },
 };
