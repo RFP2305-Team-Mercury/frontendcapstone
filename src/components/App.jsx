@@ -31,8 +31,9 @@ return (
     <Overview />
     <RPandOL />
     <QuestionsAndAnswers/>
-    {/* <RatingsAndReviews /> */}
-    <Modal isOpen={isOpen} id = {id} type = {useSelector(state => state.modalType.type)} onClose = {() => dispatch(closeModal())}/>
+    <RatingsAndReviews />
+    <Modal isOpen={isOpen} id={useSelector(state => state.modalType.id)} type = {useSelector(state => state.modalType.type)} onClose = {() => dispatch(closeModal())}/>
   </div>
 )
-};
+}
+

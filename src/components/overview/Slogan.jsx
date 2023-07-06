@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Styles from "./Styles.jsx";
 import StarRatings from "react-star-ratings";
-import { salePrice } from "../../utils/salePrice.jsx";
+import salePrice from "../../utils/salePrice.jsx";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getOne } from "../../apis/product.js";
@@ -14,18 +14,21 @@ export default function Slogan() {
 
   useEffect(() => {
     setFeatures(Object.values(details["features"]));
-  },[productId])
-
+  }, [productId]);
 
   return (
     <>
       <div className="flex-2 w-2/3 mt-4 mb-4 border-r-2 border-black">
-        <h2 className="text-lg text-gray-800 mx-10 font-bold"
-        data-testid="slogan-test">
+        <h2
+          className="text-lg text-gray-800 mx-10 font-bold"
+          data-testid="slogan-test"
+        >
           {details.slogan}
         </h2>
-        <p className="text-md text-gray-800 my-2 mx-10"
-        data-testid="description-test">
+        <p
+          className="text-md text-gray-800 my-2 mx-10"
+          data-testid="description-test"
+        >
           {details.description}
         </p>
         <p className="text-md text-gray-800 my-2 mx-10 underline">
