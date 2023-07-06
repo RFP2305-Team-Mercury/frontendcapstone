@@ -6,32 +6,6 @@ export const setList = (array) => {
   };
 };
 
-//cartAction.js
-export const addToCart = (sku_id) => {
-  return {
-    type: 'ADD_ITEM',
-    payload: sku_id
-  };
-};
-
-export const selectSize = () => {
-  return {
-    type: 'SELECT_SIZE'
-  };
-};
-
-export const selectQuantity = () => {
-  return {
-    type: 'SELECT_QUANTITY'
-  };
-};
-export const selectStyle = () => {
-  return {
-    type: 'SELECT_STYLE'
-  };
-};
-
-
 //productId.js
 export const setId = (id) => {
   return {
@@ -53,22 +27,40 @@ export const SET_SELECTED = (data) => {
   };
 };
 
+export const SET_DETAILS = (data) => {
+  return {
+    type: 'SET_DETAILS',
+    payload: data
+  };
+};
+
 //input.js
-export const question = () => {
+export const question = (data) => {
   return {
-    type: 'ADD_QUESTION'
+    type: 'ADD_QUESTION',
+    payload: data
   }
 };
-export const answer = () => {
+export const answer = (id) => {
+
   return {
-    type: 'ADD_ANSWER'
+    type: 'ADD_ANSWER',
+    payload: id
   }
+};
+export const setQuestionId = (id) => {
+
+  return {
+    type: 'SET_QUESTION_ID',
+    payload: id
+  };
 };
 
 
-export const openModal = () => {
+export const openModal = (id) => {
   return {
-    type: 'OPEN_MODAL'
+    type: 'OPEN_MODAL',
+    payload: id
   }
 }
 export const closeModal = () => {

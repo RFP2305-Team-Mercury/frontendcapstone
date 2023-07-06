@@ -5,6 +5,7 @@ import modalOpenReducer from './modalOpenReducer'
 import modalTypeReducer from './modalTypeReducer'
 import selectReducer from './selectReducer'
 import comparisonReducer from './comparisonReducer'
+import detailsReducer from './detailsReducer'
 import {combineReducers} from 'redux'
 
 const rootReducers = combineReducers({
@@ -14,7 +15,8 @@ const rootReducers = combineReducers({
   open: modalOpenReducer,
   modalType: modalTypeReducer,
   selected: selectReducer,
-  comparisonId: comparisonReducer
+  comparisonId: comparisonReducer,
+  details: detailsReducer
 })
 
 export default rootReducers;
