@@ -33,8 +33,8 @@ export default function Styles() {
 
   return (
     <>
-      <h2 className="text-lg text-gray-800 mx-4"><span className="font-bold">Style > </span>{selected.name}</h2>
-      <div className="grid grid-cols-4 max-w-md">
+      <h2 className="text-lg text-gray-800 mx-4 dark:text-white"><span className="font-bold dark:text-white">Style > </span>{selected.name}</h2>
+      <div className="grid grid-cols-4 max-w-md dark:text-white">
         {styles.map((style) => {
           if (style === selected) {
             return (
@@ -46,7 +46,7 @@ export default function Styles() {
                     alt={style.name}
                     key={style.style_id}
                     onClick={() => handleSelect(style.style_id)}
-                    className="w-16 h-16 rounded-full mx-2 mt-2 object-cover border-2 border-black z-0"
+                    className="w-16 h-16 rounded-full mx-2 mt-2 object-cover border-2 border-gray-300 z-0"
                     alt="Thumbnail Selected Product Style"
                   />
                   <span className="absolute top-1 right-1 flex items-center justify-center w-8 h-8 z-10 rounded-full">
@@ -55,7 +55,7 @@ export default function Styles() {
                       fill="white"
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
-                      stroke="currentColor"
+                      stroke="black"
                       className="w-6 h-6"
                     >
                       <path

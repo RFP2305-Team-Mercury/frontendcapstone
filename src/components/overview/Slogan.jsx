@@ -18,25 +18,26 @@ export default function Slogan() {
 
   return (
     <>
-      <div className="flex-2 w-2/3 mt-4 mb-4 border-r-2 border-black">
+      <div className="flex-2 w-2/3 mt-4 mb-4 border-r-2 border-black dark:bg-gray-600  dark:text-white">
         <h2
-          className="text-lg text-gray-800 mx-10 font-bold"
+          className="text-lg text-gray-800 mx-10 font-bold dark:bg-gray-600  dark:text-white"
           data-testid="slogan-test"
         >
           {details.slogan}
         </h2>
         <p
-          className="text-md text-gray-800 my-2 mx-10"
+          className="text-md text-gray-800 my-2 mx-10 dark:bg-gray-600  dark:text-white"
           data-testid="description-test"
         >
           {details.description}
         </p>
-        <p className="text-md text-gray-800 my-2 mx-10 underline">
+        <p className="text-md text-gray-800 my-2 mx-10 underline dark:bg-gray-600  dark:text-white">
           {" "}
           Share on Social:{" "}
         </p>
-        <button className="bg-blue-500 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded ml-10 mr-2 mb-2">
-          <a href="https://facebook.com/">
+        <button className="bg-blue-500 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded ml-10 mr-2 mb-2"
+        alt="Facebook">
+          <a href="https://facebook.com/" aria-label="Share on Facebook">
             <svg
               className="w-5 h-5 fill-current"
               role="img"
@@ -47,8 +48,9 @@ export default function Slogan() {
             </svg>
           </a>
         </button>
-        <button className="bg-blue-400 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded mx-2 mb-2">
-          <a href="https://twitter.com/intent/tweet">
+        <button className="bg-blue-400 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded mx-2 mb-2"
+        alt="Twitter">
+          <a href="https://twitter.com/intent/tweet" aria-label="Share on Twitter">
             <svg
               className="w-5 h-5 fill-current"
               role="img"
@@ -59,8 +61,9 @@ export default function Slogan() {
             </svg>
           </a>
         </button>
-        <button className="bg-pink-600 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded mx-2">
-          <a href="https://www.pinterest.com/pin-builder/">
+        <button className="bg-pink-600 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded mx-2"
+        alt="Pinterest">
+          <a href="https://www.pinterest.com/pin-builder/" aria-label="Share on Pinterest">
             <svg
               className="w-5 h-5 fill-current"
               role="img"
@@ -72,7 +75,7 @@ export default function Slogan() {
           </a>
         </button>
       </div>
-      <div className="flex-1 w-1/3 mx-8 mt-4">
+      <div className="flex-1 w-1/3 mx-8 mt-4 dark:text-white">
         <ul className="list-none" data-testid="features-test">
           {features.length > 0 &&
             features.map((feature) => (
