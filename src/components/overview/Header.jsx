@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 export default function Header() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -29,6 +29,9 @@ export default function Header() {
           </g>
         </svg>
       </div>
+      <button onClick={toggleDarkMode}>
+        {isDarkMode ? "Disable Dark Mode" : "Enable Dark Mode"}
+      </button>
     </div>
   );
 }

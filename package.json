@@ -54,8 +54,7 @@
     "react-redux": "^8.1.1",
     "react-star-ratings": "^2.3.0",
     "stream-browserify": "^3.0.0",
-    "tailwind": "^4.0.0",
-    "tw-elements": "^1.0.0-beta2"
+    "tailwind": "^4.0.0"
   },
   "jest": {
     "transform": {
