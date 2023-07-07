@@ -67,11 +67,11 @@ const ReviewList = ({reviews, sortOption, handleChangeSort, filters}) => {
       </div>
       {renderedReviews.length < reviews.length ? <button
         onClick={() => { setCount(count + 2); }}
-        className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-200 rounded-none shadow mr-4 dark:bg-gray-500 dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-900"
+        className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow mr-4 dark:bg-gray-500 dark:border-gray-400 dark:text-gray-100 dark:hover:bg-gray-800"
       >MORE REVIEWS</button> : ''}
       <button
         onClick={handleAddReview}
-        className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow dark:bg-gray-500 dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-900"
+        className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow dark:bg-gray-500 dark:border-gray-400 dark:text-gray-100 dark:hover:bg-gray-800"
       >ADD A REVIEW +</button>
     </div>
   );
