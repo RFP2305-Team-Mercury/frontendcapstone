@@ -15,6 +15,7 @@ const OutfitCard = ({ id, clickButton }) => {
     let outfit = JSON.parse(localStorage.getItem('outfit'));
     if (outfit === null) outfit = [];
     clickButton();
+    if (outfit === null) outfit = [];
     if (!outfit.includes(prodId)) {
       outfit = [...outfit, prodId]
       localStorage.setItem('outfit', JSON.stringify(outfit));
