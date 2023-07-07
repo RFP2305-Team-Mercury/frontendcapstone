@@ -41,14 +41,9 @@ let productId = useSelector(state=>state.productId)
   const [Ahelpfulness, setAHelpfulness] = useState(0)
 
   const addTwoQ = () => {
-    console.log(QCount)
-    let add2 = QCount+2
-    console.log(add2)
+    let add2 = QCount+5
      setQCount(add2)
     }
-    useEffect(() => {
-      console.log('Updated QCount:', QCount);
-    }, [QCount]);
 
 //Get Request for Questions with specific product id
  useEffect(() => {
@@ -61,7 +56,7 @@ let productId = useSelector(state=>state.productId)
    .catch((err) => {
     console.log('Error', err)
    })
- },[ACount,QCount,search,productId])
+ },[search,productId])
 
 
  useEffect(() => {
@@ -176,7 +171,7 @@ useEffect(() => {
     return(
       <>
       <div className = 'p-2'>
-      <img className = 'flex item-center p-0 w-25 h-20 border border-black font-bold' src = {pic} alt ="answer"/>
+      <img className = 'flex item-center p-0 w-25 h-20 font-bold' src = {pic} alt ="answer"/>
       </div>
       </>
     )
@@ -224,7 +219,6 @@ useEffect(() => {
 
 
    //Create a while loop which will run while the index of our QUESTION map array is less than the state QCount which will be 4 initially per Business Requirements
-   console.log(index,QCount,key.length)
   while(index < QCount && key.length >= 1){
 
     return(
@@ -273,10 +267,10 @@ if(data.length === 0){
         </label>
         <div className = 'flex space-x-2'>
       <label>
-        <button className = "w-56 h-14 border border-black font-bold flex items-center justify-center text-base p-4" onClick = {addTwoQ}>{QCount < data.length ? 'MORE ANSWERED QUESTIONS' : ''}</button>
+        <button className = "w-56 h-14 border border-black font-bold flex items-center justify-center text-base p-4 dark:bg-gray-600 dark:text-white dark:border-white" onClick = {addTwoQ}>{QCount < data.length ? 'MORE ANSWERED QUESTIONS' : ''}</button>
       </label>
       <label >
-      <button data-testid="QButton" className="w-56 h-14 border border-black font-bold flex items-center justify-center text-base p-4" onClick={() => handleQClick()}>
+      <button data-testid="QButton" className="w-56 h-14 border border-black font-bold flex items-center justify-center text-base p-4 dark:bg-gray-600 dark:text-white dark:border-white" onClick={() => handleQClick()}>
       <span className="mr-2">ADD QUESTION</span>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
@@ -294,10 +288,10 @@ if(data.length === 0){
       {mapSearch}
       <div className = 'flex space-x-2'>
       <label>
-        <button className = "w-56 h-14 border border-black font-bold flex items-center justify-center text-base p-4" onClick = {() => addTwoQ()}>{QCount < data.length ? 'MORE ANSWERED QUESTIONS' : ''}</button>
+        {QCount < 6 ? <button alt ='More answered questions'className = "w-56 h-14 border border-gray-400 font-bold hover:bg-gray-100 flex items-center justify-center text-base p-4 dark:bg-gray-500 dark:hover:bg-gray-800 dark:text-white dark:border-white" onClick = {() => addTwoQ()}>MORE ANSWERED QUESTIONS</button> : ''}
       </label>
       <label >
-      <button data-testid="QButton" className="w-56 h-14 border border-black font-bold flex items-center justify-center text-base p-4" onClick={() => handleQClick()}>
+      <button alt = 'Add a Question'data-testid="QButton" className="w-56 h-14 border border-gray-400 font-bold hover:bg-gray-100 flex items-center justify-center text-base p-4 dark:bg-gray-500 dark:hover:bg-gray-800 dark:text-white dark:border-white dark:stroke-white" onClick={() => handleQClick()}>
       <span className="mr-2">ADD QUESTION</span>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />

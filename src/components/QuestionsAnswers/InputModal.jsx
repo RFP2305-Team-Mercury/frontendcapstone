@@ -53,24 +53,27 @@ return ReactDom.createPortal(
           >
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none dark:bg-gray-600 dark:text-white">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t" data-testid="InputModal">
+                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t dark:bg-gray-600 dark:text-white" data-testid="InputModal">
                   <h3 className="text-3xl font-semibold">
-                    Ask a Question!
+                  Ask Your Question
                   </h3>
                 </div>
                 {/*body*/}
-                <div className="relative p-6 flex-auto">
+                <div className="relative p-6 flex-auto dark:bg-gray-600 dark:text-white">
                   <label>
-                    Name:
-                  <input className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleName} type = 'text'></input>
+                    <p className ='underline'>Name:</p>
+                  <input className="border border-gray rounded-md w-full my-4 text-slate-500 text-xs leading-relaxed dark:bg-gray-600 dark:text-white" onChange = {handleName} type = 'text' placeholder = 'Example: jackson11!'></input>
+                  <aside className = 'text-xs'>For privacy reasons, do not use your full name or email address</aside>
                   <br></br>
-                    Email:
-                  <input className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleEmail} type = 'text'></input>
-                  <br></br>
-                    Body:
-                  <input className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleBody} type = 'text'></input>
+                    <p className ='underline'>Email:</p>
+
+                  <input className="border border-gray rounded-md  w-full my-4 text-slate-500 text-xs leading-relaxed dark:bg-gray-600 dark:text-white" onChange = {handleEmail} type = 'text' placeholder='Example: jack@email.com'></input>
+                  <aside className = 'text-xs'>For authentication reasons, you will not be emailed</aside>
+
+                    <p className ='underline'>Body:</p>
+                  <input className=" border border-gray rounded-md py-10  w-full my-4 text-slate-500 text-xs leading-relaxed dark:bg-gray-600 dark:text-white" onChange = {handleBody} type = 'text' placeholder = 'Why did you like the product or not?'></input>
                   </label>
                 </div>
                 {/*footer*/}
