@@ -36,7 +36,7 @@ const RPCard = ({ id }) => {
 
   return (
     <>
-      <div className='shrink-0 m-2 p-1 border-solid border-2 w-2/6' data-testid="RP Card">
+      <div className='dark:bg-gray-600 dark:text-white shrink-0 m-2 p-1 border-solid border-2 w-2/6' data-testid="RP Card">
         <div onClick={() => { changeCard() }}>
           <div className='relative  h-[250px] bg-gray-300 items-center'>
             <img className="shadow-md object-cover h-full w-full" src={itemInfo.thumbnail} />
@@ -62,6 +62,8 @@ const RPCard = ({ id }) => {
             <div className="justify-bot" >
               {<StarRatings
                 rating={Number(stars)}
+                starRatedColor='gold'
+                starEmptyColor='darkGrey'
                 numberOfStars={5}
                 starDimension="15px"
                 starSpacing="2px"

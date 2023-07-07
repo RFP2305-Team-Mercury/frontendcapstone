@@ -24,8 +24,8 @@ const OutfitCard = ({ id, clickButton }) => {
 
   if (id === undefined) {
     return (<>
-      <div className='shrink-0 m-2 p-1 border-solid border-2 w-2/8 h-[200px]' data-testid="Add to Outfit Card" onClick={() => { addCard() }}>
-        <div className='justify-center hover:bg-grey-300 active:bg-grey-700 '>
+      <div className='shrink-0 m-2 p-1 border-solid border-2 h-full' data-testid="Add to Outfit Card" onClick={() => { addCard() }}>
+        <div className='hover:bg-grey-300 active:bg-grey-700 '>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="plus">
             <g data-name="Layer 2">
               <g data-name="plus-square">
@@ -76,7 +76,7 @@ const OutfitCard = ({ id, clickButton }) => {
 
   return (
     <>
-      <div className='shrink-0 m-2 p-1 border-solid border-2 w-2/6' data-testid="Outfit Card">
+      <div className='inline-block shrink-0 m-2 p-1 border-solid border-2 w-2/6' data-testid="Outfit Card">
         <div onClick={() => { changeCard() }}>
           <div className='relative h-[250px] bg-gray-300 items-center'>
             <img className="shadow-md object-cover h-full w-full " src={itemInfo.thumbnail} />

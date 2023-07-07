@@ -63,19 +63,19 @@ export default function ComparisonModal({ onClose, id }) {
       <div
         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
       >
-        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+        <div className="dark:bg-gray-600 dark:text-white relative w-auto my-6 mx-auto max-w-3xl justify-center">
           {/*content*/}
-          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+          <div className="dark:bg-gray-600 dark:text-white border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             {/*header*/}
-            <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-              <h3 className="text-3xl font-semibold">
+            <div className="dark:bg-gray-600 dark:text-white flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+              <h3 className="dark:bg-gray-600 dark:text-white text-3xl font-semibold">
                 Comparison of {baseDetails.name} and {comparedDetails.name}
               </h3>
             </div>
             {/*body*/}
-            <div className="relative w-full flex flex-col shadow-large">
-              <div className='bg-transparent m-4 p-4'>
-                <table className='w-auto'>
+            <div className="dark:bg-gray-600 dark:text-white relative w-full flex flex-col shadow-large">
+              <div className='dark:bg-gray-600 dark:text-white bg-transparent m-4 p-4'>
+                <table className='dark:bg-gray-600 dark:text-white w-auto'>
                   <thead >
 
                     <tr className='flex block justify-between'>
@@ -90,22 +90,26 @@ export default function ComparisonModal({ onClose, id }) {
                       <th className='text-lg px-6 py-3 w-1/3'>Product</th>
                       <th className='text-xl px-6 py-3 w-1/3'>{comparedDetails.name}</th>
                     </tr>
-                    <tr className='flex block justify-between w-full'>
+                    <tr className='flex block justify-between w-full border-t-4'>
                       <th className='text-lg px-6 py-3 w-1/3 justify-center'>{<StarRatings
                         rating={Number(baseStars)}
                         numberOfStars={5}
+                        starRatedColor='gold'
+                        starEmptyColor='darkGrey'
                         starDimension="15px"
                         starSpacing="2px"
                       />}</th>
                       <th className='text-lg px-6 py-3 w-1/3'>Rating</th>
                       <th className='text-lg px-6 py-3 w-1/3'>{<StarRatings
                         rating={Number(comparedStars)}
+                        starRatedColor='gold'
+                        starEmptyColor='darkGrey'
                         numberOfStars={5}
                         starDimension="15px"
                         starSpacing="2px"
                       />}</th>
                     </tr>
-                    <tr className='flex block w-full justify-between'>
+                    <tr className='flex block w-full justify-between border-t-2'>
                       {baseDetails.sales_price ? (
                         <th className='text-md px-6 py-3 w-1/3'>
                           {baseDetails.sales_price}
@@ -116,7 +120,7 @@ export default function ComparisonModal({ onClose, id }) {
                           {baseDetails.original_price}
                         </th>
                       )}
-                      <th className='text- px-6 py-3 w-1/3'>Price</th>
+                      <th className='text-lg px-6 py-3 w-1/3'>Price</th>
                       {comparedDetails.sales_price ? (
                         <th className='text-md px-6 py-3 w-1/3'>
                           {comparedDetails.sales_price}
@@ -129,7 +133,7 @@ export default function ComparisonModal({ onClose, id }) {
                       )}
                     </tr>
                     {features.map((feature) => { return (<>
-                        <tr className='flex block justify-between'>
+                        <tr className='flex block justify-between border-t-2'>
                           <th className='text-md px-6 py-3 w-1/3'>{baseFeatures[feature] ? baseFeatures[feature] : ''}</th>
                           <th className='text-lg px-6 py-3 w-1/3'>{feature}</th>
                           <th className='text-md px-6 py-3 w-1/3'>{compFeatures[feature] ? compFeatures[feature] : ''}</th>
@@ -143,7 +147,7 @@ export default function ComparisonModal({ onClose, id }) {
               <div className="table"></div>
             </div>
             {/*footer*/}
-            <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+            <div className="flex items-center justify-end p-6">
               <button
                 className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button" data-testid='closeButton'
