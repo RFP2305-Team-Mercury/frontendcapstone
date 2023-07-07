@@ -224,7 +224,6 @@ useEffect(() => {
 
 
    //Create a while loop which will run while the index of our QUESTION map array is less than the state QCount which will be 4 initially per Business Requirements
-   console.log(index,QCount,key.length)
   while(index < QCount && key.length >= 1){
 
     return(

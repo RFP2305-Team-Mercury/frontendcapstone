@@ -85,7 +85,7 @@ return ReactDom.createPortal(
                   <input data-testid="email" className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleEmail} type = 'text'></input>
                   <br></br>
                     Body:
-                  <input  data-testid="body"className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleBody} type = 'text'></input>
+                  <input  data-testid="body"className="py-4 px-8 text-2x1 my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleBody} type = 'text'></input>
                   <br></br>
                     Photos:
                   <input  data-testid="photo"className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handlePhoto} type = 'text'></input>
