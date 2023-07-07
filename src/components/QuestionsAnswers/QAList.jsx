@@ -46,9 +46,6 @@ let productId = useSelector(state=>state.productId)
     console.log(add2)
      setQCount(add2)
     }
-    useEffect(() => {
-      console.log('Updated QCount:', QCount);
-    }, [QCount]);
 
 //Get Request for Questions with specific product id
  useEffect(() => {
@@ -61,7 +58,7 @@ let productId = useSelector(state=>state.productId)
    .catch((err) => {
     console.log('Error', err)
    })
- },[ACount,QCount,search,productId])
+ },[search,productId])
 
 
  useEffect(() => {
