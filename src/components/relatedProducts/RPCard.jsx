@@ -38,7 +38,7 @@ const RPCard = ({ id }) => {
     <>
       <div className='shrink-0 m-2 p-1 border-solid border-2 w-2/6' data-testid="RP Card">
         <div onClick={() => { changeCard() }}>
-          <div className='relative w-full h-[250px] bg-gray-300 items-center'>
+          <div className='relative  h-[250px] bg-gray-300 items-center'>
             <img className="shadow-md object-cover h-full w-full" src={itemInfo.thumbnail} />
             <button onClick={() => { star() }}><svg
               xmlns="http://www.w3.org/2000/svg"
