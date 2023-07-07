@@ -41,9 +41,7 @@ let productId = useSelector(state=>state.productId)
   const [Ahelpfulness, setAHelpfulness] = useState(0)
 
   const addTwoQ = () => {
-    console.log(QCount)
-    let add2 = QCount+2
-    console.log(add2)
+    let add2 = QCount+5
      setQCount(add2)
     }
 

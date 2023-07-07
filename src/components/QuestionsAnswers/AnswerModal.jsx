@@ -64,7 +64,7 @@ return ReactDom.createPortal(
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t" data-testid="AnswerModal">
                   <h3 className="text-3xl font-semibold">
-                    Answer a Question!
+                  Submit your Answer
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -79,10 +79,14 @@ return ReactDom.createPortal(
                 <div className="relative p-6 flex-auto">
                   <label>
                     Name:
-                  <input data-testid="name" className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleName} type = 'text' value = 'Example: jackson11!'></input>
+                  <input data-testid="name" className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleName} type = 'text' placeholder = 'Example: jackson11!'></input>
+                  <br></br>
+                  <aside className = 'text-xs'>For privacy reasons, do not use your full name or email address</aside>
                   <br></br>
                     Email:
-                  <input data-testid="email" className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleEmail} type = 'text'></input>
+                  <input data-testid="email" placeholder = 'Why did you like the product or not?' className="px-8 my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleEmail} type = 'text'></input>
+                  <br></br>
+                  <asdide className = 'text-xs'>For authentication reasons, you will not be emailed</asdide>
                   <br></br>
                     Body:
                   <input  data-testid="body"className="py-4 px-8 text-2x1 my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleBody} type = 'text'></input>
