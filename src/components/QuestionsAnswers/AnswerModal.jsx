@@ -79,7 +79,7 @@ return ReactDom.createPortal(
                 <div className="relative p-6 flex-auto">
                   <label>
                     Name:
-                  <input data-testid="name" className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleName} type = 'text'></input>
+                  <input data-testid="name" className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleName} type = 'text' value = 'Enter'></input>
                   <br></br>
                     Email:
                   <input data-testid="email" className="my-4 text-slate-500 text-lg leading-relaxed" onChange = {handleEmail} type = 'text'></input>

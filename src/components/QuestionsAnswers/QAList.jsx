@@ -23,6 +23,7 @@ let isOpen = useSelector(state => state.open)
     dispatch(answer(id))
   })
 
+
 let productId = useSelector(state=>state.productId)
 
 //States
@@ -32,13 +33,22 @@ let productId = useSelector(state=>state.productId)
   const [report, setReport] = useState(false)
   const [ACount, setACount] = useState(2)
   const [QCount, setQCount] = useState(4)
+  const [AnsweredQ ,setAnsweredQ] = useState(data.length)
   const [helpClick, sethelpClick] = useState(false)
   const [Qhelpfulness, setQHelpfulness] = useState(0)
   const [qID,setqID] = useState(0)
   const [aID,setaID] = useState(0)
   const [Ahelpfulness, setAHelpfulness] = useState(0)
 
-
+  const addTwoQ = () => {
+    console.log(QCount)
+    let add2 = QCount+2
+    console.log(add2)
+     setQCount(add2)
+    }
+    useEffect(() => {
+      console.log('Updated QCount:', QCount);
+    }, [QCount]);
 
 //Get Request for Questions with specific product id
  useEffect(() => {
@@ -51,7 +61,7 @@ let productId = useSelector(state=>state.productId)
    .catch((err) => {
     console.log('Error', err)
    })
- },[ACount,search,productId])
+ },[ACount,QCount,search,productId])
 
 
  useEffect(() => {
@@ -86,7 +96,6 @@ useEffect(() => {
   if(!el.loadAnswers){
    el.loadAnswers = 'LOAD MORE ANSWERS'
  }
-
 
   //Helpful Question Click counter will ensure user can only increment helpfulness by 1 and keep the state to no less than initial render [0 means user hasn't clicked, 1 means clicked]
   const helpfulQClick = () => {
@@ -131,6 +140,7 @@ useEffect(() => {
 
   //For each question, we have to access answers by applying a nested map method to our key variable
   const userAnswers = key.map((a,index) => {
+
 
   //Create a func to convert date to MMMM dd yyyy
   let date = format(parseISO(el.answers[key[index]].date),'MMMM dd, yyyy')
@@ -204,17 +214,18 @@ useEffect(() => {
   })
 
   const loadA = () => {
+    el.loadAnswers = 'COLLAPSE ANSWERS'
     setACount(key.length)
   }
-
-  if(ACount > 2) {
-    el.loadAnswers = 'COLLAPSE ANSWERS'
+  const collapseA = () => {
+    el.loadAnswers = 'LOAD MORE ANSWERS'
+    setACount(2)
   }
-
 
 
    //Create a while loop which will run while the index of our QUESTION map array is less than the state QCount which will be 4 initially per Business Requirements
-  while(index < QCount){
+   console.log(index,QCount,key.length)
+  while(index < QCount && key.length >= 1){
 
     return(
       <>
@@ -236,29 +247,12 @@ useEffect(() => {
       </div>
 
       {ACount > 2 ? <div className = 'overflow-y-auto h-32 ...'> {userAnswers} </div> : userAnswers}
-
-
-
-
       </div>
       <div className = 'p-2'>
       <label>
-        {(key.length > 2) ? <button className = 'p-2 font-bold text-sm' onClick = {loadA}>{el.loadAnswers}</button> : ''}
+        {key.length > 2 ? (el.loadAnswers === "LOAD MORE ANSWERS") ? <button className = 'p-2 font-bold text-sm' onClick = {loadA}>{el.loadAnswers}</button> : <button className = 'p-2 font-bold text-sm' onClick = {collapseA}>{el.loadAnswers}</button> : ''}
       </label>
       <br></br>
-      <div className = 'flex space-x-2'>
-      <label>
-        <button className = "w-60 h-10 border border-gray-300 font-bold flex items-center justify-center" onClick = {function(){setQCount(data.length)}}>{data.length > 2 ? 'LOAD MORE QUESTIONS' : ''}</button>
-      </label>
-      <label >
-      <button data-testid="QButton" className="w-60 h-10 border border-gray-300 font-bold flex items-center justify-center" onClick={() => handleQClick()}>
-      <span className="mr-2">ADD QUESTION</span>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
-      </svg>
-      </button>
-      </label>
-      </div>
      </div>
       </>
     )
@@ -277,13 +271,40 @@ if(data.length === 0){
         </svg>
         </button>
         </label>
+        <div className = 'flex space-x-2'>
+      <label>
+        <button className = "w-56 h-14 border border-black font-bold flex items-center justify-center text-base p-4" onClick = {addTwoQ}>{QCount < data.length ? 'MORE ANSWERED QUESTIONS' : ''}</button>
+      </label>
+      <label >
+      <button data-testid="QButton" className="w-56 h-14 border border-black font-bold flex items-center justify-center text-base p-4" onClick={() => handleQClick()}>
+      <span className="mr-2">ADD QUESTION</span>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+      </svg>
+      </button>
+      </label>
+      </div>
         </>
   )
 } else {
+
   return (
     <>
     <div data-testid="scroll" role="region" className = 'overflow-y-auto h-128 ...'>
       {mapSearch}
+      <div className = 'flex space-x-2'>
+      <label>
+        <button className = "w-56 h-14 border border-black font-bold flex items-center justify-center text-base p-4" onClick = {() => addTwoQ()}>{QCount < data.length ? 'MORE ANSWERED QUESTIONS' : ''}</button>
+      </label>
+      <label >
+      <button data-testid="QButton" className="w-56 h-14 border border-black font-bold flex items-center justify-center text-base p-4" onClick={() => handleQClick()}>
+      <span className="mr-2">ADD QUESTION</span>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+      </svg>
+      </button>
+      </label>
+      </div>
       </div>
     </>
   )

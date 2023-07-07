@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 export default function Header() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -8,14 +8,14 @@ export default function Header() {
     document.documentElement.classList.toggle("dark");
   };
   return (
-    <div className="flex bg-gray-700 text-gray-200 m-auto justify-between items-center">
+    <div className="flex bg-gray-700 text-gray-200 m-auto justify-between items-center dark:bg-gray-300 dark:text-gray-800">
       <h1 className="text-3xl font-bold ml-28 my-3 text-left italic">
         The Mercury Store
       </h1>
       <div className="text-3xl font-thin flex flex-row mr-28 my-3">
         _________
         <svg
-          className="stroke-gray-300 w-6 h-6 ml-2 self-center"
+          className="stroke-gray-300 w-6 h-6 ml-2 self-center dark:stroke-gray-800"
           aria-labelledby="title desc"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
@@ -29,6 +29,9 @@ export default function Header() {
           </g>
         </svg>
       </div>
+      <button onClick={toggleDarkMode}>
+        {isDarkMode ? "Disable Dark Mode" : "Enable Dark Mode"}
+      </button>
     </div>
   );
 }

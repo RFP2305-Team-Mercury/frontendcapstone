@@ -27,7 +27,7 @@ export default function Details() {
 
   return (
     <>
-      <div className="flex-1 w-1/3 z-0">
+      <div className="flex-1 w-1/3 z-0 dark:bg-gray-600 dark:text-white">
         <div className="mx-4">
           <StarRatings
             rating={3.5}
@@ -35,15 +35,17 @@ export default function Details() {
             starDimension="15px"
             starSpacing="1px"
             className="z-0"
+            starRatedColor='gold'
+            starEmptyColor='darkGrey'
           />
         </div>
-        <h3 className="font-light text-gray-600 py-2 underline mx-4">
+        <h3 className="font-light text-gray-600 py-2 underline mx-4 dark:text-white">
           <a href="#reviews">Read all reviews</a>
         </h3>
         <h2
         data-testid="category-test"
-        className="text-lg text-gray-800 mx-4">{details['category']}</h2>
-        <h1 className="text-3xl text-gray-800 font-bold my-4 mx-4"
+        className="text-lg text-gray-800 mx-4 dark:text-white">{details['category']}</h2>
+        <h1 className="text-3xl text-gray-800 font-bold my-4 mx-4 dark:text-white"
         data-testid="name-test"
         >
           {details.name}
@@ -54,7 +56,7 @@ export default function Details() {
             {salePrice(selected.original_price)}
           </div>
         ) : (
-          <h2 className="text-lg text-gray-800 mx-4">
+          <h2 className="text-lg text-gray-800 mx-4 dark:text-white">
             {selected.original_price}
           </h2>
         )}

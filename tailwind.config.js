@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{html,js,jsx}',
-  "./node_modules/tw-elements/dist/js/**/*.js"],
+  content: ['./src/**/*.{html,js,jsx}'],
   theme: {
     extend: {
       spacing: {
@@ -12,5 +11,5 @@ module.exports = {
     },
   },
   darkMode: 'class',
-  plugins: [require("tw-elements/dist/plugin.cjs")],
+  plugins: [],
 };

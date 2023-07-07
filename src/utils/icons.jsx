@@ -3,7 +3,8 @@ import React from "react";
 export const ExpandIcon = ({ onClick }) => {
   return (
     <>
-      <button onClick={onClick} data-testid="expand">
+      <button onClick={onClick} data-testid="expand"
+       alt="Expand">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -24,7 +25,7 @@ export const ExpandIcon = ({ onClick }) => {
 export const LeftArrow = ({ onClick }) => {
   return (
     <>
-      <button onClick={onClick} data-testid="leftArrow">
+      <button onClick={onClick} data-testid="leftArrow" alt="LeftArrow">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -47,7 +48,7 @@ export const LeftArrow = ({ onClick }) => {
 export const RightArrow = ({ onClick }) => {
   return (
     <>
-      <button onClick={onClick} data-testid="rightArrow">
+      <button onClick={onClick} data-testid="rightArrow" alt="RightArrow">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

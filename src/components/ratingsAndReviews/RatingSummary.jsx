@@ -22,7 +22,7 @@ const RatingSummary = ({metaData, filters, handleChangeFilters}) => {
 
   return (
     <div className="w-4/12 flex flex-col">
-      <div className="text-5xl font-bold my-4 flex flex-row place-items-start">
+      <div className="text-5xl font-bold my-4 flex flex-row place-items-start dark:text-gray-100">
         {average}
         <div className="relative -top-[16px] left-2" data-testid="summary-average">
           {average ? <StarRatings
@@ -30,6 +30,8 @@ const RatingSummary = ({metaData, filters, handleChangeFilters}) => {
             numberOfStars={5}
             starDimension="15px"
             starSpacing="1px"
+            starRatedColor="gold"
+            starEmptyColor="darkgray"
           /> : ''}
         </div>
       </div>
