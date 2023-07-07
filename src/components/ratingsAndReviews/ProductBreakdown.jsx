@@ -36,17 +36,17 @@ const ProductBreakdown = ({characteristics}) => {
             break;
         };
         return (
-          <div key={type} className="text-gray-700 font-light">{type}
+          <div key={type} className="text-gray-700 font-light dark:text-gray-200">{type}
             <div className="relative p-1 flex justify-between">
-              <div style={{width: '32%'}} className="h-2 pt-2 text-xs flex rounded-none bg-gray-200"></div>
-              <div style={{width: '32%'}} className="h-2 pt-2 text-xs flex rounded-none bg-gray-200"></div>
-              <div style={{width: '32%'}} className="h-2 pt-2 text-xs flex rounded-none bg-gray-200"></div>
+              <div style={{width: '32%'}} className="h-2 pt-2 text-xs flex rounded-none bg-gray-200 dark:bg-gray-400"></div>
+              <div style={{width: '32%'}} className="h-2 pt-2 text-xs flex rounded-none bg-gray-200 dark:bg-gray-400"></div>
+              <div style={{width: '32%'}} className="h-2 pt-2 text-xs flex rounded-none bg-gray-200 dark:bg-gray-400"></div>
             </div>
-            <div className="relative p-1 flex justify-between text-s text-gray-600 font-thin">
+            <div className="relative p-1 flex justify-between text-s text-gray-600 font-thin dark:text-gray-300">
               <div>{low}</div>
               <div>{high}</div>
             </div>
-            <div className="flex text-green-600 translate-y-[-51px]"><div style={{width: `${rating}%`}} className="overflow-hidden whitespace-nowrap"></div><div>▼</div></div>
+            <div className="flex text-green-500 translate-y-[-51px] dark:text-green-600"><div style={{width: `${rating}%`}} className="overflow-hidden whitespace-nowrap"></div><div>▼</div></div>
           </div>
         )
       })}

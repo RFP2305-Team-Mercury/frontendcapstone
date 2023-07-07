@@ -20,6 +20,8 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
   const [index, setIndex] = useState(0);
   const maxThumbnails = 7;
   const [isZoomed, setIsZoomed] = useState(false);
+  const containerRef = useRef(null);
+  const scrollAmount = 10;
 
   const handleThumbnail = (index, url) => {
     setCurrent(url);
@@ -41,7 +43,7 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
   };
 
   useEffect(() => {
-    setCurrent(selected["photos"][0]["url"]);
+    setCurrent(selected["photos"][index]["url"]);
   }, [productId, selected]);
 
   const handleExpand = () => {
@@ -52,10 +54,12 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
   const handleZoom = () => {
     setIsZoomed(!isZoomed);
   };
+
   const scrollUp = () => {
     setCurrent(photos[index - 1]["url"]);
     if (index !== 0) {
       setIndex(index - 1);
+      containerRef.current.scrollTop -= scrollAmount;
     }
   };
 
@@ -63,6 +67,8 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
     setCurrent(photos[index + 1]["url"]);
     if (index !== photos.length - 1) {
       setIndex(index + 1);
+      const container = document.getElementById("container");
+      containerRef.current.scrollTop += scrollAmount;
     }
   };
 
@@ -79,7 +85,7 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
             data-testid="expanded-img"
           >
             <img
-              className="w-[85vw] h-[90vh] object-cover cursor-crosshair custom-cursor border-black border-2 z-1 transition ease-in"
+              className="w-[85vw] h-[90vh] object-cover cursor-crosshair custom-cursor border-black border-2 z-1"
               src={current}
               onClick={handleZoom}
               alt="Expanded Product Image"
@@ -87,7 +93,8 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
             <ExpandIcon onClick={handleExpand} />
             {index !== 0 && <UpChevron onClick={scrollUp}/>}
             <div
-              className="absolute top-1/2 left-10 transform -translate-y-1/2 z-8"
+              ref={containerRef}
+              className="absolute top-1/2 left-10 transform -translate-y-1/2 z-8 scroll-smooth"
               data-testid="thumbnail-div"
              style={{ height: "150px", overflow: "auto", width: "50px" }}
             >
@@ -122,14 +129,14 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
         <div className="relative flex-2 w-2/3 h-[600px] mt-2 flex justify-end">
             <img
               data-testid="normal-img"
-              className="w-full h-[600px] object-cover m-auto cursor-zoom-in custom-cursor border-black border-2"
+              className="w-full h-[600px] object-cover m-auto cursor-zoom-in custom-cursor border-gray-300 border-2"
               src={current}
               onClick={handleExpand}
               alt="Product Main Image"
             />
             <ExpandIcon onClick={handleExpand} />
             <div
-              className="absolute top-1/2 left-10 transform -translate-y-1/2"
+              className="absolute top-1/2 left-10 transform -translate-y-1/2 scroll-smooth"
               data-testid="thumbnail-div"
              style={{ height: "450px", overflow: "auto" }}
             >
@@ -141,7 +148,7 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
                       className={
                         index === position
                           ? "border-2 border-black w-16 h-16 mb-2 object-cover"
-                          : "border-2 w-16 h-16 mb-2 object-cover"
+                          : "border-2 border-gray-300 w-16 h-16 mb-2 object-cover"
                       }
                       alt="Thumbnail Product Image"
                       src={photo["thumbnail_url"]}

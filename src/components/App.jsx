@@ -27,7 +27,7 @@ export default function App() {
   })
 let id = useSelector(state => state.modalType.id)
 return (
-  <div>
+  <div className="dark:bg-gray-600">
     <Overview />
     <RPandOL />
     <QuestionsAndAnswers/>
