@@ -28,8 +28,8 @@ export default function App() {
 let id = useSelector(state => state.modalType.id)
 return (
   <div>
-    <Overview />
-    <RPandOL />
+    {/* <Overview /> */}
+    {/* <RPandOL /> */}
     <QuestionsAndAnswers/>
     <RatingsAndReviews />
     <Modal isOpen={isOpen} id={useSelector(state => state.modalType.id)} type = {useSelector(state => state.modalType.type)} onClose = {() => dispatch(closeModal())}/>
