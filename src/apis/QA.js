@@ -4,7 +4,6 @@ import apiConfig from './apiConfig'
 const getQA = async(id) => {
   try{
     const response = await axios.get(`/qa/questions/?product_id=${id}&count=100`,apiConfig)
-    console.log('get',response)
     return response.data.results
   }
   catch(error){
