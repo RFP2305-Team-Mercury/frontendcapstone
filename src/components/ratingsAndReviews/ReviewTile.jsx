@@ -45,25 +45,27 @@ const ReviewTile = ({review}) => {
   }
 
   return (
-    <div className="border-b-2 border-gray-800 py-4 mb-4">
+    <div className="border-b-2 border-gray-800 py-4 mb-4 dark:border-gray-400">
       <div className="flex justify-between">
         <span><StarRatings
             rating={Number(review.rating)}
             numberOfStars={5}
             starDimension="15px"
             starSpacing="1px"
+            starRatedColor="gold"
+            starEmptyColor="darkgray"
           /></span>
         <span className="font-thin">{review.reviewer_name}, {formattedDate}</span>
       </div>
       <div className="py-2">
-        <p className="text-lg text-gray-800 font-bold break-words hyphens-auto capitalize">{review.summary}</p>
+        <p className="text-lg text-gray-800 font-bold break-words hyphens-auto capitalize dark:text-gray-200">{review.summary}</p>
         <p className="hyphens-auto">{review.body}</p>
       </div>
       {review.photos.length ? review.photos.map((photo) => {
         return <img className="shadow-md object-cover h-32 w-24 inline m-2" key={photo.id} src={photo.url} />
       }) : ''}
       {review.recommend ? <div>&#10003; I recommend this product</div> : ""}
-      <div className="font-light text-gray-600 py-2">
+      <div className="font-light text-gray-600 py-2 dark:text-gray-200">
         <span className="mr-1">Helpful?
           <span className="underline mx-2 cursor-pointer" onClick={handleHelpfulClick}>Yes</span>
           <span data-testid="helpful-count">({helpfulCount})</span>

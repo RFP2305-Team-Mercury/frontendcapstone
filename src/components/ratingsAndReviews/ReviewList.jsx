@@ -49,7 +49,7 @@ const ReviewList = ({reviews, sortOption, handleChangeSort, filters}) => {
       <div className="text-lg font-bold">
         {reviews.length} Reviews, sorted by
         <select
-          className="underline"
+          className="underline dark:bg-gray-600"
           defaultValue={sortOption}
           onChange={async (event) => {
             handleChangeSort(event.target.value);
@@ -60,18 +60,18 @@ const ReviewList = ({reviews, sortOption, handleChangeSort, filters}) => {
           <option value="helpful">Helpful</option>
         </select>
       </div>
-      <div className="overflow-auto px-4 max-h-[85vh] border-solid border-2 my-4">
+      <div className="overflow-auto px-4 max-h-[85vh] border-solid border-2 my-4 dark:border-gray-700">
         {renderedReviews.map((review) => {
           return <ReviewTile review={review} key={review.review_id} />
         })}
       </div>
       {renderedReviews.length < reviews.length ? <button
         onClick={() => { setCount(count + 2); }}
-        className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow mr-4"
+        className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-200 rounded-none shadow mr-4 dark:bg-gray-500 dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-900"
       >MORE REVIEWS</button> : ''}
       <button
         onClick={handleAddReview}
-        className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow"
+        className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow dark:bg-gray-500 dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-900"
       >ADD A REVIEW +</button>
     </div>
   );
