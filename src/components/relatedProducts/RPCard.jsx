@@ -20,14 +20,14 @@ const RPCard = ({ id }) => {
   }, []);
 
   const star = () => {
-    starClicked =true
+    starClicked = true
     dispatch(setComparisonId(id));
     dispatch(comparisonModal());
     dispatch(openModal());
-    setTimeout(()=>starClicked =false, 10)
+    setTimeout(() => starClicked = false, 10)
   }
   const changeCard = () => {
-    setTimeout(()=>{
+    setTimeout(() => {
       if (starClicked === false) {
         dispatch(setId(id));
       }
@@ -36,23 +36,23 @@ const RPCard = ({ id }) => {
 
   return (
     <>
-      <div className='shrink-0 m-2 p-1 border-solid border-2 max-w-2/6' data-testid="RP Card">
+      <div className='shrink-0 m-2 p-1 border-solid border-2 w-2/6' data-testid="RP Card">
         <div onClick={() => { changeCard() }}>
-          <div className='relative max-w-full h-[250px] bg-gray-300 items-center bg-center'>
-            <img className="shadow-md object-cover h-32 w-24 inline m-2" src={itemInfo.thumbnail} />
+          <div className='relative w-full h-[250px] bg-gray-300 items-center'>
+            <img className="shadow-md object-cover h-full w-full" src={itemInfo.thumbnail} />
             <button onClick={() => { star() }}><svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 30 30"
-          className="absolute top-[1rem] right-[5%] w-10 h-10"
-        >
-          <path
-            fillRule="evenodd"
-            fill="gold"
-            d=" M15.422,18.129l-5.264-2.768l-5.265,2.768l1.006-5.863L1.64,8.114l5.887-0.855
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 30 30"
+              className="absolute top-[1rem] right-[5%] w-10 h-10"
+            >
+              <path
+                fillRule="evenodd"
+                fill="gold"
+                d=" M15.422,18.129l-5.264-2.768l-5.265,2.768l1.006-5.863L1.64,8.114l5.887-0.855
             l2.632-5.334l2.633,5.334l5.885,0.855l-4.258,4.152L15.422,18.129z"
-            clipRule="evenodd"
-            stroke='black'
-          /></svg></button>
+                clipRule="evenodd"
+                stroke='black'
+              /></svg></button>
           </div>
           <div className='flex flex-col'>
             <div className='italic text-m'>{itemInfo.category}</div>
@@ -60,13 +60,13 @@ const RPCard = ({ id }) => {
             <div>{itemInfo.slogan}</div>
             <div className='italic text-sm'>{itemInfo.price}</div>
             <div className="justify-bot" >
-          {<StarRatings
-            rating={Number(stars)}
-            numberOfStars={5}
-            starDimension="15px"
-            starSpacing="2px"
-          />}
-        </div>
+              {<StarRatings
+                rating={Number(stars)}
+                numberOfStars={5}
+                starDimension="15px"
+                starSpacing="2px"
+              />}
+            </div>
           </div>
         </div>
       </div>
