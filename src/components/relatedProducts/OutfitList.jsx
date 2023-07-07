@@ -7,8 +7,8 @@ import {LeftArrow, RightArrow} from '../../utils/icons.jsx'
 const OutfitList = () => {
   const [outfit, setOutfit] = useState([]);
   const [button, setButton] = useState(false);
-  const [showRightArrow, setShowRightArrow] = useState(false)
-  const [showLeftArrow, setShowLeftArrow] = useState(false)
+  // const [showRightArrow, setShowRightArrow] = useState(false)
+  // const [showLeftArrow, setShowLeftArrow] = useState(false)
 
   useEffect(()=>{
     let result = JSON.parse(localStorage.getItem('outfit'))

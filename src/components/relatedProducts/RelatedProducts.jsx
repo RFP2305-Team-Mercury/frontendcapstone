@@ -8,8 +8,8 @@ import {LeftArrow, RightArrow} from '../../utils/icons.jsx'
 
 
 const RelatedProducts = () => {
-  const [showRightArrow, setShowRightArrow] = useState(false)
-  const [showLeftArrow, setShowLeftArrow] = useState(false)
+  // const [showRightArrow, setShowRightArrow] = useState(false)
+  // const [showLeftArrow, setShowLeftArrow] = useState(false)
 
   let list = useSelector(state => state.relatedList);
   const dispatch = useDispatch();
