@@ -24,8 +24,8 @@ const OutfitCard = ({ id, clickButton }) => {
 
   if (id === undefined) {
     return (<>
-      <div className='shrink-0 m-2 p-1 border-solid border-2 w-2/8 h-[200px]' data-testid="Add to Outfit Card" onClick={() => { addCard() }}>
-        <div className='justify-center hover:bg-grey-300 active:bg-grey-700 '>
+      <div className='hover:bg-gray-100 dark:hover:bg-gray-800 shrink-0 m-2 p-1 border-solid border-2 h-full active:bg-grey-700 ' data-testid="Add to Outfit Card" onClick={() => { addCard() }}>
+        <div className='hover:bg-grey-300 active:bg-grey-700 '>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="plus">
             <g data-name="Layer 2">
               <g data-name="plus-square">
@@ -51,6 +51,7 @@ const OutfitCard = ({ id, clickButton }) => {
   const fetchCard = async () => {
     let card = await api.getCardInfo(id);
     setItemInfo(card);
+    setStars(card.stars)
   };
 
   useEffect(() => {
@@ -76,9 +77,9 @@ const OutfitCard = ({ id, clickButton }) => {
 
   return (
     <>
-      <div className='shrink-0 m-2 p-1 border-solid border-2 w-2/6' data-testid="Outfit Card">
+      <div className='hover:bg-gray-100 dark:hover:bg-gray-800 inline-block shrink-0 m-2 p-1 border-solid border-2 w-2/6' data-testid="Outfit Card">
         <div onClick={() => { changeCard() }}>
-          <div className='relative w-full h-[250px] bg-gray-300 items-center'>
+          <div className='relative h-[250px] bg-gray-300 items-center'>
             <img className="shadow-md object-cover h-full w-full " src={itemInfo.thumbnail} />
             <button onClick={() => { x() }}>
             <svg xmlns="http://www.w3.org/2000/svg" className='absolute top-[1rem] right-[5%] w-8 h-8' width="30" height="30" fill="currentColor"  viewBox="0 0 16 16"> <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/> </svg></button>
@@ -92,6 +93,8 @@ const OutfitCard = ({ id, clickButton }) => {
               {<StarRatings
                 rating={Number(stars)}
                 numberOfStars={5}
+                starRatedColor='gold'
+                starEmptyColor='darkGrey'
                 starDimension="15px"
                 starSpacing="2px"
               />}

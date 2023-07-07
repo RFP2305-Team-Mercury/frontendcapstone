@@ -9,6 +9,7 @@ export default function Cart() {
   const [sku, setSku] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+  const [added, setAdded] = useState(false);
 
   const handleSize = (e) => {
     setQuantityChoice([]);
@@ -33,6 +34,7 @@ export default function Cart() {
         console.error(error);
       }
     };
+    setAdded(!added);
   };
 
   function generateQuantity(max) {
@@ -52,7 +54,7 @@ export default function Cart() {
           key="123456789"
           data-testid="size-test"
           onChange={handleSize}
-          className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow m-4 p-4 w-44"
+          className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow m-4 p-4 w-44 dark:bg-gray-500 dark:hover:bg-gray-800 dark:text-gray-100"
         >
           <option key="12344592810">--Select Size--</option>
           {selected &&
@@ -68,7 +70,7 @@ export default function Cart() {
           key="2390812301"
           data-testid="quantity-test"
           onChange={(e) => setQuantity(e.target.value)}
-          className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow ml-7 m-4 p-4 w-24"
+          className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow ml-8 m-4 p-4 w-24 dark:bg-gray-500 dark:hover:bg-gray-800 dark:text-gray-100"
         >
           {!sku ? <option key="320128">-</option> : <option key="2132312">1</option>}
           {quantityChoice.map((num) => (
@@ -82,19 +84,20 @@ export default function Cart() {
         {!sku && (
           <button
             alt="Select a Size"
-            className="bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-80"
+            className="bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-80 dark:bg-gray-500 dark:hover:bg-gray-800 dark:text-gray-100"
             data-testid="select-size"
           >
             Please Select a Size
           </button>
         )}
         {sku &&
-          (quantity > 0 ? (
-            <button
+          (quantity !== null ? (
+            (!added ? (
+              <button
               alt="Add to Bag"
               onClick={handleCart}
               data-testid="add-cart"
-              className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-80"
+              className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-80 dark:bg-gray-500 dark:hover:bg-gray-800 dark:text-gray-100"
             >
               {" "}
               Add to Bag{" "}
@@ -112,12 +115,20 @@ export default function Cart() {
                   d="M12 4.5v15m7.5-7.5h-15"
                 />
               </svg>
-            </button>
-          ) : (
+            </button>)
+              : (<button
+            alt="Added!"
+            className="bg-green-200 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-80"
+            data-testid="added"
+          >
+            Item added to bag!
+          </button>
+          )))
+           : (
             <button
               alt="Out of Stock"
               data-testid="out-of-stock"
-              className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-80"
+              className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-80 dark:bg-gray-500 dark:hover:bg-gray-800 dark:text-gray-100"
             >
               OUT OF STOCK
             </button>
