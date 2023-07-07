@@ -10,23 +10,23 @@ const RelatedProducts = () => {
   const dispatch = useDispatch();
   let id = useSelector(state => state.productId)
 
-  // const sideScroll = (
-  //   element: HTMLDivElement,
-  //   speed: number,
-  //   distance: number,
-  //   step: number
-  // ) => {
-  //   let scrollAmount = 0;
-  //   const slideTimer = setInterval(() => {
-  //     element.scrollLeft += step;
-  //     scrollAmount += Math.abs(step);
-  //     if (scrollAmount >= distance) {
-  //       clearInterval(slideTimer);
-  //     }
-  //   }, speed);
-  // };
+  const sideScroll = (
+    element,
+    speed,
+    distance,
+    step
+  ) => {
+    let scrollAmount = 0;
+    const slideTimer = setInterval(() => {
+      element.scrollLeft += step;
+      scrollAmount += Math.abs(step);
+      if (scrollAmount >= distance) {
+        clearInterval(slideTimer);
+      }
+    }, speed);
+  };
 
-
+  const contentWrapper = React.useRef(null);
 
   useEffect(() => {
     api.getList(id)
@@ -36,17 +36,25 @@ const RelatedProducts = () => {
   return (<>
     <div className='text-lg text-gray-800 m-1 p-1' data-testid='RP List'>Related Products
     </div>
-    <div className="flex justify-left overflow-x-scroll ">{list.map((itemId) => (<RPCard key={itemId} id={itemId} />))}
+    <div className="flex justify-left overflow-x-scroll "  ref={contentWrapper}>{list.map((itemId) => (<RPCard key={itemId} id={itemId} />))}
+    <div className='block'>
+      <button
+        onClick={() => {
+          sideScroll(contentWrapper.current, 25, 100, -10);
+        }}
+      >
+        Left
+      </button>
+      <button
+        onClick={() => {
+          sideScroll(contentWrapper.current, 25, 100, 10);
+        }}
+      >
+        Right
+      </button>
     </div>
-    <div>
-    {/* <Button
-          onClick={() => {
-            sideScroll(contentWrapper.current, 25, 100, -10);
-          }}
-        >
-          Left
-        </Button> */}
     </div>
+
   </>)
 
 }
