@@ -21,10 +21,10 @@ const OutfitList = () => {
   }
   const contentWrapper = React.useRef(null);
 
-  return (<><div className='relative'>
-  <div className='text-lg text-gray-800 m-1 p-1 dark:bg-gray-600 dark:text-white' data-testid='Outfit List'>Your Outfit
+  return (<><div className='relative '>
+  <div className='text-lg text-gray-800 m-1 p-1 dark:bg-gray-600 dark:text-white ' data-testid='Outfit List'>Your Outfit
   </div>
-  <div className='z-10 absolute h-[250px] w-full pointer-events-none'>
+  <div className='z-10 absolute h-[250px] w-full pointer-events-none '>
       <div className='z-10 absolute top-[50%] left-[2%] pointer-events-auto'>
         <LeftArrow onClick={() => {
               sideScroll(contentWrapper.current, 10, 800, -10);
