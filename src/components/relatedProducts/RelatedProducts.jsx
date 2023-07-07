@@ -36,24 +36,27 @@ const RelatedProducts = () => {
   return (<>
     <div className='text-lg text-gray-800 m-1 p-1' data-testid='RP List'>Related Products
     </div>
-    <div className="flex justify-left overflow-x-scroll "  ref={contentWrapper}>{list.map((itemId) => (<RPCard key={itemId} id={itemId} />))}
-    <div className='block'>
+    <div className='relative '>
+    <div className=" flex justify-left overflow-hidden"  ref={contentWrapper}>{list.map((itemId) => (<RPCard key={itemId} id={itemId} />))}
+    <div className='block  absolute'>
       <button
         onClick={() => {
-          sideScroll(contentWrapper.current, 25, 100, -10);
+          sideScroll(contentWrapper.current, 50, 250, -25);
         }}
       >
         Left
       </button>
       <button
         onClick={() => {
-          sideScroll(contentWrapper.current, 25, 100, 10);
+          sideScroll(contentWrapper.current, 50, 250, 25);
         }}
       >
         Right
       </button>
     </div>
     </div>
+    </div>
+
 
   </>)
 
