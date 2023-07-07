@@ -33,7 +33,7 @@ export default function Styles() {
 
   return (
     <>
-      <h2 className="text-lg text-gray-800 mx-4">Style - {selected.name}</h2>
+      <h2 className="text-lg text-gray-800 mx-4"><span className="font-bold">Style > </span>{selected.name}</h2>
       <div className="grid grid-cols-4 max-w-md">
         {styles.map((style) => {
           if (style === selected) {
@@ -56,7 +56,7 @@ export default function Styles() {
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
                       stroke="currentColor"
-                      class="w-6 h-6"
+                      className="w-6 h-6"
                     >
                       <path
                         strokeLinecap="round"

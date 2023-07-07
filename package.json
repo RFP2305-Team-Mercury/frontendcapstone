@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node server/index.js && npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
     "test": "npx jest --verbose --coverage",
     "dev": "webpack --watch",
     "build": "npx webpack",
