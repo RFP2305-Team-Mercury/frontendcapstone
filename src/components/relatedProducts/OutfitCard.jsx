@@ -13,6 +13,7 @@ const OutfitCard = ({ id, clickButton }) => {
 
   const addCard = () => {
     let outfit = JSON.parse(localStorage.getItem('outfit'));
+    if (outfit === null) outfit = [];
     clickButton();
     if (outfit === null) outfit = [];
     if (!outfit.includes(prodId)) {
@@ -23,8 +24,8 @@ const OutfitCard = ({ id, clickButton }) => {
 
   if (id === undefined) {
     return (<>
-      <div className='shrink-0 m-2 p-1 border-solid border-2 w-2/8 h-[250px]' data-testid="Add to Outfit Card" onClick={() => { addCard() }}>
-        <div className='justify-center hover:bg-grey-600 active:bg-grey-700'>
+      <div className='shrink-0 m-2 p-1 border-solid border-2 w-2/8 h-[200px]' data-testid="Add to Outfit Card" onClick={() => { addCard() }}>
+        <div className='justify-center hover:bg-grey-300 active:bg-grey-700 '>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="plus">
             <g data-name="Layer 2">
               <g data-name="plus-square">
@@ -39,8 +40,8 @@ const OutfitCard = ({ id, clickButton }) => {
           </svg>
         </div>
         <div className='max-w-sm max-h-md'>
-          <div className='font-medium text-xl'>Click to add to </div>
-          <div className='font-medium text-xl'>Your Outfit</div>
+          <div className='font-medium text-xl text-center'>Click to add to </div>
+          <div className='font-medium text-xl text-center'>Your Outfit</div>
         </div>
       </div>
     </>)
@@ -75,10 +76,10 @@ const OutfitCard = ({ id, clickButton }) => {
 
   return (
     <>
-      <div className='shrink-0 m-2 p-1 border-solid border-2 w-[200px]' data-testid="Outfit Card">
+      <div className='shrink-0 m-2 p-1 border-solid border-2 w-2/6' data-testid="Outfit Card">
         <div onClick={() => { changeCard() }}>
-          <div className='relative max-w-full bg-gray-300 '>
-            <img className="shadow-md object-cover h-32 w-24 inline m-2" src={itemInfo.thumbnail} />
+          <div className='relative w-full h-[250px] bg-gray-300 items-center'>
+            <img className="shadow-md object-cover h-full w-full " src={itemInfo.thumbnail} />
             <button onClick={() => { x() }}>
             <svg xmlns="http://www.w3.org/2000/svg" className='absolute top-[1rem] right-[5%] w-8 h-8' width="30" height="30" fill="currentColor"  viewBox="0 0 16 16"> <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/> </svg></button>
           </div>
