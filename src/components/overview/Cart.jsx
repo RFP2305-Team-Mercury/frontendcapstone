@@ -81,6 +81,7 @@ export default function Cart() {
       <div className="flex">
         {!sku && (
           <button
+            alt="Select a Size"
             className="bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-80"
             data-testid="select-size"
           >
@@ -90,6 +91,7 @@ export default function Cart() {
         {sku &&
           (quantity > 0 ? (
             <button
+              alt="Add to Bag"
               onClick={handleCart}
               data-testid="add-cart"
               className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-80"
@@ -113,6 +115,7 @@ export default function Cart() {
             </button>
           ) : (
             <button
+              alt="Out of Stock"
               data-testid="out-of-stock"
               className="bg-white hover:bg-gray-100 text-gray-600 font-semibold py-2 px-4 border border-gray-400 rounded-none shadow flex m-4 p-4 w-80"
             >

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Styles from "./Styles.jsx";
 import StarRatings from "react-star-ratings";
-import {salePrice} from "../../utils/salePrice.jsx";
+import salePrice from "../../utils/salePrice.jsx";
+
 import { useSelector, useDispatch } from "react-redux";
 import { getOne } from "../../apis/product.js";
 

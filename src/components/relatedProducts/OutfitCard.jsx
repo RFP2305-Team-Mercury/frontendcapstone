@@ -7,42 +7,24 @@ import StarRatings from 'react-star-ratings'
 const OutfitCard = ({ id, clickButton }) => {
   const [itemInfo, setItemInfo] = useState({});
   const [stars, setStars] = useState(5);
-  let starClicked = false;
+  let xClicked = false;
   const dispatch = useDispatch();
   let prodId = useSelector(state => state.productId);
-  let outfit = JSON.parse(localStorage.getItem('outfit'));
-  const fetchCard = async () => {
-    let card = await api.getCardInfo(id);
-    setItemInfo(card);
-  };
 
   const addCard = () => {
+    let outfit = JSON.parse(localStorage.getItem('outfit'));
     clickButton();
+    if (outfit === null) outfit = [];
     if (!outfit.includes(prodId)) {
       outfit = [...outfit, prodId]
       localStorage.setItem('outfit', JSON.stringify(outfit));
     }
   }
 
-  useEffect(() => {
-    fetchCard();
-  }, [])
-
-  const star = () => {
-    starClicked = true
-    //remove item from local storage
-  }
-  const changeCard = () => {
-    setTimeout(() => {
-      if (starClicked === false) {
-        dispatch(setId(id));
-      }
-    }, 5);
-  }
   if (id === undefined) {
     return (<>
       <div className='shrink-0 m-2 p-1 border-solid border-2 w-2/8 h-[250px]' data-testid="Add to Outfit Card" onClick={() => { addCard() }}>
-        <div className='justify-center'>
+        <div className='justify-center hover:bg-grey-600 active:bg-grey-700'>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="plus">
             <g data-name="Layer 2">
               <g data-name="plus-square">
@@ -64,25 +46,41 @@ const OutfitCard = ({ id, clickButton }) => {
     </>)
   }
 
+
+  const fetchCard = async () => {
+    let card = await api.getCardInfo(id);
+    setItemInfo(card);
+  };
+
+  useEffect(() => {
+    fetchCard();
+  }, [])
+
+  const x = () => {
+    xClicked = true
+    //remove item from local storage
+    let outfit = JSON.parse(localStorage.getItem('outfit'));
+    outfit.splice(outfit.indexOf(id), 1)
+    localStorage.setItem('outfit', JSON.stringify(outfit));
+    clickButton()
+  }
+  const changeCard = () => {
+    setTimeout(() => {
+      if (xClicked === false) {
+        dispatch(setId(id));
+      }
+    }, 5);
+  }
+
+
   return (
     <>
       <div className='shrink-0 m-2 p-1 border-solid border-2 w-[200px]' data-testid="Outfit Card">
         <div onClick={() => { changeCard() }}>
           <div className='relative max-w-full bg-gray-300 '>
             <img className="shadow-md object-cover h-32 w-24 inline m-2" src={itemInfo.thumbnail} />
-            <button onClick={() => { star() }}><svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 30 30"
-              className="absolute top-[1rem] right-[5%] w-10 h-10"
-            >
-              <path
-                fillRule="evenodd"
-                fill="gold"
-                d=" M15.422,18.129l-5.264-2.768l-5.265,2.768l1.006-5.863L1.64,8.114l5.887-0.855
-            l2.632-5.334l2.633,5.334l5.885,0.855l-4.258,4.152L15.422,18.129z"
-                clipRule="evenodd"
-                stroke='black'
-              /></svg></button>
+            <button onClick={() => { x() }}>
+            <svg xmlns="http://www.w3.org/2000/svg" className='absolute top-[1rem] right-[5%] w-8 h-8' width="30" height="30" fill="currentColor"  viewBox="0 0 16 16"> <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/> </svg></button>
           </div>
           <div>
             <div className='italic text-m'>{itemInfo.category}</div>
