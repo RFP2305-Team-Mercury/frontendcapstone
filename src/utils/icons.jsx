@@ -4,7 +4,7 @@ export const ExpandIcon = ({ onClick }) => {
   return (
     <>
       <button onClick={onClick} data-testid="expand"
-       alt="Expand">
+       alt="Expand" aria-label="Expand">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -25,7 +25,8 @@ export const ExpandIcon = ({ onClick }) => {
 export const LeftArrow = ({ onClick }) => {
   return (
     <>
-      <button onClick={onClick} data-testid="leftArrow" alt="LeftArrow">
+      <button onClick={onClick} data-testid="leftArrow" alt="Left Arrow"
+      aria-label="Left Arrow">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -48,7 +49,7 @@ export const LeftArrow = ({ onClick }) => {
 export const RightArrow = ({ onClick }) => {
   return (
     <>
-      <button onClick={onClick} data-testid="rightArrow" alt="RightArrow">
+      <button onClick={onClick} data-testid="rightArrow" alt="RightArrow" aria-label="RightArrow">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -70,7 +71,7 @@ export const RightArrow = ({ onClick }) => {
 
 export const DownChevron = ({ onClick }) => {
   return (
-    <button onClick={onClick} data-testid="downChevron">
+    <button onClick={onClick} data-testid="downChevron" alt="Down Chevron" aria-label="Down Chevron">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -91,7 +92,7 @@ export const DownChevron = ({ onClick }) => {
 
 export const UpChevron = ({ onClick }) => {
   return (
-    <button onClick={onClick} data-testid="upChevron">
+    <button onClick={onClick} data-testid="upChevron" alt="Up Chevron" aria-label="Up Chevron">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

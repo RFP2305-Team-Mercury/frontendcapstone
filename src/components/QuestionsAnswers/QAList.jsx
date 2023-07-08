@@ -194,10 +194,14 @@ useEffect(() => {
             <div className = 'border-l border-gray-400 h-4'></div>
            <div className = 'text-xs'>
             <label className ='helpful p-2 '>
-              Helpful? <button className = 'underline' onClick = {helpfulAClick}>Yes</button> ({el.answers[a].helpfulness})
+              Helpful? <button
+              alt="Helpful Button"
+              className = 'underline' onClick = {helpfulAClick}>Yes</button> ({el.answers[a].helpfulness})
             </label>
             <label className ='border-l border-gray-400 h-4'>
-            <button className ='underline p-2' onClick = {reportClick}>{el.answers[a].report}</button>
+            <button
+            alt="Report Button"
+            className ='underline p-2' onClick = {reportClick}>{el.answers[a].report}</button>
             </label>
             </div>
             </div>
