@@ -6,9 +6,9 @@ const getMetrics = (metaData) => {
     calcCount += Number(newCount);
     total += (Number(newCount) * i);
   }
-  let calcAvg = (total / calcCount).toPrecision(2);
-  calcAvg = (Math.round(calcAvg * 4) / 4).toPrecision(3)
-  let calcRecPct = (Number(metaData.recommended.true) / (Number(metaData.recommended.true) + Number(metaData.recommended.false))).toPrecision(3);
+  let calcAvg = (total / calcCount);
+  calcAvg = (Math.round(calcAvg * 4) / 4).toPrecision(3);
+  let calcRecPct = (Number(metaData.recommended.true) / (Number(metaData.recommended.true) + Number(metaData.recommended.false))).toFixed(2);
 
   let result = {calcCount, calcAvg, calcRecPct};
   return result;

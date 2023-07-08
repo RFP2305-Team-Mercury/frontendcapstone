@@ -45,7 +45,7 @@ const ReviewTile = ({review}) => {
   }
 
   return (
-    <div className="border-b-2 border-gray-800 py-4 mb-4 dark:border-gray-400">
+    <div className="border-b border-gray-800 py-4 mb-4 dark:border-gray-400">
       <div className="flex justify-between">
         <span><StarRatings
             rating={Number(review.rating)}
