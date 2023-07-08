@@ -70,7 +70,7 @@ export const RightArrow = ({ onClick }) => {
 
 export const DownChevron = ({ onClick }) => {
   return (
-    <button onClick={onClick} data-testid="downChevron">
+    <button onClick={onClick} data-testid="downChevron" alt="Down Chevron">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -91,7 +91,7 @@ export const DownChevron = ({ onClick }) => {
 
 export const UpChevron = ({ onClick }) => {
   return (
-    <button onClick={onClick} data-testid="upChevron">
+    <button onClick={onClick} data-testid="upChevron" alt="Up Chevron">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

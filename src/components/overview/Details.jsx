@@ -40,7 +40,7 @@ export default function Details() {
           />
         </div>
         <h3 className="font-light text-gray-600 py-2 underline mx-4 dark:text-white">
-          <a href="#reviews">Read all reviews</a>
+          <a href="#reviews" aria-label="Read all reviews">Read all reviews</a>
         </h3>
         <h2
         data-testid="category-test"

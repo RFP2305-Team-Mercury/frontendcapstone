@@ -62,7 +62,7 @@ const ReviewTile = ({review}) => {
         <p className="hyphens-auto">{review.body}</p>
       </div>
       {review.photos.length ? review.photos.map((photo) => {
-        return <img className="shadow-md object-cover h-32 w-24 inline m-2" key={photo.id} src={photo.url} />
+        return <img className="shadow-md object-cover h-32 w-24 inline m-2" key={photo.id} src={photo.url} alt="Review Photo"/>
       }) : ''}
       {review.recommend ? <div>&#10003; I recommend this product</div> : ""}
       <div className="font-light text-gray-600 py-2 dark:text-gray-200">
