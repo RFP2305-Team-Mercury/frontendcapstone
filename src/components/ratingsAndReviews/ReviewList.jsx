@@ -60,7 +60,7 @@ const ReviewList = ({reviews, sortOption, handleChangeSort, filters}) => {
           <option value="helpful">Helpful</option>
         </select>
       </div>
-      <div className="overflow-auto px-4 max-h-[85vh] border-solid border-2 my-4 dark:border-gray-700">
+      <div className="overflow-auto px-4 max-h-[85vh] my-4 border dark:border-gray-700">
         {renderedReviews.map((review) => {
           return <ReviewTile review={review} key={review.review_id} />
         })}

@@ -85,7 +85,7 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
             data-testid="expanded-img"
           >
             <img
-              className="w-[85vw] h-[90vh] object-cover cursor-crosshair custom-cursor border-black border-2 z-1"
+              className="w-[85vw] h-[90vh] object-cover cursor-crosshair custom-cursor shadow-md z-1"
               src={current}
               onClick={handleZoom}
               alt="Expanded Product Image"
@@ -129,7 +129,7 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
         <div className="relative flex-2 w-2/3 h-[600px] mt-2 flex justify-end">
             <img
               data-testid="normal-img"
-              className="w-full h-[600px] object-cover m-auto cursor-zoom-in custom-cursor border-gray-300 border-2"
+              className="w-full h-[600px] object-cover m-auto cursor-zoom-in custom-cursor shadow-md"
               src={current}
               onClick={handleExpand}
               alt="Product Main Image"
