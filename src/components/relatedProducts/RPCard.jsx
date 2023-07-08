@@ -36,7 +36,7 @@ const RPCard = ({ id }) => {
 
   return (
     <>
-      <div className='hover:bg-gray-100 dark:hover:bg-gray-800 dark:bg-gray-600 dark:text-white shrink-0 m-2 p-1 border-solid border-2 w-2/6' data-testid="RP Card">
+      <div className='hover:bg-gray-100 dark:hover:bg-gray-800 dark:bg-gray-600 dark:text-white shrink-0 m-2 p-1 border border-gray-200 dark:border-gray-400 shadow-sm w-2/6' data-testid="RP Card">
         <div onClick={() => { changeCard() }}>
           <div className='relative  h-[250px] bg-gray-300 items-center'>
             <img className="shadow-md object-cover h-full w-full" src={itemInfo.thumbnail} alt="Product Card"/>
