@@ -1,11 +1,11 @@
 
-const productIdReducer = (state = 40348, action) => {
+const atbReducer = (state = 0, action) => {
   //switch case of actions types where global state will be pulled from redux and change.
   switch(action.type){
-    case 'SET_ID':
-      return state = action.payload;
+    case 'LOADING_NEXT':
+      return state ++;
     default:
       return state
   }
 }
-export default productIdReducer;
+export default atbReducer;

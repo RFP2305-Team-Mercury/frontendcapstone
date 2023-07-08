@@ -84,3 +84,8 @@ export const newReviewModal = ()=>{
     type: 'NEW_REVIEW_MODAL'
   }
 }
+export const loadingNext = ()=>{
+  return {
+    type: 'LOADING_NEXT'
+  }
+}

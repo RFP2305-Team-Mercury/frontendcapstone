@@ -16,8 +16,6 @@ import QuestionsAndAnswers from "./QuestionsAnswers/QuestionsAnswers.jsx";
 import RatingsAndReviews from "./ratingsAndReviews/RatingsAndReviews.jsx";
 
 export default function App() {
-
-  let isOpen = useSelector((state) => state.open);
   const dispatch = useDispatch();
 
   const handleClick = (() => {
@@ -25,15 +23,17 @@ export default function App() {
     dispatch(answer())
     dispatch(openModal())
   })
-let id = useSelector(state => state.modalType.id)
-return (
-  <div className="dark:bg-gray-600">
-    <Overview />
-    <RPandOL />
-    <QuestionsAndAnswers/>
-    <RatingsAndReviews />
-    <Modal isOpen={isOpen} id={useSelector(state => state.modalType.id)} type = {useSelector(state => state.modalType.type)} onClose = {() => dispatch(closeModal())}/>
-  </div>
-)
+  let id = useSelector(state => state.modalType.id)
+
+  return (
+    <div className="dark:bg-gray-600">
+      <Overview />
+      <RPandOL />
+      <QuestionsAndAnswers />
+      <RatingsAndReviews />
+      <Modal id={useSelector(state => state.modalType.id)} type={useSelector(state => state.modalType.type)} onClose={() => dispatch(closeModal())} />
+
+    </div>
+  )
 }
 
