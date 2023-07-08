@@ -41,7 +41,8 @@ const RPCard = ({ id }) => {
           <div className='relative  h-[250px] bg-gray-300 items-center'>
             <img className="shadow-md object-cover h-full w-full" src={itemInfo.thumbnail} alt="Product Card"/>
             <button
-            alt="Open Comparisons"
+            alt="Open Comparison Pop Up"
+            aria-label="Open Comparison Pop Up"
             onClick={() => { star() }}><svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 30 30"
