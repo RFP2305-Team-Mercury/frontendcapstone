@@ -133,6 +133,7 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
               src={current}
               onClick={handleExpand}
               alt="Product Main Image"
+              aria-label="Product Main Image"
             />
             <ExpandIcon onClick={handleExpand} />
             <div
@@ -152,6 +153,7 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
                       alt="Thumbnail Product Image"
                       src={photo["thumbnail_url"]}
                       onClick={() => handleThumbnail(position, photo["url"])}
+                      aria-label="Thumbnail Photo"
                     />
                   );
                 })}

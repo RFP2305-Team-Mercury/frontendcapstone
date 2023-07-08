@@ -70,6 +70,7 @@ return ReactDom.createPortal(
                   Submit your Answer
                   </h3>
                   <button
+                    alt="Submit your Answer"
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => dispatch(closeModal())}
                   >
@@ -95,12 +96,15 @@ return ReactDom.createPortal(
                   <input  data-testid="body"className=" border border-gray rounded-md py-10  w-full my-4 text-slate-500 text-xs leading-relaxed dark:bg-gray-600 dark:text-white" onChange = {handleBody} type = 'text'></input>
 
                   <p className ='underline'>Photo:</p>
-                  <button  data-testid="photo"className="w-full border border-gray rounded-md my-4 text-slate-500 text-xs leading-relaxed dark:bg-gray-600 dark:text-white" onClick = {handlePhoto}> Choose File</button>
+                  <button
+                  alt="Choose File"
+                  data-testid="photo"className="w-full border border-gray rounded-md my-4 text-slate-500 text-xs leading-relaxed dark:bg-gray-600 dark:text-white" onClick = {handlePhoto}> Choose File</button>
                   </label>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
+                    alt="Submit your Answer"
                     className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={handleSubmit}
@@ -108,6 +112,7 @@ return ReactDom.createPortal(
                     Submit
                   </button>
                   <button
+                    alt="Discard"
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => dispatch(closeModal())}

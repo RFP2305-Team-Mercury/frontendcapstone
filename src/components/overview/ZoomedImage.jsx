@@ -53,6 +53,7 @@ const ZoomedImage = ({ image, handleExpand, handleZoom }) => {
         alt="Zoomed Product Image"
         className="w-full h-[90vh] object-cover m-auto cursor-zoom-in custom-cursor border-black border-2 z-1"
         onClick={handleZoom}
+        aria-label="Zoomed Image"
       />
       <ExpandIcon onClick={handleExpand} />
     </div>

@@ -39,8 +39,11 @@ const RPCard = ({ id }) => {
       <div className='hover:bg-gray-100 dark:hover:bg-gray-800 dark:bg-gray-600 dark:text-white shrink-0 m-2 p-1 border-solid border-2 w-2/6' data-testid="RP Card">
         <div onClick={() => { changeCard() }}>
           <div className='relative  h-[250px] bg-gray-300 items-center'>
-            <img className="shadow-md object-cover h-full w-full" src={itemInfo.thumbnail} />
-            <button onClick={() => { star() }}><svg
+            <img className="shadow-md object-cover h-full w-full" src={itemInfo.thumbnail} alt="Product Card"/>
+            <button
+            alt="Open Comparison Pop Up"
+            aria-label="Open Comparison Pop Up"
+            onClick={() => { star() }}><svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 30 30"
               className="absolute top-[1rem] right-[5%] w-10 h-10"

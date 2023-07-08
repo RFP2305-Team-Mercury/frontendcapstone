@@ -34,12 +34,12 @@ export default function Styles() {
   return (
     <>
       <h2 className="text-lg text-gray-800 mx-4 dark:text-white"><span className="font-bold dark:text-white">Style > </span>{selected.name}</h2>
-      <div className="grid grid-cols-4 max-w-md dark:text-white">
+      <div className="grid grid-cols-4 max-w-md dark:text-white" key="349283402">
         {styles.map((style) => {
           if (style === selected) {
             return (
               <>
-                <div className="relative flex items-center">
+                <div className="relative flex items-center" key="23982123">
                   <img
                     data-testid="style-selected"
                     src={style.photos[0].thumbnail_url}
