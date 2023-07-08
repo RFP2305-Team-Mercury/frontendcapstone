@@ -7,6 +7,7 @@ import selectReducer from './selectReducer'
 import comparisonReducer from './comparisonReducer'
 import detailsReducer from './detailsReducer'
 import {combineReducers} from 'redux'
+import atbReducer from './atbReducer'
 
 const rootReducers = combineReducers({
   productId: productIdReducer,
@@ -16,7 +17,8 @@ const rootReducers = combineReducers({
   modalType: modalTypeReducer,
   selected: selectReducer,
   comparisonId: comparisonReducer,
-  details: detailsReducer
+  details: detailsReducer,
+  loadingFirst: atbReducer
 })
 
 export default rootReducers;
