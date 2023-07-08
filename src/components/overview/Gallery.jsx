@@ -94,7 +94,7 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
             {index !== 0 && <UpChevron onClick={scrollUp}/>}
             <div
               ref={containerRef}
-              className="absolute top-1/2 left-10 transform -translate-y-1/2 z-8 scroll-smooth"
+              className="absolute top-1/2 left-10 transform -translate-y-1/2 scroll-smooth overflow-y-scroll no-scrollbar h-[150px] w-[50px]"
               data-testid="thumbnail-div"
              style={{ height: "150px", overflow: "auto", width: "50px" }}
             >
@@ -133,12 +133,12 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
               src={current}
               onClick={handleExpand}
               alt="Product Main Image"
+              aria-label="Product Main Image"
             />
             <ExpandIcon onClick={handleExpand} />
             <div
-              className="absolute top-1/2 left-10 transform -translate-y-1/2 scroll-smooth"
+              className="absolute top-1/2 left-10 transform -translate-y-1/2 scroll-smooth overflow-y-scroll no-scrollbar h-[450px]"
               data-testid="thumbnail-div"
-             style={{ height: "450px", overflow: "auto" }}
             >
               {photos.map((photo, position) => {
                   return (
@@ -153,6 +153,7 @@ export default function Gallery({ isExpanded, setIsExpanded }) {
                       alt="Thumbnail Product Image"
                       src={photo["thumbnail_url"]}
                       onClick={() => handleThumbnail(position, photo["url"])}
+                      aria-label="Thumbnail Photo"
                     />
                   );
                 })}
