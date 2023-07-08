@@ -7,7 +7,7 @@
     "start": "node server/index.js && npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
     "test": "npx jest --verbose --coverage",
     "dev": "webpack --watch",
-    "build": "npx webpack",
+    "build": "npx webpack & npx tailwindcss -i ./src/input.css -o ./dist/output.css",
     "tailwind": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
   "keywords": [],
