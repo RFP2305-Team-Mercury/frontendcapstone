@@ -18,7 +18,7 @@ export default function Slogan() {
 
   return (
     <>
-      <div className="flex-2 w-2/3 mt-4 mb-4 border-r-2 border-black dark:bg-gray-600  dark:text-white">
+      <div className="flex-2 w-2/3 mt-4 mb-4 border-r border-gray-400 dark:bg-gray-600  dark:text-white">
         <h2
           className="text-lg text-gray-800 mx-10 font-bold dark:bg-gray-600  dark:text-white"
           data-testid="slogan-test"
