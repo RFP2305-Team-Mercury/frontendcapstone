@@ -3,6 +3,7 @@ import OutfitCard from './OutfitCard.jsx';
 import { useSelector } from 'react-redux';
 import sideScroll from '../../utils/sideScroll'
 import {LeftArrow, RightArrow} from '../../utils/icons.jsx'
+import {loadingNext} from '../../redux/actions'
 
 const OutfitList = () => {
   const [outfit, setOutfit] = useState([]);
@@ -13,6 +14,7 @@ const OutfitList = () => {
   useEffect(()=>{
     let result = JSON.parse(localStorage.getItem('outfit'))
     if (result !== null) {setOutfit(result)}
+
   },[button])
 
 
