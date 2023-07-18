@@ -67,7 +67,7 @@ const RatingsAndReviews = () => {
   }
 
   useEffect(() => {
-    handleGetReviews();
+    handleGetReviews('relevant');
   }, [productId]);
 
   return useSelector(state=>state.loadingOrder)===3? '' :  (

@@ -27,11 +27,11 @@ export default function App() {
 
   return (
     <div className="dark:bg-gray-600">
-      <Overview />
+      {/* <Overview />
       <RPandOL />
-      <QuestionsAndAnswers />
+      <QuestionsAndAnswers /> */}
       <RatingsAndReviews />
-      <Modal id={useSelector(state => state.modalType.id)} type={useSelector(state => state.modalType.type)} onClose={() => dispatch(closeModal())} />
+      {/* <Modal id={useSelector(state => state.modalType.id)} type={useSelector(state => state.modalType.type)} onClose={() => dispatch(closeModal())} /> */}
 
     </div>
   )

@@ -3,7 +3,8 @@ import apiConfig from './apiConfig';
 
 const getReviews = async ({count, sort, product_id}) => {
   try {
-    const response = await axios.get(`/reviews/?count=${count}&sort=${sort}&product_id=${product_id}`, apiConfig);
+    const response = await axios.get(`/reviews/?count=${count}&sort=relevant&product_id=${product_id}`, apiConfig);
+    console.log(response.data.results)
     return response.data.results;
   } catch (err) {
     console.log(err);

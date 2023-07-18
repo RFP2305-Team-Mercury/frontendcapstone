@@ -46,6 +46,6 @@ module.exports = {
     contentBase: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     port: 3000,
-    proxy: 'http://localhost:3000'
+    proxy: 'http://localhost:3001'
   },
 };
